@@ -8,14 +8,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="169dp"
-        android:layout_height="112dp"
+        android:layout_width="164dp"
+        android:layout_height="293dp"
         android:gravity="center"
         android:text="Hello World!"
         app:layout_constraintBottom_toTopOf="@+id/btnGetDepartmentsId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.144" />
 
     <Button
         android:id="@+id/btnGetDepartmentsId"
