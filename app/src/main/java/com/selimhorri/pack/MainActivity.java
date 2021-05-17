@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         // this.departmentService.save(new Department(2, "HELOOOO", new Location()));
         // this.departmentService.update(new Department(25, "HELOOOO", new Location()));
-        this.departmentService.deleteById(26);
+        this.departmentService.deleteById(1);
 
         this.btnDepartments.setOnClickListener(v -> this.textView.setText(this.departmentService.findAll().getCollection().toString()));
         this.btnDepartmentById.setOnClickListener(v -> this.textView.setText(this.departmentService.findById(1).toString()));

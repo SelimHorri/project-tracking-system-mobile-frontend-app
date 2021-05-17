@@ -3,6 +3,8 @@ package com.selimhorri.pack.service.impl.sttc;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.selimhorri.pack.exception.ObjectAlreadyExistsException;
+import com.selimhorri.pack.exception.ObjectNotFoundException;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.model.dto.Location;
@@ -42,7 +44,7 @@ public class DepartmentServiceStaticImpl implements DepartmentService {
     public Department findById(final Integer departmentId) {
 
         if (!depts.containsKey(departmentId))
-            throw new RuntimeException("#### Department does not exist! ####");
+            throw new ObjectNotFoundException("#### Department does not exist! ####");
 
         return depts.get(departmentId);
     }
@@ -51,7 +53,7 @@ public class DepartmentServiceStaticImpl implements DepartmentService {
     public Department save(final Department department) {
 
         if (depts.containsKey(department.getDepartmentId()))
-            throw new RuntimeException("#### department exists already ####");
+            throw new ObjectAlreadyExistsException("#### department exists already ####");
 
         depts.put(department.getDepartmentId(), department);
 
@@ -62,7 +64,7 @@ public class DepartmentServiceStaticImpl implements DepartmentService {
     public Department update(final Department department) {
 
         if (!depts.containsKey(department.getDepartmentId()))
-            throw new RuntimeException("#### department does not exist ####");
+            throw new ObjectNotFoundException("#### department does not exist ####");
 
         depts.get(department.getDepartmentId()).setDepartmentName(department.getDepartmentName());
         depts.get(department.getDepartmentId()).setLocation(department.getLocation());
@@ -74,7 +76,7 @@ public class DepartmentServiceStaticImpl implements DepartmentService {
     public void deleteById(final Integer departmentId) {
 
         if (!depts.containsKey(departmentId))
-            throw new RuntimeException("#### department does not exist! ####");
+            throw new ObjectNotFoundException("#### department does not exist! ####");
 
         depts.remove(departmentId);
     }
