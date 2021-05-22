@@ -17,10 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     private DepartmentService departmentService;
 
-    private TextView textView;
-    private Button btnDepartments;
-    private Button btnDepartmentById;
-
     public MainActivity() {
         departmentService = new DepartmentServiceStaticImpl(MainActivity.this);
     }
@@ -30,16 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.textView = super.findViewById(R.id.textView);
-        this.btnDepartments = findViewById(R.id.btnGetDepartmentsId);
-        this.btnDepartmentById = findViewById(R.id.btnGetDepartmentById);
 
-        // this.departmentService.save(new Department(2, "HELOOOO", new Location()));
-        // this.departmentService.update(new Department(25, "HELOOOO", new Location()));
-        this.departmentService.deleteById(1);
-
-        this.btnDepartments.setOnClickListener(v -> this.textView.setText(this.departmentService.findAll().getCollection().toString()));
-        this.btnDepartmentById.setOnClickListener(v -> this.textView.setText(this.departmentService.findById(1).toString()));
 
     }
 
