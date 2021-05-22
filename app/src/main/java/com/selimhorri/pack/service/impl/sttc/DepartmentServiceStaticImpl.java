@@ -21,12 +21,15 @@ public class DepartmentServiceStaticImpl implements DepartmentService {
     private final Context context;
     private static SortedMap<Integer, Department> depts;
 
-    public DepartmentServiceStaticImpl(final Context context) {
-        this.context = context;
+    static {
         depts = new TreeMap<>();
         depts.put(1, new Department(1, "billing", new Location()));
         depts.put(2, new Department(2, "DWH", new Location()));
         depts.put(3, new Department(3, "digital", new Location()));
+    }
+
+    public DepartmentServiceStaticImpl(final Context context) {
+        this.context = context;
     }
 
     @Override
