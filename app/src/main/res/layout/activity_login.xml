@@ -12,7 +12,7 @@
         android:layout_height="58dp"
         android:layout_marginTop="148dp"
         android:hint="Username.."
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toTopOf="@+id/idEditTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/idEditTextPassword"
         android:layout_width="238dp"
         android:layout_height="57dp"
         android:layout_marginBottom="76dp"

@@ -60,6 +60,7 @@ public class CredentialServiceStaticImpl implements CredentialService {
         if (DUMMY_CREDENTIALS.containsKey(credential.getUserId()))
             throw new ObjectAlreadyExistsException("#### Credential exists already ####");
 
+        credential.setPassword(BCrypt.hashpw(credential.getPassword(), BCrypt.gensalt(4)));
         DUMMY_CREDENTIALS.put(credential.getUserId(), credential);
         return DUMMY_CREDENTIALS.get(credential.getUserId());
     }
