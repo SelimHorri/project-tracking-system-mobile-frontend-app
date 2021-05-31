@@ -58,7 +58,7 @@ public final class Employee {
                 ", hiredate=" + hiredate +
                 ", job='" + job + '\'' +
                 ", salary=" + salary +
-                ", managerId=" + manager.getManager().getEmployeeId() +
+                ", managerId=" + manager.getEmployeeId() +
                 ", departmentId=" + department.getDepartmentId() +
                 ", userId=" + userCredential.getUserId() +
                 '}';
