@@ -7,6 +7,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.constant.AccountEnum;
+import com.selimhorri.pack.pattern.QueuePattern;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -27,7 +28,9 @@ public class HomeActivity extends AppCompatActivity {
         this.btnManager.setOnClickListener(v -> super.startActivity(new Intent(this, LoginActivity.class).putExtra("account", AccountEnum.MANAGER.toString())));
         this.btnAdmin.setOnClickListener(v -> super.startActivity(new Intent(this, LoginActivity.class).putExtra("account", AccountEnum.ADMIN.toString())));
 
+        this.btnEmployee.setOnClickListener(v -> {
 
+        });
 
     }
 
