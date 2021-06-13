@@ -11,18 +11,23 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.selimhorri.pack.constant.AccountEnum;
 import com.selimhorri.pack.model.collection.DtoCollection;
+import com.selimhorri.pack.model.dto.Credential;
 import com.selimhorri.pack.model.dto.Department;
+import com.selimhorri.pack.service.CredentialService;
 import com.selimhorri.pack.service.DepartmentService;
+import com.selimhorri.pack.service.impl.dynmc.CredentialServiceDynamicImpl;
 import com.selimhorri.pack.service.impl.dynmc.DepartmentServiceDynamicImpl;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private final DepartmentService departmentService;
+    private final CredentialService credentialService;
 
     public HomeActivity() {
-        departmentService = new DepartmentServiceDynamicImpl(HomeActivity.this);
+        credentialService = new CredentialServiceDynamicImpl(HomeActivity.this);
     }
 
     private Button btnEmployee;

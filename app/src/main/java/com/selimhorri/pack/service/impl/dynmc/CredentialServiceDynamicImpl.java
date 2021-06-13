@@ -109,4 +109,24 @@ public class CredentialServiceDynamicImpl implements CredentialService {
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
     }
+
+    @Override
+    public void findByUsername(final String username, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL + "/username/" + username,
+                null,
+                response -> {
+                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Credential>() {}.getType()));
+                },
+                error -> {
+                    err.onError(error.toString());
+                }
+        );
+        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+
+    }
+
+
 }

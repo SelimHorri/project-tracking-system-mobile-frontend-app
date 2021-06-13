@@ -7,10 +7,11 @@ import com.selimhorri.pack.model.dto.Credential;
 
 public interface CredentialService {
 
-    void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Credential>> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
-    void findById(final Integer credentialId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
-    void save(final Credential credential, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
-    void update(final Credential credential, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
-    void deleteById(final Integer credentialId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
+    void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Credential>> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);
+    void findById(final Integer credentialId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);
+    void save(final Credential credential, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);
+    void update(final Credential credential, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);
+    void deleteById(final Integer credentialId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);
+    void findByUsername(final String username, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);
 
 }

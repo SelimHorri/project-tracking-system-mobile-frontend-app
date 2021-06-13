@@ -85,6 +85,10 @@ public class CredentialServiceStaticImpl implements CredentialService {
         DUMMY_CREDENTIALS.remove(credentialId);
     }
 
+    @Override
+    public void findByUsername(String username, ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+    }
 
 
 }
