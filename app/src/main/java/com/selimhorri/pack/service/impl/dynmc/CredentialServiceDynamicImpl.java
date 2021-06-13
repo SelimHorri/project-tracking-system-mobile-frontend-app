@@ -48,7 +48,7 @@ public class CredentialServiceDynamicImpl implements CredentialService {
                 API_URL + "/" + credentialId,
                 null,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Credential>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Credential.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -65,7 +65,7 @@ public class CredentialServiceDynamicImpl implements CredentialService {
                 Request.Method.POST,
                 API_URL,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Credential>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Credential.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -82,7 +82,7 @@ public class CredentialServiceDynamicImpl implements CredentialService {
                 Request.Method.PUT,
                 API_URL,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Credential>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Credential.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -100,7 +100,7 @@ public class CredentialServiceDynamicImpl implements CredentialService {
                 API_URL + "/" + credentialId,
                 null,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Boolean>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -118,7 +118,7 @@ public class CredentialServiceDynamicImpl implements CredentialService {
                 API_URL + "/username/" + username,
                 null,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Credential>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Credential.class));
                 },
                 error -> {
                     err.onError(error.toString());

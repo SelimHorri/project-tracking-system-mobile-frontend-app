@@ -48,7 +48,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 API_URL + "/" + employeeId,
                 null,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Employee>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Employee.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -65,7 +65,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 Request.Method.POST,
                 API_URL,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Employee>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Employee.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -82,7 +82,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 Request.Method.PUT,
                 API_URL,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Employee>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Employee.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -100,7 +100,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 API_URL + "/" + employeeId,
                 null,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Boolean>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class));
                 },
                 error -> {
                     err.onError(error.toString());

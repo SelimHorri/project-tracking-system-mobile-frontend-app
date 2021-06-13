@@ -48,7 +48,7 @@ public class LocationServiceDynamicImpl implements LocationService {
                 API_URL + "/" + locationId,
                 null,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Location>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Location.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -65,7 +65,7 @@ public class LocationServiceDynamicImpl implements LocationService {
                 Request.Method.POST,
                 API_URL,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Location>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Location.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -82,7 +82,7 @@ public class LocationServiceDynamicImpl implements LocationService {
                 Request.Method.PUT,
                 API_URL,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Location>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Location.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -100,7 +100,7 @@ public class LocationServiceDynamicImpl implements LocationService {
                 API_URL + "/" + locationId,
                 null,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Boolean>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class));
                 },
                 error -> {
                     err.onError(error.toString());

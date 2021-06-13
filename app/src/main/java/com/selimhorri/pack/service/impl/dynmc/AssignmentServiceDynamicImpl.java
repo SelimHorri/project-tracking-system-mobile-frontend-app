@@ -52,7 +52,7 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")),
                 null,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Assignment>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -69,7 +69,7 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 Request.Method.POST,
                 API_URL,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Assignment>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -86,7 +86,7 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 Request.Method.PUT,
                 API_URL,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Assignment>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class));
                 },
                 error -> {
                     err.onError(error.toString());
@@ -104,7 +104,7 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")),
                 null,
                 response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<Boolean>() {}.getType()));
+                    resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class));
                 },
                 error -> {
                     err.onError(error.toString());
