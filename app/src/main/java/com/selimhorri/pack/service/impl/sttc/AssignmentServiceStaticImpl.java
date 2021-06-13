@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.selimhorri.pack.exception.ObjectAlreadyExistsException;
 import com.selimhorri.pack.exception.ObjectNotFoundException;
+import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Assignment;
 import com.selimhorri.pack.model.dto.Employee;
@@ -44,29 +45,25 @@ public class AssignmentServiceStaticImpl implements AssignmentService {
     }
 
     @Override
-    public DtoCollection<Assignment> findAll() {
+    public void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Assignment>> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         final List<Assignment> list = new ArrayList<>();
 
         for (SortedMap.Entry<AssignmentId, Assignment> entry : DUMMY_ASSIGNMENTS.entrySet())
             list.add(entry.getValue());
 
-        return new DtoCollection<>(list);
     }
 
     @Override
-    public Assignment findById(final Integer employeeId, final Integer projectId, final LocalDateTime commitDate) {
-
-        final AssignmentId assignmentId = new AssignmentId(employeeId, projectId, commitDate);
+    public void findById(final AssignmentId assignmentId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Assignment> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_ASSIGNMENTS.containsKey(assignmentId))
             throw new ObjectNotFoundException("#### Assignment does not exist! ####");
 
-        return DUMMY_ASSIGNMENTS.get(assignmentId);
     }
 
     @Override
-    public Assignment save(final Assignment assignment) {
+    public void save(final Assignment assignment, final ResponseCallbackListener.ResponseCallbackSuccessListener<Assignment> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         final AssignmentId assignmentId = new AssignmentId(assignment.getEmployeeId(), assignment.getProjectId(), assignment.getCommitDate());
 
@@ -75,11 +72,10 @@ public class AssignmentServiceStaticImpl implements AssignmentService {
 
         DUMMY_ASSIGNMENTS.put(assignmentId, assignment);
 
-        return DUMMY_ASSIGNMENTS.get(assignmentId);
     }
 
     @Override
-    public Assignment update(final Assignment assignment) {
+    public void update(final Assignment assignment, final ResponseCallbackListener.ResponseCallbackSuccessListener<Assignment> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         final AssignmentId assignmentId = new AssignmentId(assignment.getEmployeeId(), assignment.getProjectId(), assignment.getCommitDate());
 
@@ -94,18 +90,14 @@ public class AssignmentServiceStaticImpl implements AssignmentService {
         DUMMY_ASSIGNMENTS.get(assignmentId).setEmployee(assignment.getEmployee());
         DUMMY_ASSIGNMENTS.get(assignmentId).setProject(assignment.getProject());
 
-        return DUMMY_ASSIGNMENTS.get(assignmentId);
     }
 
     @Override
-    public void deleteById(final Integer employeeId, final Integer projectId, final LocalDateTime commitDate) {
-
-        final AssignmentId assignmentId = new AssignmentId(employeeId, projectId, commitDate);
+    public void deleteById(final AssignmentId assignmentId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_ASSIGNMENTS.containsKey(assignmentId))
             throw new ObjectNotFoundException("#### assignment does not exist! ####");
 
-        DUMMY_ASSIGNMENTS.remove(assignmentId);
     }
 
 

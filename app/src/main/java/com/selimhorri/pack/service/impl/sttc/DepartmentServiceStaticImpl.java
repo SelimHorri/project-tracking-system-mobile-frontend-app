@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.selimhorri.pack.exception.ObjectAlreadyExistsException;
 import com.selimhorri.pack.exception.ObjectNotFoundException;
+import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.model.dto.Location;
@@ -31,38 +32,35 @@ public class DepartmentServiceStaticImpl implements DepartmentService {
     }
 
     @Override
-    public DtoCollection<Department> findAll() {
+    public void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Department>> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         final List<Department> list = new ArrayList<>();
 
         for (Map.Entry<Integer, Department> entry : DUMMY_DEPARTMENTS.entrySet())
             list.add(entry.getValue());
 
-        return new DtoCollection<>(list);
     }
 
     @Override
-    public Department findById(final Integer departmentId) {
+    public void findById(final Integer departmentId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Department> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_DEPARTMENTS.containsKey(departmentId))
             throw new ObjectNotFoundException("#### Department does not exist! ####");
 
-        return DUMMY_DEPARTMENTS.get(departmentId);
     }
 
     @Override
-    public Department save(final Department department) {
+    public void save(final Department department, final ResponseCallbackListener.ResponseCallbackSuccessListener<Department> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (DUMMY_DEPARTMENTS.containsKey(department.getDepartmentId()))
             throw new ObjectAlreadyExistsException("#### department exists already ####");
 
         DUMMY_DEPARTMENTS.put(department.getDepartmentId(), department);
 
-        return DUMMY_DEPARTMENTS.get(department.getDepartmentId());
     }
 
     @Override
-    public Department update(final Department department) {
+    public void update(final Department department, final ResponseCallbackListener.ResponseCallbackSuccessListener<Department> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_DEPARTMENTS.containsKey(department.getDepartmentId()))
             throw new ObjectNotFoundException("#### department does not exist ####");
@@ -70,11 +68,10 @@ public class DepartmentServiceStaticImpl implements DepartmentService {
         DUMMY_DEPARTMENTS.get(department.getDepartmentId()).setDepartmentName(department.getDepartmentName());
         DUMMY_DEPARTMENTS.get(department.getDepartmentId()).setLocation(department.getLocation());
 
-        return DUMMY_DEPARTMENTS.get(department.getDepartmentId());
     }
 
     @Override
-    public void deleteById(final Integer departmentId) {
+    public void deleteById(final Integer departmentId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_DEPARTMENTS.containsKey(departmentId))
             throw new ObjectNotFoundException("#### department does not exist! ####");

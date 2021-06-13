@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.selimhorri.pack.exception.ObjectAlreadyExistsException;
 import com.selimhorri.pack.exception.ObjectNotFoundException;
+import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Location;
 import com.selimhorri.pack.model.dto.Location;
@@ -30,38 +31,35 @@ public class LocationServiceStaticImpl implements LocationService {
     }
 
     @Override
-    public DtoCollection<Location> findAll() {
+    public void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Location>> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         final List<Location> list = new ArrayList<>();
 
         for (Map.Entry<Integer, Location> entry : DUMMY_LOCATIONS.entrySet())
             list.add(entry.getValue());
 
-        return new DtoCollection<>(list);
     }
 
     @Override
-    public Location findById(final Integer locationId) {
+    public void findById(final Integer locationId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Location> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_LOCATIONS.containsKey(locationId))
             throw new ObjectNotFoundException("#### Location does not exist! ####");
 
-        return DUMMY_LOCATIONS.get(locationId);
     }
 
     @Override
-    public Location save(final Location location) {
+    public void save(final Location location, final ResponseCallbackListener.ResponseCallbackSuccessListener<Location> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (DUMMY_LOCATIONS.containsKey(location.getLocationId()))
             throw new ObjectAlreadyExistsException("#### location exists already ####");
 
         DUMMY_LOCATIONS.put(location.getLocationId(), location);
 
-        return DUMMY_LOCATIONS.get(location.getLocationId());
     }
 
     @Override
-    public Location update(final Location location) {
+    public void update(final Location location, final ResponseCallbackListener.ResponseCallbackSuccessListener<Location> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_LOCATIONS.containsKey(location.getLocationId()))
             throw new ObjectNotFoundException("#### location does not exist ####");
@@ -70,11 +68,10 @@ public class LocationServiceStaticImpl implements LocationService {
         DUMMY_LOCATIONS.get(location.getLocationId()).setPostalCode(location.getPostalCode());
         DUMMY_LOCATIONS.get(location.getLocationId()).setCity(location.getCity());
 
-        return DUMMY_LOCATIONS.get(location.getLocationId());
     }
 
     @Override
-    public void deleteById(final Integer locationId) {
+    public void deleteById(final Integer locationId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_LOCATIONS.containsKey(locationId))
             throw new ObjectNotFoundException("#### location does not exist! ####");

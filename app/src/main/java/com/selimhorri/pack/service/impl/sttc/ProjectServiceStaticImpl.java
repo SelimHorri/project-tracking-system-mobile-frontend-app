@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.selimhorri.pack.exception.ObjectAlreadyExistsException;
 import com.selimhorri.pack.exception.ObjectNotFoundException;
+import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Project;
 import com.selimhorri.pack.model.dto.Project;
@@ -35,38 +36,35 @@ public class ProjectServiceStaticImpl implements ProjectService {
     }
 
     @Override
-    public DtoCollection<Project> findAll() {
+    public void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Project>> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         final List<Project> list = new ArrayList<>();
 
         for (Map.Entry<Integer, Project> entry : DUMMY_PROJECTS.entrySet())
             list.add(entry.getValue());
 
-        return new DtoCollection<>(list);
     }
 
     @Override
-    public Project findById(final Integer projectId) {
+    public void findById(final Integer projectId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Project> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_PROJECTS.containsKey(projectId))
             throw new ObjectNotFoundException("#### Project does not exist! ####");
 
-        return DUMMY_PROJECTS.get(projectId);
     }
 
     @Override
-    public Project save(final Project project) {
+    public void save(final Project project, final ResponseCallbackListener.ResponseCallbackSuccessListener<Project> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (DUMMY_PROJECTS.containsKey(project.getProjectId()))
             throw new ObjectAlreadyExistsException("#### project exists already ####");
 
         DUMMY_PROJECTS.put(project.getProjectId(), project);
 
-        return DUMMY_PROJECTS.get(project.getProjectId());
     }
 
     @Override
-    public Project update(final Project project) {
+    public void update(final Project project, final ResponseCallbackListener.ResponseCallbackSuccessListener<Project> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_PROJECTS.containsKey(project.getProjectId()))
             throw new ObjectNotFoundException("#### project does not exist ####");
@@ -76,11 +74,10 @@ public class ProjectServiceStaticImpl implements ProjectService {
         DUMMY_PROJECTS.get(project.getProjectId()).setEndDate(project.getEndDate());
         DUMMY_PROJECTS.get(project.getProjectId()).setStatus(project.getStatus());
 
-        return DUMMY_PROJECTS.get(project.getProjectId());
     }
 
     @Override
-    public void deleteById(final Integer projectId) {
+    public void deleteById(final Integer projectId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_PROJECTS.containsKey(projectId))
             throw new ObjectNotFoundException("#### project does not exist! ####");

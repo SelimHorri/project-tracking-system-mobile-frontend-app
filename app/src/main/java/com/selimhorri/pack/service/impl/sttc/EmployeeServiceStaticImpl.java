@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.selimhorri.pack.exception.ObjectAlreadyExistsException;
 import com.selimhorri.pack.exception.ObjectNotFoundException;
+import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Credential;
 import com.selimhorri.pack.model.dto.Department;
@@ -39,36 +40,33 @@ public class EmployeeServiceStaticImpl implements EmployeeService {
     }
 
     @Override
-    public DtoCollection<Employee> findAll() {
+    public void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Employee>> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         final List<Employee> list = new ArrayList<>();
         for (Map.Entry<Integer, Employee> entry : DUMMY_EMPLOYEES.entrySet())
             list.add(entry.getValue());
 
-        return new DtoCollection<>(list);
     }
 
     @Override
-    public Employee findById(final Integer employeeId) {
+    public void findById(final Integer employeeId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Employee> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_EMPLOYEES.containsKey(employeeId))
             throw new ObjectNotFoundException("#### Employee does not exist! ####");
 
-        return DUMMY_EMPLOYEES.get(employeeId);
     }
 
     @Override
-    public Employee save(final Employee employee) {
+    public void save(final Employee employee, final ResponseCallbackListener.ResponseCallbackSuccessListener<Employee> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (DUMMY_EMPLOYEES.containsKey(employee.getEmployeeId()))
             throw new ObjectAlreadyExistsException("#### Employee exists already ####");
 
         DUMMY_EMPLOYEES.put(employee.getEmployeeId(), employee);
-        return DUMMY_EMPLOYEES.get(employee.getEmployeeId());
     }
 
     @Override
-    public Employee update(final Employee employee) {
+    public void update(final Employee employee, final ResponseCallbackListener.ResponseCallbackSuccessListener<Employee> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_EMPLOYEES.containsKey(employee.getEmployeeId()))
             throw new ObjectNotFoundException("#### Employee does not exist ####");
@@ -84,11 +82,10 @@ public class EmployeeServiceStaticImpl implements EmployeeService {
         DUMMY_EMPLOYEES.get(employee.getEmployeeId()).setDepartment(employee.getDepartment());
         DUMMY_EMPLOYEES.get(employee.getEmployeeId()).setUserCredential(employee.getUserCredential());
 
-        return DUMMY_EMPLOYEES.get(employee.getEmployeeId());
     }
 
     @Override
-    public void deleteById(final Integer employeeId) {
+    public void deleteById(final Integer employeeId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_EMPLOYEES.containsKey(employeeId))
             throw new ObjectNotFoundException("#### Employee does not exist! ####");

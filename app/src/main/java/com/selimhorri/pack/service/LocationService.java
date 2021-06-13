@@ -1,14 +1,17 @@
 package com.selimhorri.pack.service;
 
+import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
+import com.selimhorri.pack.model.dto.Credential;
+import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.model.dto.Location;
 
 public interface LocationService {
 
-    DtoCollection<Location> findAll();
-    Location findById(final Integer locationId);
-    Location save(final Location location);
-    Location update(final Location location);
-    void deleteById(final Integer locationId);
+    void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Location>> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
+    void findById(final Integer locationId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Location> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
+    void save(final Location location, final ResponseCallbackListener.ResponseCallbackSuccessListener<Location> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
+    void update(final Location location, final ResponseCallbackListener.ResponseCallbackSuccessListener<Location> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
+    void deleteById(final Integer locationId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
 
 }

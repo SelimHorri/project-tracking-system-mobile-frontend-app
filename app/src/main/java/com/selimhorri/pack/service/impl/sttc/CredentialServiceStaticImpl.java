@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.selimhorri.pack.exception.ObjectAlreadyExistsException;
 import com.selimhorri.pack.exception.ObjectNotFoundException;
+import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Credential;
 import com.selimhorri.pack.service.CredentialService;
@@ -36,37 +37,34 @@ public class CredentialServiceStaticImpl implements CredentialService {
     }
 
     @Override
-    public DtoCollection<Credential> findAll() {
+    public void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Credential>> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         final List<Credential> list = new ArrayList<>();
         for (Map.Entry<Integer, Credential> entry : DUMMY_CREDENTIALS.entrySet())
             list.add(entry.getValue());
 
-        return new DtoCollection<>(list);
     }
 
     @Override
-    public Credential findById(final Integer credentialId) {
+    public void findById(final Integer credentialId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_CREDENTIALS.containsKey(credentialId))
             throw new ObjectNotFoundException("#### Credential does not exist! ####");
 
-        return DUMMY_CREDENTIALS.get(credentialId);
     }
 
     @Override
-    public Credential save(final Credential credential) {
+    public void save(final Credential credential, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (DUMMY_CREDENTIALS.containsKey(credential.getUserId()))
             throw new ObjectAlreadyExistsException("#### Credential exists already ####");
 
         credential.setPassword(BCrypt.hashpw(credential.getPassword(), BCrypt.gensalt(4)));
         DUMMY_CREDENTIALS.put(credential.getUserId(), credential);
-        return DUMMY_CREDENTIALS.get(credential.getUserId());
     }
 
     @Override
-    public Credential update(final Credential credential) {
+    public void update(final Credential credential, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_CREDENTIALS.containsKey(credential.getUserId()))
             throw new ObjectNotFoundException("#### Credential does not exist ####");
@@ -76,11 +74,10 @@ public class CredentialServiceStaticImpl implements CredentialService {
         DUMMY_CREDENTIALS.get(credential.getUserId()).setEnabled(credential.getEnabled());
         DUMMY_CREDENTIALS.get(credential.getUserId()).setRole(credential.getRole());
 
-        return DUMMY_CREDENTIALS.get(credential.getUserId());
     }
 
     @Override
-    public void deleteById(final Integer credentialId) {
+    public void deleteById(final Integer credentialId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
         if (!DUMMY_CREDENTIALS.containsKey(credentialId))
             throw new ObjectNotFoundException("#### Credential does not exist! ####");

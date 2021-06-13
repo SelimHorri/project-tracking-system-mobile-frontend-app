@@ -18,13 +18,13 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private final CredentialService credentialService;
+    // private final CredentialService credentialService;
     private EditText editTextUsername;
     private EditText editTextPassword;
     private Button btnLogin;
 
     public LoginActivity() {
-        this.credentialService = new CredentialServiceStaticImpl(LoginActivity.this);
+        // this.credentialService = new CredentialServiceStaticImpl(LoginActivity.this);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         final Bundle extras = super.getIntent().getExtras();
 
         // this.btnLogin.setOnClickListener(v -> Toast.makeText(LoginActivity.this, "HELLO " + extras.getString("account"), Toast.LENGTH_LONG).show());
-        this.btnLogin.setOnClickListener(v -> {
+        /*this.btnLogin.setOnClickListener(v -> {
             final List<Credential> credentials = this.credentialService.findAll().getCollection();
             final String username = this.editTextUsername.getText().toString().trim();
             final String password = this.editTextPassword.getText().toString();
@@ -52,6 +52,6 @@ public class LoginActivity extends AppCompatActivity {
 
             // Toast.makeText(LoginActivity.this, username.toUpperCase(), Toast.LENGTH_SHORT).show();
             // Toast.makeText(LoginActivity.this, credentials.toString(), Toast.LENGTH_LONG).show();
-        });
+        });*/
     }
 }
