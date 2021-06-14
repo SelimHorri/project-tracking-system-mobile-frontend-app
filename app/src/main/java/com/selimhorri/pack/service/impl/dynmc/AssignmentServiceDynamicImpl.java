@@ -4,19 +4,14 @@ import android.content.Context;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Assignment;
-import com.selimhorri.pack.model.dto.Assignment;
 import com.selimhorri.pack.model.id.AssignmentId;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.AssignmentService;
-
-import org.json.JSONObject;
 
 import java.time.format.DateTimeFormatter;
 

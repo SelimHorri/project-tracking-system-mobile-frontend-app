@@ -5,8 +5,6 @@ import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Assignment;
 import com.selimhorri.pack.model.id.AssignmentId;
 
-import java.time.LocalDateTime;
-
 public interface AssignmentService {
 
     void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Assignment>> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);

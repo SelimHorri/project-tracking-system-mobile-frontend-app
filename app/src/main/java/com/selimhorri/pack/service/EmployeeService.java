@@ -2,8 +2,6 @@ package com.selimhorri.pack.service;
 
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
-import com.selimhorri.pack.model.dto.Credential;
-import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.model.dto.Employee;
 
 public interface EmployeeService {
