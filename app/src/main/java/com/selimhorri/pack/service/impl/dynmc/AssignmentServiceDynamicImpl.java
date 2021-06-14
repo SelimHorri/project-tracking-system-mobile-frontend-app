@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -14,6 +15,8 @@ import com.selimhorri.pack.model.dto.Assignment;
 import com.selimhorri.pack.model.id.AssignmentId;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.AssignmentService;
+
+import org.json.JSONObject;
 
 import java.time.format.DateTimeFormatter;
 
@@ -33,12 +36,8 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 Request.Method.GET,
                 API_URL,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Assignment>>() {}.getType()));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Assignment>>() {}.getType())),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -51,12 +50,8 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 Request.Method.GET,
                 API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")),
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -65,15 +60,12 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
     @Override
     public void save(Assignment assignment, ResponseCallbackListener.ResponseCallbackSuccessListener<Assignment> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
-        final StringRequest request = new StringRequest(
+        final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                null,
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -82,15 +74,12 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
     @Override
     public void update(Assignment assignment, ResponseCallbackListener.ResponseCallbackSuccessListener<Assignment> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
-        final StringRequest request = new StringRequest(
+        final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                null,
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -103,15 +92,13 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 Request.Method.DELETE,
                 API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")),
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
     }
+
+
 
 }

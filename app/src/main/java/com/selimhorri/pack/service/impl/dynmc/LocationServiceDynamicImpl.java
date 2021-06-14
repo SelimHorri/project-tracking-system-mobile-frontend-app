@@ -29,12 +29,8 @@ public class LocationServiceDynamicImpl implements LocationService {
                 Request.Method.GET,
                 API_URL,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Location>>() {}.getType()));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Location>>() {}.getType())),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -47,12 +43,8 @@ public class LocationServiceDynamicImpl implements LocationService {
                 Request.Method.GET,
                 API_URL + "/" + locationId,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Location.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Location.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -61,15 +53,12 @@ public class LocationServiceDynamicImpl implements LocationService {
     @Override
     public void save(Location location, ResponseCallbackListener.ResponseCallbackSuccessListener<Location> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
-        final StringRequest request = new StringRequest(
+        final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Location.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                null,
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Location.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -78,15 +67,12 @@ public class LocationServiceDynamicImpl implements LocationService {
     @Override
     public void update(Location location, ResponseCallbackListener.ResponseCallbackSuccessListener<Location> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
-        final StringRequest request = new StringRequest(
+        final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Location.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                null,
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Location.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -99,14 +85,13 @@ public class LocationServiceDynamicImpl implements LocationService {
                 Request.Method.DELETE,
                 API_URL + "/" + locationId,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
     }
+
+
+
 }

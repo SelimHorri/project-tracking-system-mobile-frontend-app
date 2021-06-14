@@ -29,12 +29,8 @@ public class CredentialServiceDynamicImpl implements CredentialService {
                 Request.Method.GET,
                 API_URL,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Credential>>() {}.getType()));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Credential>>() {}.getType())),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -47,12 +43,8 @@ public class CredentialServiceDynamicImpl implements CredentialService {
                 Request.Method.GET,
                 API_URL + "/" + credentialId,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Credential.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Credential.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -61,15 +53,12 @@ public class CredentialServiceDynamicImpl implements CredentialService {
     @Override
     public void save(Credential credential, ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
-        final StringRequest request = new StringRequest(
+        final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Credential.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                null,
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Credential.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -78,15 +67,12 @@ public class CredentialServiceDynamicImpl implements CredentialService {
     @Override
     public void update(Credential credential, ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
-        final StringRequest request = new StringRequest(
+        final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Credential.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                null,
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Credential.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -99,12 +85,8 @@ public class CredentialServiceDynamicImpl implements CredentialService {
                 Request.Method.DELETE,
                 API_URL + "/" + credentialId,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -117,16 +99,13 @@ public class CredentialServiceDynamicImpl implements CredentialService {
                 Request.Method.GET,
                 API_URL + "/username/" + username,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Credential.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Credential.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
     }
+
 
 
 }

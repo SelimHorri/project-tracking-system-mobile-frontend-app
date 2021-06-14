@@ -29,12 +29,8 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 Request.Method.GET,
                 API_URL,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Department>>() {}.getType()));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Department>>() {}.getType())),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -47,12 +43,8 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 Request.Method.GET,
                 API_URL + "/" + departmentId,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Department.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Department.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -61,15 +53,12 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
     @Override
     public void save(Department department, ResponseCallbackListener.ResponseCallbackSuccessListener<Department> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
-        final StringRequest request = new StringRequest(
+        final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Department.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                null,
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Department.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -78,15 +67,12 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
     @Override
     public void update(Department department, ResponseCallbackListener.ResponseCallbackSuccessListener<Department> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
-        final StringRequest request = new StringRequest(
+        final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Department.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                null,
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Department.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -99,14 +85,13 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 Request.Method.DELETE,
                 API_URL + "/" + departmentId,
                 null,
-                response -> {
-                    resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class));
-                },
-                error -> {
-                    err.onError(error.toString());
-                }
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class)),
+                error -> err.onError(error.toString())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
     }
+
+
+
 }
