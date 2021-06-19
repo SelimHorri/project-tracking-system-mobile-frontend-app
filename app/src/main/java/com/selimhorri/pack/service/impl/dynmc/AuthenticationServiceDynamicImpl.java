@@ -18,12 +18,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AuthenticationServiceImpl implements AuthenticationService {
+public class AuthenticationServiceDynamicImpl implements AuthenticationService {
 
     private static final String API_URL = BackendApiUrlConstant.AuthenticationBackendUrl.AUTHENTICATE_API_URL;
     private final Context context;
 
-    public AuthenticationServiceImpl(final Context context) {
+    public AuthenticationServiceDynamicImpl(final Context context) {
         this.context = context;
     }
 
