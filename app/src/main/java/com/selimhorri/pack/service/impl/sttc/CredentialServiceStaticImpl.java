@@ -56,23 +56,23 @@ public class CredentialServiceStaticImpl implements CredentialService {
     @Override
     public void save(final Credential credential, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
-        if (DUMMY_CREDENTIALS.containsKey(credential.getUserId()))
+        if (DUMMY_CREDENTIALS.containsKey(credential.getCredentialId()))
             throw new ObjectAlreadyExistsException("#### Credential exists already ####");
 
         credential.setPassword(BCrypt.hashpw(credential.getPassword(), BCrypt.gensalt(4)));
-        DUMMY_CREDENTIALS.put(credential.getUserId(), credential);
+        DUMMY_CREDENTIALS.put(credential.getCredentialId(), credential);
     }
 
     @Override
     public void update(final Credential credential, final ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> response, final ResponseCallbackListener.ResponseCallbackErrorListener error) {
 
-        if (!DUMMY_CREDENTIALS.containsKey(credential.getUserId()))
+        if (!DUMMY_CREDENTIALS.containsKey(credential.getCredentialId()))
             throw new ObjectNotFoundException("#### Credential does not exist ####");
 
-        DUMMY_CREDENTIALS.get(credential.getUserId()).setUsername(credential.getUsername());
-        DUMMY_CREDENTIALS.get(credential.getUserId()).setPassword(BCrypt.hashpw(credential.getPassword(), BCrypt.gensalt(4)));
-        DUMMY_CREDENTIALS.get(credential.getUserId()).setEnabled(credential.getEnabled());
-        DUMMY_CREDENTIALS.get(credential.getUserId()).setRole(credential.getRole());
+        DUMMY_CREDENTIALS.get(credential.getCredentialId()).setUsername(credential.getUsername());
+        DUMMY_CREDENTIALS.get(credential.getCredentialId()).setPassword(BCrypt.hashpw(credential.getPassword(), BCrypt.gensalt(4)));
+        DUMMY_CREDENTIALS.get(credential.getCredentialId()).setEnabled(credential.getEnabled());
+        DUMMY_CREDENTIALS.get(credential.getCredentialId()).setRole(credential.getRole());
 
     }
 

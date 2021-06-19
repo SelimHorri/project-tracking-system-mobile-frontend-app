@@ -60,7 +60,7 @@ public final class Employee {
                 ", salary=" + salary +
                 ", managerId=" + manager.getEmployeeId() +
                 ", departmentId=" + department.getDepartmentId() +
-                ", userId=" + userCredential.getUserId() +
+                ", credentialId=" + userCredential.getCredentialId() +
                 '}';
     }
 
