@@ -6,6 +6,7 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Assignment;
@@ -17,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 
 public class AssignmentServiceDynamicImpl implements AssignmentService {
 
-    private static final String API_URL = "https://project-tracking-system-heroku.herokuapp.com/app/api/assignments";
+    private static final String API_URL = BackendApiUrlConstant.AssignmentBackendUrl.ASSIGNMENT_API_URL;
     private final Context context;
 
     public AssignmentServiceDynamicImpl(final Context context) {

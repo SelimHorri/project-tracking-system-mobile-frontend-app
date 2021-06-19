@@ -6,6 +6,7 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Employee;
@@ -14,7 +15,7 @@ import com.selimhorri.pack.service.EmployeeService;
 
 public class EmployeeServiceDynamicImpl implements EmployeeService {
 
-    private static final String API_URL = "https://project-tracking-system-heroku.herokuapp.com/app/api/employees";
+    private static final String API_URL = BackendApiUrlConstant.EmployeeBackendUrl.EMPLOYEE_API_URL;
     private final Context context;
 
     public EmployeeServiceDynamicImpl(final Context context) {

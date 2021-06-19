@@ -6,6 +6,7 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Department;
@@ -14,7 +15,7 @@ import com.selimhorri.pack.service.DepartmentService;
 
 public class DepartmentServiceDynamicImpl implements DepartmentService {
 
-    private static final String API_URL = "https://project-tracking-system-heroku.herokuapp.com/app/api/departments";
+    private static final String API_URL = BackendApiUrlConstant.DepartmentBackendUrl.DEPARTMENT_API_URL;
     private final Context context;
 
     public DepartmentServiceDynamicImpl(final Context context) {
