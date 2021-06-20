@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                                             switch (respCredential.getRole()) {
                                                 case "ROLE_EMP":
                                                     //  TODO: activate sharedpreferences & go to employee-index
-                                                    editor = super.getSharedPreferences("emp_shared_preferences", Context.MODE_PRIVATE)
+                                                    editor = super.getSharedPreferences("emp", Context.MODE_PRIVATE)
                                                             .edit()
                                                             .putString("username", respCredential.getUsername());
                                                     editor.apply();
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     break;
                                                 case "ROLE_MGR":
                                                     // TODO: activate sharedpreferences & go to manager-index
-                                                    editor = super.getSharedPreferences("mgr_shared_preferences", Context.MODE_PRIVATE)
+                                                    editor = super.getSharedPreferences("mgr", Context.MODE_PRIVATE)
                                                             .edit()
                                                             .putString("username", respCredential.getUsername());
                                                     editor.apply();
@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     break;
                                                 case "ROLE_ADMIN":
                                                     // TODO: activate sharedpreferences & go to admin-index
-                                                    editor = super.getSharedPreferences("admin_shared_preferences", Context.MODE_PRIVATE)
+                                                    editor = super.getSharedPreferences("admin", Context.MODE_PRIVATE)
                                                             .edit()
                                                             .putString("username", respCredential.getUsername());
                                                     editor.apply();

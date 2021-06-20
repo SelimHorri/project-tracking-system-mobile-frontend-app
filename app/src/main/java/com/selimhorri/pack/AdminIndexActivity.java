@@ -23,7 +23,7 @@ public class AdminIndexActivity extends AppCompatActivity {
         this.button = super.findViewById(R.id.button3);
 
         this.button.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = super.getSharedPreferences("admin_shared_preferences", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = super.getSharedPreferences("admin", Context.MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
             super.startActivity(new Intent(AdminIndexActivity.this, HomeActivity.class));

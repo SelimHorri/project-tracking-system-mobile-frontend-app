@@ -10,6 +10,8 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Employee;
+import com.selimhorri.pack.model.dto.Project;
+import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.EmployeeService;
 
@@ -122,6 +124,18 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
 
     }
 
+    @Override
+    public void findByEmployeeId(Integer employeeId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<EmployeeProjectData>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL + "/data/employee-project-data/" + employeeId,
+                null,
+                response -> resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<EmployeeProjectData>>() {}.getType())),
+                error -> err.onError(error.toString())
+        );
+        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+    }
 
 
 }

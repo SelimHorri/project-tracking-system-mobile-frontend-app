@@ -10,6 +10,8 @@ import com.selimhorri.pack.model.dto.Credential;
 import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.model.dto.Employee;
 import com.selimhorri.pack.model.dto.Location;
+import com.selimhorri.pack.model.dto.Project;
+import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
 import com.selimhorri.pack.service.EmployeeService;
 
 import java.time.LocalDate;
@@ -93,6 +95,10 @@ public class EmployeeServiceStaticImpl implements EmployeeService {
         DUMMY_EMPLOYEES.remove(employeeId);
     }
 
+    @Override
+    public void findByEmployeeId(Integer employeeId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<EmployeeProjectData>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+    }
 
 
 }

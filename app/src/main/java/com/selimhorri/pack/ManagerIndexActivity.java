@@ -23,7 +23,7 @@ public class ManagerIndexActivity extends AppCompatActivity {
         this.button = super.findViewById(R.id.button2);
 
         this.button.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = super.getSharedPreferences("mgr_shared_preferences", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = super.getSharedPreferences("mgr", Context.MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
             super.startActivity(new Intent(ManagerIndexActivity.this, HomeActivity.class));

@@ -8,8 +8,20 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.selimhorri.pack.service.AssignmentService;
+import com.selimhorri.pack.service.EmployeeService;
+import com.selimhorri.pack.service.impl.dynmc.AssignmentServiceDynamicImpl;
+import com.selimhorri.pack.service.impl.dynmc.EmployeeServiceDynamicImpl;
 
 public class EmployeeIndexActivity extends AppCompatActivity {
+
+    private final EmployeeService employeeService;
+
+    public EmployeeIndexActivity() {
+        this.employeeService = new EmployeeServiceDynamicImpl(EmployeeIndexActivity.this);
+    }
 
     private TextView textView;
     private Button button;
@@ -22,8 +34,18 @@ public class EmployeeIndexActivity extends AppCompatActivity {
         this.textView = super.findViewById(R.id.textView);
         this.button = super.findViewById(R.id.button);
 
+        this.employeeService.findByEmployeeId(
+                1,
+                response -> {
+                    this.textView.setText(response.getCollection().toString());
+                },
+                error -> {
+                    Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                }
+        );
+
         this.button.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = super.getSharedPreferences("emp_shared_preferences", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = super.getSharedPreferences("emp", Context.MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
             super.startActivity(new Intent(EmployeeIndexActivity.this, HomeActivity.class));

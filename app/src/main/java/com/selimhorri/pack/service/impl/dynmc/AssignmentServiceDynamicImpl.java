@@ -10,6 +10,7 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Assignment;
+import com.selimhorri.pack.model.dto.Project;
 import com.selimhorri.pack.model.id.AssignmentId;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.AssignmentService;
@@ -116,7 +117,6 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
     }
-
 
 
 }
