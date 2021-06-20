@@ -2,6 +2,9 @@ package com.selimhorri.pack;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,15 +54,52 @@ public class LoginActivity extends AppCompatActivity {
                 this.authenticationService.authenticate(
                         new AuthenticationRequest(username, password),
                         response -> {
-                            this.credentialService.findByUsername(
-                                    response.getUsername(),
-                                    respCredential -> {
-                                        Toast.makeText(LoginActivity.this, respCredential.toString(), Toast.LENGTH_SHORT).show();
-                                    },
-                                    errCredential -> {
-                                        Toast.makeText(LoginActivity.this, errCredential.toString(), Toast.LENGTH_SHORT).show();
-                                    }
-                            );
+
+                            if (!response.getEligible())
+                                Toast.makeText(LoginActivity.this, "User is Not enabled !", Toast.LENGTH_SHORT).show();
+                            else {
+                                this.credentialService.findByUsername(
+                                        response.getUsername(),
+                                        respCredential -> {
+                                            // Toast.makeText(LoginActivity.this, respCredential.toString(), Toast.LENGTH_SHORT).show();
+
+                                            SharedPreferences.Editor editor;
+                                            switch (respCredential.getRole()) {
+                                                case "ROLE_EMP":
+                                                    //  TODO: activate sharedpreferences & go to employee-index
+                                                    editor = super.getSharedPreferences("emp_shared_preferences", Context.MODE_PRIVATE)
+                                                            .edit()
+                                                            .putString("username", respCredential.getUsername());
+                                                    editor.apply();
+                                                    super.startActivity(new Intent(LoginActivity.this, EmployeeIndexActivity.class));
+
+                                                    break;
+                                                case "ROLE_MGR":
+                                                    // TODO: activate sharedpreferences & go to manager-index
+                                                    editor = super.getSharedPreferences("mgr_shared_preferences", Context.MODE_PRIVATE)
+                                                            .edit()
+                                                            .putString("username", respCredential.getUsername());
+                                                    editor.apply();
+                                                    super.startActivity(new Intent(LoginActivity.this, ManagerIndexActivity.class));
+                                                    break;
+                                                case "ROLE_ADMIN":
+                                                    // TODO: activate sharedpreferences & go to admin-index
+                                                    editor = super.getSharedPreferences("admin_shared_preferences", Context.MODE_PRIVATE)
+                                                            .edit()
+                                                            .putString("username", respCredential.getUsername());
+                                                    editor.apply();
+                                                    super.startActivity(new Intent(LoginActivity.this, AdminIndexActivity.class));
+                                                    break;
+                                                default:
+                                                    throw new IllegalStateException("#### ILLEGAL ROLE FOR USER! PROBLEM HAPPENED ####");
+                                            }
+
+                                        },
+                                        errCredential -> {
+                                            Toast.makeText(LoginActivity.this, errCredential.toString(), Toast.LENGTH_SHORT).show();
+                                        }
+                                );
+                            }
                         },
                         error -> {
                             Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
