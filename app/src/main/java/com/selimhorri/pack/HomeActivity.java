@@ -6,7 +6,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.selimhorri.pack.constant.AccountEnum;
+import com.selimhorri.pack.constant.RoleEnum;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -23,9 +23,9 @@ public class HomeActivity extends AppCompatActivity {
         this.btnManager = super.findViewById(R.id.idBtnManager);
         this.btnAdmin = super.findViewById(R.id.idBtnAdmin);
 
-        this.btnEmployee.setOnClickListener(v -> super.startActivity(new Intent(this, LoginActivity.class).putExtra("account", AccountEnum.EMPLOYEE.toString())));
-        this.btnManager.setOnClickListener(v -> super.startActivity(new Intent(this, LoginActivity.class).putExtra("account", AccountEnum.MANAGER.toString())));
-        this.btnAdmin.setOnClickListener(v -> super.startActivity(new Intent(this, LoginActivity.class).putExtra("account", AccountEnum.ADMIN.toString())));
+        this.btnEmployee.setOnClickListener(v -> super.startActivity(new Intent(this, LoginActivity.class).putExtra("role", RoleEnum.ROLE_EMP.toString())));
+        this.btnManager.setOnClickListener(v -> super.startActivity(new Intent(this, LoginActivity.class).putExtra("role", RoleEnum.ROLE_MGR.toString())));
+        this.btnAdmin.setOnClickListener(v -> super.startActivity(new Intent(this, LoginActivity.class).putExtra("role", RoleEnum.ROLE_ADMIN.toString())));
 
     }
 

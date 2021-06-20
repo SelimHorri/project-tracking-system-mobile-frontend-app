@@ -7,10 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.selimhorri.pack.constant.AccountEnum;
-import com.selimhorri.pack.model.dto.Credential;
+import com.selimhorri.pack.constant.RoleEnum;
 import com.selimhorri.pack.model.dto.custom.AuthenticationRequest;
-import com.selimhorri.pack.model.dto.custom.AuthenticationResponse;
 import com.selimhorri.pack.service.AuthenticationService;
 import com.selimhorri.pack.service.CredentialService;
 import com.selimhorri.pack.service.impl.dynmc.AuthenticationServiceDynamicImpl;
@@ -49,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "username/password is/are empty!", Toast.LENGTH_SHORT).show();
             }
             else {
-
                 // TODO: NOT correctly implemented
                 this.authenticationService.authenticate(
                         new AuthenticationRequest(username, password),
@@ -57,9 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                             this.credentialService.findByUsername(
                                     response.getUsername(),
                                     respCredential -> {
-
                                         Toast.makeText(LoginActivity.this, respCredential.toString(), Toast.LENGTH_SHORT).show();
-
                                     },
                                     errCredential -> {
                                         Toast.makeText(LoginActivity.this, errCredential.toString(), Toast.LENGTH_SHORT).show();
