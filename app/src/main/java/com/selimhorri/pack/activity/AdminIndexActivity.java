@@ -1,4 +1,4 @@
-package com.selimhorri.pack;
+package com.selimhorri.pack.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ManagerIndexActivity extends AppCompatActivity {
+import com.selimhorri.pack.R;
+
+public class AdminIndexActivity extends AppCompatActivity {
 
     private TextView textView;
     private Button button;
@@ -17,16 +19,16 @@ public class ManagerIndexActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manager_index);
+        setContentView(R.layout.activity_admin_index);
 
-        this.textView = super.findViewById(R.id.textView2);
-        this.button = super.findViewById(R.id.button2);
+        this.textView = super.findViewById(R.id.textView3);
+        this.button = super.findViewById(R.id.button3);
 
         this.button.setOnClickListener(v -> {
-            SharedPreferences.Editor editor = super.getSharedPreferences("mgr", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = super.getSharedPreferences("admin", Context.MODE_PRIVATE).edit();
             editor.clear();
             editor.apply();
-            super.startActivity(new Intent(ManagerIndexActivity.this, HomeActivity.class));
+            super.startActivity(new Intent(AdminIndexActivity.this, HomeActivity.class));
         });
 
     }

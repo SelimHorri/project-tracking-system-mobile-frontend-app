@@ -1,4 +1,4 @@
-package com.selimhorri.pack;
+package com.selimhorri.pack.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,9 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.selimhorri.pack.service.AssignmentService;
+import com.selimhorri.pack.R;
 import com.selimhorri.pack.service.EmployeeService;
-import com.selimhorri.pack.service.impl.dynmc.AssignmentServiceDynamicImpl;
 import com.selimhorri.pack.service.impl.dynmc.EmployeeServiceDynamicImpl;
 
 public class EmployeeIndexActivity extends AppCompatActivity {

@@ -4,29 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EmployeeIndexActivity">
+    tools:context=".activity.EmployeeIndexActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="361dp"
-        android:layout_height="305dp"
-        android:layout_marginTop="36dp"
-        android:gravity="center"
-        android:text="employee"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
+    <TableLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="276dp"
-        android:text="Logout"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.287">
+
+        <TableRow>
+            <TextView
+                android:text="Project Title"
+                android:gravity="left" />
+            <TextView
+                android:text="Start Date"
+                android:gravity="center" />
+            <TextView
+                android:text="End Date"
+                android:gravity="left" />
+            <TextView
+                android:text="Status"
+                android:gravity="left" />
+            <TextView
+                android:text=""
+                android:gravity="left" />
+            <TextView
+                android:text=""
+                android:gravity="left" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="MACHYA_RANDONNEE"
+                android:gravity="left" />
+            <TextView
+                android:text="2021-01-29"
+                android:gravity="center" />
+            <TextView
+                android:text="2021-04-30"
+                android:gravity="left"/>
+            <TextView
+                android:text="NOT_STARTED"
+                android:gravity="left" />
+            <TextView
+                android:text=""
+                android:gravity="left" />
+            <TextView
+                android:text=""
+                android:gravity="left" />
+        </TableRow>
+
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

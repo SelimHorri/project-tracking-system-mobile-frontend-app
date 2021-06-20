@@ -1,4 +1,4 @@
-package com.selimhorri.pack;
+package com.selimhorri.pack.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.selimhorri.pack.constant.RoleEnum;
+import com.selimhorri.pack.R;
 import com.selimhorri.pack.model.dto.custom.AuthenticationRequest;
 import com.selimhorri.pack.service.AuthenticationService;
 import com.selimhorri.pack.service.CredentialService;
