@@ -13,6 +13,11 @@ import com.selimhorri.pack.model.dto.Location;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.LocationService;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class LocationServiceDynamicImpl implements LocationService {
 
     private static final String API_URL = BackendApiUrlConstant.LocationBackendUrl.LOCATION_API_URL;
@@ -53,10 +58,15 @@ public class LocationServiceDynamicImpl implements LocationService {
     @Override
     public void save(Location location, ResponseCallbackListener.ResponseCallbackSuccessListener<Location> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("adr", location.getAdr());
+        map.put("postalCode", location.getPostalCode());
+        map.put("city", location.getCity());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Location.class)),
                 error -> err.onError(error.toString())
         );
@@ -67,10 +77,16 @@ public class LocationServiceDynamicImpl implements LocationService {
     @Override
     public void update(Location location, ResponseCallbackListener.ResponseCallbackSuccessListener<Location> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("locationId", location.getLocationId());
+        map.put("adr", location.getAdr());
+        map.put("postalCode", location.getPostalCode());
+        map.put("city", location.getCity());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Location.class)),
                 error -> err.onError(error.toString())
         );

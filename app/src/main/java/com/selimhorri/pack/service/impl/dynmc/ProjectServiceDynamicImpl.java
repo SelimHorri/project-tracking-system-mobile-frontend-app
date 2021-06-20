@@ -13,6 +13,11 @@ import com.selimhorri.pack.model.dto.Project;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.ProjectService;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class ProjectServiceDynamicImpl implements ProjectService {
 
     private static final String API_URL = BackendApiUrlConstant.ProjectBackendUrl.PROJECT_API_URL;
@@ -53,10 +58,16 @@ public class ProjectServiceDynamicImpl implements ProjectService {
     @Override
     public void save(Project project, ResponseCallbackListener.ResponseCallbackSuccessListener<Project> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("title", project.getTitle());
+        map.put("startDate", project.getStartDate());
+        map.put("endDate", project.getEndDate());
+        map.put("status", project.getStatus());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Project.class)),
                 error -> err.onError(error.toString())
         );
@@ -67,10 +78,17 @@ public class ProjectServiceDynamicImpl implements ProjectService {
     @Override
     public void update(Project project, ResponseCallbackListener.ResponseCallbackSuccessListener<Project> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("projectId", project.getProjectId());
+        map.put("title", project.getTitle());
+        map.put("startDate", project.getStartDate());
+        map.put("endDate", project.getEndDate());
+        map.put("status", project.getStatus());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Project.class)),
                 error -> err.onError(error.toString())
         );

@@ -13,6 +13,11 @@ import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.DepartmentService;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class DepartmentServiceDynamicImpl implements DepartmentService {
 
     private static final String API_URL = BackendApiUrlConstant.DepartmentBackendUrl.DEPARTMENT_API_URL;
@@ -53,10 +58,14 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
     @Override
     public void save(Department department, ResponseCallbackListener.ResponseCallbackSuccessListener<Department> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("departmentName", department.getDepartmentName());
+        map.put("location", department.getLocation());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Department.class)),
                 error -> err.onError(error.toString())
         );
@@ -67,10 +76,15 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
     @Override
     public void update(Department department, ResponseCallbackListener.ResponseCallbackSuccessListener<Department> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("departmentId", department.getDepartmentId());
+        map.put("departmentName", department.getDepartmentName());
+        map.put("location", department.getLocation());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Department.class)),
                 error -> err.onError(error.toString())
         );

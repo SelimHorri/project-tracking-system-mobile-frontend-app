@@ -13,6 +13,12 @@ import com.selimhorri.pack.model.dto.Credential;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.CredentialService;
 
+import org.json.JSONObject;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
 public class CredentialServiceDynamicImpl implements CredentialService {
 
     private static final String API_URL = BackendApiUrlConstant.CredentialBackendUrl.CREDENTIAL_API_URL;
@@ -53,10 +59,16 @@ public class CredentialServiceDynamicImpl implements CredentialService {
     @Override
     public void save(Credential credential, ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("username", credential.getUsername());
+        map.put("password", credential.getPassword());
+        map.put("enabled", credential.getEnabled());
+        map.put("role", credential.getRole());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Credential.class)),
                 error -> err.onError(error.toString())
         );
@@ -67,10 +79,17 @@ public class CredentialServiceDynamicImpl implements CredentialService {
     @Override
     public void update(Credential credential, ResponseCallbackListener.ResponseCallbackSuccessListener<Credential> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("credentialId", credential.getCredentialId());
+        map.put("username", credential.getUsername());
+        map.put("password", credential.getPassword());
+        map.put("enabled", credential.getEnabled());
+        map.put("role", credential.getRole());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Credential.class)),
                 error -> err.onError(error.toString())
         );

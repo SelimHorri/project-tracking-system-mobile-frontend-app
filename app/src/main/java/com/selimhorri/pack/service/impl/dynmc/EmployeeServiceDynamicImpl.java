@@ -13,6 +13,11 @@ import com.selimhorri.pack.model.dto.Employee;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.EmployeeService;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class EmployeeServiceDynamicImpl implements EmployeeService {
 
     private static final String API_URL = BackendApiUrlConstant.EmployeeBackendUrl.EMPLOYEE_API_URL;
@@ -53,10 +58,22 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
     @Override
     public void save(Employee employee, ResponseCallbackListener.ResponseCallbackSuccessListener<Employee> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("firstName", employee.getFirstName());
+        map.put("lastName", employee.getLastName());
+        map.put("email", employee.getEmail());
+        map.put("phone", employee.getPhone());
+        map.put("hiredate", employee.getHiredate());
+        map.put("job", employee.getJob());
+        map.put("salary", employee.getSalary());
+        map.put("manager", employee.getManager());
+        map.put("department", employee.getDepartment());
+        map.put("credential", employee.getUserCredential());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Employee.class)),
                 error -> err.onError(error.toString())
         );
@@ -67,10 +84,23 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
     @Override
     public void update(Employee employee, ResponseCallbackListener.ResponseCallbackSuccessListener<Employee> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("employeeId", employee.getEmployeeId());
+        map.put("firstName", employee.getFirstName());
+        map.put("lastName", employee.getLastName());
+        map.put("email", employee.getEmail());
+        map.put("phone", employee.getPhone());
+        map.put("hiredate", employee.getHiredate());
+        map.put("job", employee.getJob());
+        map.put("salary", employee.getSalary());
+        map.put("manager", employee.getManager());
+        map.put("department", employee.getDepartment());
+        map.put("credential", employee.getUserCredential());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Employee.class)),
                 error -> err.onError(error.toString())
         );

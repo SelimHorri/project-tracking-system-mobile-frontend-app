@@ -14,7 +14,11 @@ import com.selimhorri.pack.model.id.AssignmentId;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.AssignmentService;
 
+import org.json.JSONObject;
+
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AssignmentServiceDynamicImpl implements AssignmentService {
 
@@ -56,10 +60,19 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
     @Override
     public void save(Assignment assignment, ResponseCallbackListener.ResponseCallbackSuccessListener<Assignment> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("employeeId", assignment.getEmployeeId());
+        map.put("projectId", assignment.getProjectId());
+        map.put("commitDate", assignment.getCommitDate());
+        map.put("commitEmpDesc", assignment.getCommitEmpDesc());
+        map.put("commitMgrDesc", assignment.getCommitMgrDesc());
+        map.put("employee", assignment.getEmployee());
+        map.put("project", assignment.getProject());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class)),
                 error -> err.onError(error.toString())
         );
@@ -70,10 +83,19 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
     @Override
     public void update(Assignment assignment, ResponseCallbackListener.ResponseCallbackSuccessListener<Assignment> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
+        final Map<String, Object> map = new HashMap<>();
+        map.put("employeeId", assignment.getEmployeeId());
+        map.put("projectId", assignment.getProjectId());
+        map.put("commitDate", assignment.getCommitDate());
+        map.put("commitEmpDesc", assignment.getCommitEmpDesc());
+        map.put("commitMgrDesc", assignment.getCommitMgrDesc());
+        map.put("employee", assignment.getEmployee());
+        map.put("project", assignment.getProject());
+
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
-                null,
+                new JSONObject(map),
                 response -> resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class)),
                 error -> err.onError(error.toString())
         );
