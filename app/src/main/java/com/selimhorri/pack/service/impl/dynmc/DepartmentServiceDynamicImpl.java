@@ -10,8 +10,8 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Department;
-import com.selimhorri.pack.pattern.GsonPattern;
-import com.selimhorri.pack.pattern.QueuePattern;
+import com.selimhorri.pack.pattern.singleton.GsonSingletonPattern;
+import com.selimhorri.pack.pattern.singleton.QueueSingletonPattern;
 import com.selimhorri.pack.service.DepartmentService;
 
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ import java.util.Map;
 public class DepartmentServiceDynamicImpl implements DepartmentService {
 
     private static final String API_URL = BackendApiUrlConstant.DepartmentBackendUrl.DEPARTMENT_API_URL;
-    private static final Gson gson = GsonPattern.getInstance().configDeserialization("dd/MM/yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd/MM/yyyy");
     private final Context context;
 
     public DepartmentServiceDynamicImpl(final Context context) {
@@ -39,7 +39,7 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Department>>() {}.getType())),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -53,7 +53,7 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Department.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -71,7 +71,7 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Department.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -90,7 +90,7 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Department.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -104,7 +104,7 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 

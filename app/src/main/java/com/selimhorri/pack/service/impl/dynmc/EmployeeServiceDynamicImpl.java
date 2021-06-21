@@ -10,10 +10,9 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Employee;
-import com.selimhorri.pack.model.dto.Project;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
-import com.selimhorri.pack.pattern.GsonPattern;
-import com.selimhorri.pack.pattern.QueuePattern;
+import com.selimhorri.pack.pattern.singleton.GsonSingletonPattern;
+import com.selimhorri.pack.pattern.singleton.QueueSingletonPattern;
 import com.selimhorri.pack.service.EmployeeService;
 
 import org.json.JSONObject;
@@ -24,7 +23,7 @@ import java.util.Map;
 public class EmployeeServiceDynamicImpl implements EmployeeService {
 
     private static final String API_URL = BackendApiUrlConstant.EmployeeBackendUrl.EMPLOYEE_API_URL;
-    private static final Gson gson = GsonPattern.getInstance().configDeserialization("dd/MM/yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd/MM/yyyy");
     private final Context context;
 
     public EmployeeServiceDynamicImpl(final Context context) {
@@ -41,7 +40,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Employee>>() {}.getType())),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -55,7 +54,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -81,7 +80,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -108,7 +107,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -122,7 +121,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -137,7 +136,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -151,7 +150,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<EmployeeProjectData>>() {}.getType())),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
     }
 
 
