@@ -2,7 +2,7 @@ package com.selimhorri.pack.model.dto;
 
 public class Credential {
 
-    private Integer userId;
+    private Integer credentialId;
     private String username;
     private String password;
     private Boolean enabled;
@@ -19,8 +19,8 @@ public class Credential {
         this.role = role;
     }
 
-    public Credential(Integer userId, String username, String password, Boolean enabled, String role) {
-        this.userId = userId;
+    public Credential(Integer credentialId, String username, String password, Boolean enabled, String role) {
+        this.credentialId = credentialId;
         this.username = username;
         this.password = password;
         this.enabled = enabled;
@@ -30,7 +30,7 @@ public class Credential {
     @Override
     public String toString() {
         return "Credential{" +
-                "userId=" + userId +
+                "credentialId=" + credentialId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", enabled=" + enabled +
@@ -38,12 +38,12 @@ public class Credential {
                 '}';
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getCredentialId() {
+        return credentialId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setCredentialId(Integer userId) {
+        this.credentialId = userId;
     }
 
     public String getUsername() {

@@ -1,33 +1,114 @@
 package com.selimhorri.pack.service.impl.dynmc;
 
+import android.content.Context;
+
+import com.android.volley.Request;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.selimhorri.pack.constant.BackendApiUrlConstant;
+import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Project;
+import com.selimhorri.pack.pattern.GsonPattern;
+import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.ProjectService;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProjectServiceDynamicImpl implements ProjectService {
 
-    @Override
-    public DtoCollection<Project> findAll() {
-        return null;
+    private static final String API_URL = BackendApiUrlConstant.ProjectBackendUrl.PROJECT_API_URL;
+    private static final Gson gson = GsonPattern.getInstance().configDeserialization("dd/MM/yyyy");
+    private final Context context;
+
+    public ProjectServiceDynamicImpl(final Context context) {
+        this.context = context;
     }
 
     @Override
-    public Project findById(final Integer projectId) {
-        return null;
+    public void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Project>> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL,
+                null,
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Project>>() {}.getType())),
+                error -> err.onError(error.getMessage())
+        );
+        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+
     }
 
     @Override
-    public Project save(final Project project) {
-        return null;
+    public void findById(Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<Project> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL + "/" + projectId,
+                null,
+                response -> resp.onResponse(gson.fromJson(response.toString(), Project.class)),
+                error -> err.onError(error.getMessage())
+        );
+        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+
     }
 
     @Override
-    public Project update(final Project project) {
-        return null;
+    public void save(Project project, ResponseCallbackListener.ResponseCallbackSuccessListener<Project> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final Map<String, Object> map = new HashMap<>();
+        map.put("title", project.getTitle());
+        map.put("startDate", project.getStartDate());
+        map.put("endDate", project.getEndDate());
+        map.put("status", project.getStatus());
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                API_URL,
+                new JSONObject(map),
+                response -> resp.onResponse(gson.fromJson(response.toString(), Project.class)),
+                error -> err.onError(error.getMessage())
+        );
+        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+
     }
 
     @Override
-    public void deleteById(final Integer projectId) {
+    public void update(Project project, ResponseCallbackListener.ResponseCallbackSuccessListener<Project> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final Map<String, Object> map = new HashMap<>();
+        map.put("projectId", project.getProjectId());
+        map.put("title", project.getTitle());
+        map.put("startDate", project.getStartDate());
+        map.put("endDate", project.getEndDate());
+        map.put("status", project.getStatus());
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.PUT,
+                API_URL,
+                new JSONObject(map),
+                response -> resp.onResponse(gson.fromJson(response.toString(), Project.class)),
+                error -> err.onError(error.getMessage())
+        );
+        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+
+    }
+
+    @Override
+    public void deleteById(Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.DELETE,
+                API_URL + "/" + projectId,
+                null,
+                response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
+                error -> err.onError(error.getMessage())
+        );
+        QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
