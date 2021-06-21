@@ -10,6 +10,7 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Department;
+import com.selimhorri.pack.pattern.GsonPattern;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.DepartmentService;
 
@@ -21,6 +22,7 @@ import java.util.Map;
 public class DepartmentServiceDynamicImpl implements DepartmentService {
 
     private static final String API_URL = BackendApiUrlConstant.DepartmentBackendUrl.DEPARTMENT_API_URL;
+    private static final Gson gson = GsonPattern.getInstance().configDeserialization("dd/MM/yyyy");
     private final Context context;
 
     public DepartmentServiceDynamicImpl(final Context context) {
@@ -34,8 +36,8 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 Request.Method.GET,
                 API_URL,
                 null,
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Department>>() {}.getType())),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Department>>() {}.getType())),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -48,8 +50,8 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 Request.Method.GET,
                 API_URL + "/" + departmentId,
                 null,
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Department.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Department.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -66,8 +68,8 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 Request.Method.POST,
                 API_URL,
                 new JSONObject(map),
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Department.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Department.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -85,8 +87,8 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 Request.Method.PUT,
                 API_URL,
                 new JSONObject(map),
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Department.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Department.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -99,8 +101,8 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 Request.Method.DELETE,
                 API_URL + "/" + departmentId,
                 null,
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 

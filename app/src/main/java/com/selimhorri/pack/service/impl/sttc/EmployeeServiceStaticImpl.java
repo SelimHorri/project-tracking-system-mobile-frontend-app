@@ -96,6 +96,11 @@ public class EmployeeServiceStaticImpl implements EmployeeService {
     }
 
     @Override
+    public void findByUsername(String username, ResponseCallbackListener.ResponseCallbackSuccessListener<Employee> response, ResponseCallbackListener.ResponseCallbackErrorListener error) {
+
+    }
+
+    @Override
     public void findByEmployeeId(Integer employeeId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<EmployeeProjectData>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
     }

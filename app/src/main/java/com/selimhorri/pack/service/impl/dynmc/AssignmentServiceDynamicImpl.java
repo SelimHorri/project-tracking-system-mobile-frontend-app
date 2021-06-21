@@ -12,6 +12,7 @@ import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Assignment;
 import com.selimhorri.pack.model.dto.Project;
 import com.selimhorri.pack.model.id.AssignmentId;
+import com.selimhorri.pack.pattern.GsonPattern;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.AssignmentService;
 
@@ -24,6 +25,7 @@ import java.util.Map;
 public class AssignmentServiceDynamicImpl implements AssignmentService {
 
     private static final String API_URL = BackendApiUrlConstant.AssignmentBackendUrl.ASSIGNMENT_API_URL;
+    private static final Gson gson = GsonPattern.getInstance().configDeserialization("dd-MM-yyyyHH:mm:ss");
     private final Context context;
 
     public AssignmentServiceDynamicImpl(final Context context) {
@@ -37,8 +39,8 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 Request.Method.GET,
                 API_URL,
                 null,
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Assignment>>() {}.getType())),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Assignment>>() {}.getType())),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -51,8 +53,8 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 Request.Method.GET,
                 API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")),
                 null,
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Assignment.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -74,8 +76,8 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 Request.Method.POST,
                 API_URL,
                 new JSONObject(map),
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Assignment.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -97,8 +99,8 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 Request.Method.PUT,
                 API_URL,
                 new JSONObject(map),
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Assignment.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Assignment.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -111,8 +113,8 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
                 Request.Method.DELETE,
                 API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")),
                 null,
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 

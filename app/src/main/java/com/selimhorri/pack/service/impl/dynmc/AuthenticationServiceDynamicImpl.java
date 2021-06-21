@@ -10,6 +10,7 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.dto.custom.AuthenticationRequest;
 import com.selimhorri.pack.model.dto.custom.AuthenticationResponse;
+import com.selimhorri.pack.pattern.GsonPattern;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.AuthenticationService;
 
@@ -21,6 +22,7 @@ import java.util.Map;
 public class AuthenticationServiceDynamicImpl implements AuthenticationService {
 
     private static final String API_URL = BackendApiUrlConstant.AuthenticationBackendUrl.AUTHENTICATE_API_URL;
+    private static final Gson gson = GsonPattern.getInstance().configDeserialization("dd/MM/yyyy");
     private final Context context;
 
     public AuthenticationServiceDynamicImpl(final Context context) {
@@ -38,8 +40,8 @@ public class AuthenticationServiceDynamicImpl implements AuthenticationService {
                 Request.Method.POST,
                 API_URL,
                 new JSONObject(bodyMap),
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), AuthenticationResponse.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), AuthenticationResponse.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
     }

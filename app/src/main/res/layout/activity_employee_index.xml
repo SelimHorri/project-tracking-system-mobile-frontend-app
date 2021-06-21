@@ -7,57 +7,13 @@
     tools:context=".activity.EmployeeIndexActivity">
 
 
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="205dp"
+        android:layout_height="397dp"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.287">
-
-        <TableRow>
-            <TextView
-                android:text="Project Title"
-                android:gravity="left" />
-            <TextView
-                android:text="Start Date"
-                android:gravity="center" />
-            <TextView
-                android:text="End Date"
-                android:gravity="left" />
-            <TextView
-                android:text="Status"
-                android:gravity="left" />
-            <TextView
-                android:text=""
-                android:gravity="left" />
-            <TextView
-                android:text=""
-                android:gravity="left" />
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:text="MACHYA_RANDONNEE"
-                android:gravity="left" />
-            <TextView
-                android:text="2021-01-29"
-                android:gravity="center" />
-            <TextView
-                android:text="2021-04-30"
-                android:gravity="left"/>
-            <TextView
-                android:text="NOT_STARTED"
-                android:gravity="left" />
-            <TextView
-                android:text=""
-                android:gravity="left" />
-            <TextView
-                android:text=""
-                android:gravity="left" />
-        </TableRow>
-
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Location;
+import com.selimhorri.pack.pattern.GsonPattern;
 import com.selimhorri.pack.pattern.QueuePattern;
 import com.selimhorri.pack.service.LocationService;
 
@@ -21,6 +22,7 @@ import java.util.Map;
 public class LocationServiceDynamicImpl implements LocationService {
 
     private static final String API_URL = BackendApiUrlConstant.LocationBackendUrl.LOCATION_API_URL;
+    private static final Gson gson = GsonPattern.getInstance().configDeserialization("dd/MM/yyyy");
     private final Context context;
 
     public LocationServiceDynamicImpl(final Context context) {
@@ -34,8 +36,8 @@ public class LocationServiceDynamicImpl implements LocationService {
                 Request.Method.GET,
                 API_URL,
                 null,
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), new TypeToken<DtoCollection<Location>>() {}.getType())),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Location>>() {}.getType())),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -48,8 +50,8 @@ public class LocationServiceDynamicImpl implements LocationService {
                 Request.Method.GET,
                 API_URL + "/" + locationId,
                 null,
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Location.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Location.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -67,8 +69,8 @@ public class LocationServiceDynamicImpl implements LocationService {
                 Request.Method.POST,
                 API_URL,
                 new JSONObject(map),
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Location.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Location.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -87,8 +89,8 @@ public class LocationServiceDynamicImpl implements LocationService {
                 Request.Method.PUT,
                 API_URL,
                 new JSONObject(map),
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Location.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Location.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -101,8 +103,8 @@ public class LocationServiceDynamicImpl implements LocationService {
                 Request.Method.DELETE,
                 API_URL + "/" + locationId,
                 null,
-                response -> resp.onResponse(new Gson().fromJson(response.toString(), Boolean.class)),
-                error -> err.onError(error.toString())
+                response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
+                error -> err.onError(error.getMessage())
         );
         QueuePattern.getInstance(this.context).addToRequestQueue(request);
 
