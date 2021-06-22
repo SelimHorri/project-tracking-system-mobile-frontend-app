@@ -22,6 +22,12 @@ public class EmployeeIndexActivity extends AppCompatActivity {
 
     private final EmployeeService employeeService;
     private TextView textView;
+    private Button btnIndex;
+    private Button btnLogout;
+    private Button btnAccountInfo;
+    private Button btnTeamMembers;
+    private Button btnMyCommits;
+    private Button btnAllCommits;
 
     public EmployeeIndexActivity() {
         this.employeeService = new EmployeeServiceDynamicImpl(EmployeeIndexActivity.this);
@@ -33,8 +39,16 @@ public class EmployeeIndexActivity extends AppCompatActivity {
         setContentView(R.layout.activity_employee_index);
 
         this.textView = super.findViewById(R.id.textView4);
+        this.btnIndex = super.findViewById(R.id.button6);
+        this.btnLogout = super.findViewById(R.id.button5);
+        this.btnAccountInfo = super.findViewById(R.id.button);
+        this.btnTeamMembers = super.findViewById(R.id.button4);
+        this.btnMyCommits = super.findViewById(R.id.button8);
+        this.btnAllCommits = super.findViewById(R.id.button7);
 
         final SharedPreferences sp = super.getSharedPreferences("emp", MODE_PRIVATE);
+
+        // get data
         this.employeeService.findByUsername(
                 sp.getString("username", null),
                 response -> {
@@ -54,6 +68,22 @@ public class EmployeeIndexActivity extends AppCompatActivity {
                 },
                 error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
+
+        // logout
+        this.btnLogout.setOnClickListener(v -> {
+            sp.edit().clear().apply();
+            super.startActivity(new Intent(EmployeeIndexActivity.this, HomeActivity.class));
+        });
+
+        // go index
+        this.btnIndex.setOnClickListener(v -> {
+            super.startActivity(new Intent(EmployeeIndexActivity.this, EmployeeIndexActivity.class));
+        });
+
+        // go account_info
+        // go team members
+        // go my commits
+        // go all commits
 
     }
 }
