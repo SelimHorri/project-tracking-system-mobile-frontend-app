@@ -22,7 +22,7 @@ import java.util.Map;
 public class ProjectServiceDynamicImpl implements ProjectService {
 
     private static final String API_URL = BackendApiUrlConstant.ProjectBackendUrl.PROJECT_API_URL;
-    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd/MM/yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyy");
     private final Context context;
 
     public ProjectServiceDynamicImpl(final Context context) {

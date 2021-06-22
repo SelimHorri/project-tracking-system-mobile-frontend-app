@@ -22,7 +22,7 @@ import java.util.Map;
 public class CredentialServiceDynamicImpl implements CredentialService {
 
     private static final String API_URL = BackendApiUrlConstant.CredentialBackendUrl.CREDENTIAL_API_URL;
-    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd/MM/yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyy");
     private final Context context;
 
     public CredentialServiceDynamicImpl(final Context context) {

@@ -23,7 +23,7 @@ import java.util.Map;
 public class EmployeeServiceDynamicImpl implements EmployeeService {
 
     private static final String API_URL = BackendApiUrlConstant.EmployeeBackendUrl.EMPLOYEE_API_URL;
-    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd/MM/yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyy");
     private final Context context;
 
     public EmployeeServiceDynamicImpl(final Context context) {

@@ -22,7 +22,7 @@ import java.util.Map;
 public class DepartmentServiceDynamicImpl implements DepartmentService {
 
     private static final String API_URL = BackendApiUrlConstant.DepartmentBackendUrl.DEPARTMENT_API_URL;
-    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd/MM/yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyy");
     private final Context context;
 
     public DepartmentServiceDynamicImpl(final Context context) {
