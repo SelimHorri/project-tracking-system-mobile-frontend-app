@@ -18,17 +18,17 @@ public class LocationBuilder {
         return this.location;
     }
 
-    public LocationBuilder withAdr(final String adr) {
+    public LocationBuilder adr(final String adr) {
         this.location.setAdr(adr);
         return this;
     }
 
-    public LocationBuilder withPostalCode(final String postalCode) {
+    public LocationBuilder postalCode(final String postalCode) {
         this.location.setPostalCode(postalCode);
         return this;
     }
 
-    public LocationBuilder withCity(final String city) {
+    public LocationBuilder city(final String city) {
         this.location.setAdr(city);
         return this;
     }

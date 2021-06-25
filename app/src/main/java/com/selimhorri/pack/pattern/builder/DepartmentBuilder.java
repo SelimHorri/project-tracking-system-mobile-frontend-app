@@ -19,17 +19,17 @@ public class DepartmentBuilder {
         return this.department;
     }
 
-    public DepartmentBuilder withDepartmentId(final int departmentId) {
+    public DepartmentBuilder departmentId(final int departmentId) {
         this.department.setDepartmentId(departmentId);
         return this;
     }
 
-    public DepartmentBuilder withDepartmentName(final String departmentName) {
+    public DepartmentBuilder departmentName(final String departmentName) {
         this.department.setDepartmentName(departmentName);
         return this;
     }
 
-    public DepartmentBuilder withLocation(final Location location) {
+    public DepartmentBuilder location(final Location location) {
         this.department.setLocation(location);
         return this;
     }

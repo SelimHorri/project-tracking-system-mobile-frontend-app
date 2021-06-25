@@ -71,7 +71,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
         map.put("salary", employee.getSalary());
         map.put("manager", employee.getManager());
         map.put("department", employee.getDepartment());
-        map.put("credential", employee.getUserCredential());
+        map.put("credential", employee.getCredential());
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
@@ -98,7 +98,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
         map.put("salary", employee.getSalary());
         map.put("manager", employee.getManager());
         map.put("department", employee.getDepartment());
-        map.put("credential", employee.getUserCredential());
+        map.put("credential", employee.getCredential());
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,

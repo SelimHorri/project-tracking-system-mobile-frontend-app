@@ -10,7 +10,6 @@ import com.selimhorri.pack.model.dto.Credential;
 import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.model.dto.Employee;
 import com.selimhorri.pack.model.dto.Location;
-import com.selimhorri.pack.model.dto.Project;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
 import com.selimhorri.pack.service.EmployeeService;
 
@@ -82,7 +81,7 @@ public class EmployeeServiceStaticImpl implements EmployeeService {
         DUMMY_EMPLOYEES.get(employee.getEmployeeId()).setSalary(employee.getSalary());
         DUMMY_EMPLOYEES.get(employee.getEmployeeId()).setManager(employee.getManager());
         DUMMY_EMPLOYEES.get(employee.getEmployeeId()).setDepartment(employee.getDepartment());
-        DUMMY_EMPLOYEES.get(employee.getEmployeeId()).setUserCredential(employee.getUserCredential());
+        DUMMY_EMPLOYEES.get(employee.getEmployeeId()).setCredential(employee.getCredential());
 
     }
 
