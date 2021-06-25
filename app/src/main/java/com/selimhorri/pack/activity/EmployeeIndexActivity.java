@@ -52,19 +52,15 @@ public class EmployeeIndexActivity extends AppCompatActivity {
         this.employeeService.findByUsername(
                 sp.getString("username", null),
                 response -> {
-
                     this.employeeService.findByEmployeeId(
                             response.getEmployeeId(),
                             listOfEmployeeProjectData -> {
-
-                                final StringBuilder sb = new StringBuilder("");
+                                final StringBuilder sb = new StringBuilder();
                                 listOfEmployeeProjectData.getCollection().forEach(sb::append);
                                 this.textView.setText(sb.toString());
-
                             },
                             errorOfEmployeeProjectData -> Toast.makeText(EmployeeIndexActivity.this, errorOfEmployeeProjectData.toString(), Toast.LENGTH_SHORT).show()
                     );
-
                 },
                 error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
@@ -81,9 +77,24 @@ public class EmployeeIndexActivity extends AppCompatActivity {
         });
 
         // go account_info
+        this.btnAccountInfo.setOnClickListener(v -> {
+
+        });
+
         // go team members
+        this.btnTeamMembers.setOnClickListener(v -> {
+
+        });
+
         // go my commits
+        this.btnMyCommits.setOnClickListener(v -> {
+
+        });
+
         // go all commits
+        this.btnAllCommits.setOnClickListener(v -> {
+
+        });
 
     }
 }
