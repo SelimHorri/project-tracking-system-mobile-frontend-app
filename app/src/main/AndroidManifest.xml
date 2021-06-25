@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projecttrackingsystemandroidapp">
-        <activity android:name=".activity.AdminIndexActivity"></activity>
+        <activity android:name=".activity.EmployeeInfoActivity"></activity>
+        <activity android:name=".activity.AdminIndexActivity" />
         <activity android:name=".activity.ManagerIndexActivity" />
         <activity android:name=".activity.EmployeeIndexActivity" />
         <activity android:name=".activity.LoginActivity" />

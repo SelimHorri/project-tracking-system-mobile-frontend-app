@@ -79,13 +79,7 @@ public class EmployeeIndexActivity extends AppCompatActivity {
 
         // go account_info
         this.btnAccountInfo.setOnClickListener(v -> {
-            this.employeeService.findByUsername(
-                    username,
-                    response -> {
-
-                    },
-                    error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
-            );
+            super.startActivity(new Intent(EmployeeIndexActivity.this, EmployeeInfoActivity.class));
         });
 
         // go team members
