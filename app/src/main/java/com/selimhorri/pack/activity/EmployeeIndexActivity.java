@@ -47,10 +47,11 @@ public class EmployeeIndexActivity extends AppCompatActivity {
         this.btnAllCommits = super.findViewById(R.id.button7);
 
         final SharedPreferences sp = super.getSharedPreferences("emp", MODE_PRIVATE);
+        final String username = sp.getString("username", null);
 
         // get data
         this.employeeService.findByUsername(
-                sp.getString("username", null),
+                username,
                 response -> {
                     this.employeeService.findByEmployeeId(
                             response.getEmployeeId(),
@@ -78,23 +79,50 @@ public class EmployeeIndexActivity extends AppCompatActivity {
 
         // go account_info
         this.btnAccountInfo.setOnClickListener(v -> {
+            this.employeeService.findByUsername(
+                    username,
+                    response -> {
 
+                    },
+                    error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
+            );
         });
 
         // go team members
         this.btnTeamMembers.setOnClickListener(v -> {
+            this.employeeService.findByUsername(
+                    username,
+                    response -> {
 
+                    },
+                    error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
+            );
         });
 
         // go my commits
         this.btnMyCommits.setOnClickListener(v -> {
+            this.employeeService.findByUsername(
+                username,
+                response -> {
 
+                },
+                error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
+            );
         });
 
         // go all commits
         this.btnAllCommits.setOnClickListener(v -> {
+            this.employeeService.findByUsername(
+                    username,
+                    response -> {
 
+                    },
+                    error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
+            );
         });
 
     }
+
+
+
 }
