@@ -9,19 +9,21 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.dto.custom.AuthenticationRequest;
 import com.selimhorri.pack.model.dto.custom.AuthenticationResponse;
+import com.selimhorri.pack.exception.payload.ExceptionMsg;
 import com.selimhorri.pack.pattern.singleton.GsonSingletonPattern;
 import com.selimhorri.pack.pattern.singleton.QueueSingletonPattern;
 import com.selimhorri.pack.service.AuthenticationService;
 
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AuthenticationServiceDynamicImpl implements AuthenticationService {
 
     private static final String API_URL = BackendApiUrlConstant.AuthenticationBackendUrl.AUTHENTICATE_API_URL;
-    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyyHH:mm:ss");
     private final Context context;
 
     public AuthenticationServiceDynamicImpl(final Context context) {
@@ -40,7 +42,7 @@ public class AuthenticationServiceDynamicImpl implements AuthenticationService {
                 API_URL,
                 new JSONObject(bodyMap),
                 response -> resp.onResponse(gson.fromJson(response.toString(), AuthenticationResponse.class)),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
     }

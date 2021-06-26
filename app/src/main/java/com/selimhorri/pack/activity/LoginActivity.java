@@ -13,11 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.selimhorri.pack.R;
+import com.selimhorri.pack.exception.ObjectNotFoundException;
 import com.selimhorri.pack.model.dto.custom.AuthenticationRequest;
 import com.selimhorri.pack.service.AuthenticationService;
 import com.selimhorri.pack.service.CredentialService;
 import com.selimhorri.pack.service.impl.dynmc.AuthenticationServiceDynamicImpl;
 import com.selimhorri.pack.service.impl.dynmc.CredentialServiceDynamicImpl;
+
+import java.util.Optional;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -115,9 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                                 );
                             }
                         },
-                        error -> {
-                            Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-                        }
+                        error -> Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
                 );
             }
 
