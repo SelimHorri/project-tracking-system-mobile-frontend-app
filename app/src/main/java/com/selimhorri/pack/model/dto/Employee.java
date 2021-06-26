@@ -14,7 +14,7 @@ public final class Employee {
     private Double salary;
     private Employee manager;
     private Department department;
-    private Credential userCredential;
+    private Credential credential;
 
     public Employee() {
 
@@ -30,7 +30,7 @@ public final class Employee {
         this.salary = salary;
         this.manager = manager;
         this.department = department;
-        this.userCredential = userCredential;
+        this.credential = userCredential;
     }
 
     public Employee(Integer employeeId, String firstName, String lastName, String email, String phone, LocalDate hiredate, String job, Double salary, Employee manager, Department department, Credential userCredential) {
@@ -44,7 +44,7 @@ public final class Employee {
         this.salary = salary;
         this.manager = manager;
         this.department = department;
-        this.userCredential = userCredential;
+        this.credential = userCredential;
     }
 
     @Override
@@ -60,7 +60,7 @@ public final class Employee {
                 ", salary=" + salary +
                 ", managerId=" + manager.getEmployeeId() +
                 ", departmentId=" + department.getDepartmentId() +
-                ", credentialId=" + userCredential.getCredentialId() +
+                ", credentialId=" + credential.getCredentialId() +
                 '}';
     }
 
@@ -144,11 +144,11 @@ public final class Employee {
         this.department = department;
     }
 
-    public Credential getUserCredential() {
-        return userCredential;
+    public Credential getCredential() {
+        return credential;
     }
 
-    public void setUserCredential(Credential userCredential) {
-        this.userCredential = userCredential;
+    public void setCredential(Credential credential) {
+        this.credential = credential;
     }
 }

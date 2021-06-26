@@ -10,10 +10,10 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Employee;
-import com.selimhorri.pack.model.dto.Project;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
-import com.selimhorri.pack.pattern.GsonPattern;
-import com.selimhorri.pack.pattern.QueuePattern;
+import com.selimhorri.pack.model.dto.custom.ProjectCommit;
+import com.selimhorri.pack.pattern.singleton.GsonSingletonPattern;
+import com.selimhorri.pack.pattern.singleton.QueueSingletonPattern;
 import com.selimhorri.pack.service.EmployeeService;
 
 import org.json.JSONObject;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class EmployeeServiceDynamicImpl implements EmployeeService {
 
     private static final String API_URL = BackendApiUrlConstant.EmployeeBackendUrl.EMPLOYEE_API_URL;
-    private static final Gson gson = GsonPattern.getInstance().configDeserialization("dd/MM/yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyy");
     private final Context context;
 
     public EmployeeServiceDynamicImpl(final Context context) {
@@ -41,7 +41,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Employee>>() {}.getType())),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -55,7 +55,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -72,7 +72,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
         map.put("salary", employee.getSalary());
         map.put("manager", employee.getManager());
         map.put("department", employee.getDepartment());
-        map.put("credential", employee.getUserCredential());
+        map.put("credential", employee.getCredential());
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
@@ -81,7 +81,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -99,7 +99,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
         map.put("salary", employee.getSalary());
         map.put("manager", employee.getManager());
         map.put("department", employee.getDepartment());
-        map.put("credential", employee.getUserCredential());
+        map.put("credential", employee.getCredential());
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
@@ -108,7 +108,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -122,7 +122,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -137,7 +137,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -151,7 +151,33 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<EmployeeProjectData>>() {}.getType())),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
+    }
+
+    @Override
+    public void findByProjectId(Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+          Request.Method.GET,
+          API_URL + "/data/project-commit/" + projectId,
+          null,
+          response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<ProjectCommit>>() {}.getType())),
+          error -> err.onError(error.getMessage())
+        );
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
+    }
+
+    @Override
+    public void findByEmployeeIdAndProjectId(Integer employeeId, Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL + "/data/project-commit/" + employeeId + "/" + projectId,
+                null,
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<ProjectCommit>>() {}.getType())),
+                error -> err.onError(error.getMessage())
+        );
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
     }
 
 

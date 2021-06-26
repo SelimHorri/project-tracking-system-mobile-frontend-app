@@ -1,43 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- Vertical Orientation is set -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.HomeActivity">
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/idBtnAdmin"
+    <!-- Text Displayed At Top -->
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="196dp"
-        android:text="Are you an Admin?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.594"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_margin="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="choose a profile"
+        android:id="@+id/textView"
 
-    <Button
-        android:id="@+id/idBtnManager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="108dp"
-        android:text="Are you a Manager?"
-        app:layout_constraintBottom_toTopOf="@+id/idBtnAdmin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:showDividers="middle"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Button Used -->
 
     <Button
         android:id="@+id/idBtnEmployee"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_margin="20dp"
         android:text="Are you an Employee?"
-        app:layout_constraintBottom_toTopOf="@+id/idBtnManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.614"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="#009300" />
+
+    <Button
+        android:id="@+id/idBtnManager"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:showDividers="middle"
+        android:layout_margin="20dp"
+        android:text="Are you a Manager?"
+        android:background="#e6cf00" />
+
+    <Button
+        android:id="@+id/idBtnAdmin"
+        android:layout_width="fill_parent"
+        android:showDividers="middle"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content"
+        android:text="Are you an Admin?"
+        android:background="#0472f9" />
+
+
+</LinearLayout>

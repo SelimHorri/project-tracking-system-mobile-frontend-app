@@ -10,8 +10,8 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Project;
-import com.selimhorri.pack.pattern.GsonPattern;
-import com.selimhorri.pack.pattern.QueuePattern;
+import com.selimhorri.pack.pattern.singleton.GsonSingletonPattern;
+import com.selimhorri.pack.pattern.singleton.QueueSingletonPattern;
 import com.selimhorri.pack.service.ProjectService;
 
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ import java.util.Map;
 public class ProjectServiceDynamicImpl implements ProjectService {
 
     private static final String API_URL = BackendApiUrlConstant.ProjectBackendUrl.PROJECT_API_URL;
-    private static final Gson gson = GsonPattern.getInstance().configDeserialization("dd/MM/yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyy");
     private final Context context;
 
     public ProjectServiceDynamicImpl(final Context context) {
@@ -39,7 +39,7 @@ public class ProjectServiceDynamicImpl implements ProjectService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Project>>() {}.getType())),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -53,7 +53,7 @@ public class ProjectServiceDynamicImpl implements ProjectService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Project.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -73,7 +73,7 @@ public class ProjectServiceDynamicImpl implements ProjectService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Project.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -94,7 +94,7 @@ public class ProjectServiceDynamicImpl implements ProjectService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Project.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 
@@ -108,7 +108,7 @@ public class ProjectServiceDynamicImpl implements ProjectService {
                 response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
                 error -> err.onError(error.getMessage())
         );
-        QueuePattern.getInstance(this.context).addToRequestQueue(request);
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
     }
 

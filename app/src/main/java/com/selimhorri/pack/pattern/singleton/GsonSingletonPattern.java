@@ -1,4 +1,4 @@
-package com.selimhorri.pack.pattern;
+package com.selimhorri.pack.pattern.singleton;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,16 +9,18 @@ import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class GsonPattern {
+public class GsonSingletonPattern {
 
-    private static GsonPattern instance;
+    private static GsonSingletonPattern instance;
     private static final GsonBuilder gsonBuilder = new GsonBuilder();
 
-    public static synchronized GsonPattern getInstance() {
+    public static synchronized GsonSingletonPattern getInstance() {
         if (instance == null)
-            instance = new GsonPattern();
+            instance = new GsonSingletonPattern();
 
         return instance;
     }
@@ -47,5 +49,7 @@ public class GsonPattern {
                 })
                 .create();
     }
+
+
 
 }
