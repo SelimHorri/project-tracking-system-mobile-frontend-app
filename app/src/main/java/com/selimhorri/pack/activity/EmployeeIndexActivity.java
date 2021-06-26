@@ -58,7 +58,7 @@ public class EmployeeIndexActivity extends AppCompatActivity {
                             listOfEmployeeProjectData -> {
                                 final StringBuilder sb = new StringBuilder();
                                 listOfEmployeeProjectData.getCollection().forEach(sb::append);
-                               // this.textView.setText(sb.toString());
+                                this.textView.setText(sb.toString());
                             },
                             errorOfEmployeeProjectData -> Toast.makeText(EmployeeIndexActivity.this, errorOfEmployeeProjectData.toString(), Toast.LENGTH_SHORT).show()
                     );
