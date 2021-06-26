@@ -7,6 +7,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.selimhorri.pack.constant.BackendApiUrlConstant;
+import com.selimhorri.pack.exception.payload.ExceptionMsg;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Department;
@@ -16,6 +17,7 @@ import com.selimhorri.pack.service.DepartmentService;
 
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,7 +39,7 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 API_URL,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Department>>() {}.getType())),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -51,7 +53,7 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 API_URL + "/" + departmentId,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), Department.class)),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -69,7 +71,7 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 API_URL,
                 new JSONObject(map),
                 response -> resp.onResponse(gson.fromJson(response.toString(), Department.class)),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -88,7 +90,7 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 API_URL,
                 new JSONObject(map),
                 response -> resp.onResponse(gson.fromJson(response.toString(), Department.class)),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -102,7 +104,7 @@ public class DepartmentServiceDynamicImpl implements DepartmentService {
                 API_URL + "/" + departmentId,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 

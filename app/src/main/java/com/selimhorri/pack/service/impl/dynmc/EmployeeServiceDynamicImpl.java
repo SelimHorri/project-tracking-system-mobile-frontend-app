@@ -7,6 +7,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.selimhorri.pack.constant.BackendApiUrlConstant;
+import com.selimhorri.pack.exception.payload.ExceptionMsg;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Employee;
@@ -18,6 +19,7 @@ import com.selimhorri.pack.service.EmployeeService;
 
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +41,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 API_URL,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Employee>>() {}.getType())),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -53,7 +55,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 API_URL + "/" + employeeId,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -79,7 +81,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 API_URL,
                 new JSONObject(map),
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -106,7 +108,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 API_URL,
                 new JSONObject(map),
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -120,7 +122,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 API_URL + "/" + employeeId,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -135,7 +137,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 null,
                 // response -> resp.onResponse(new Gson().fromJson(response.toString(), Employee.class)),
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
@@ -149,7 +151,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 API_URL + "/data/employee-project-data/" + employeeId,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<EmployeeProjectData>>() {}.getType())),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
     }
@@ -162,7 +164,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
           API_URL + "/data/project-commit/" + projectId,
           null,
           response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<ProjectCommit>>() {}.getType())),
-          error -> err.onError(error.getMessage())
+          error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
     }
@@ -175,7 +177,7 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 API_URL + "/data/project-commit/" + employeeId + "/" + projectId,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<ProjectCommit>>() {}.getType())),
-                error -> err.onError(error.getMessage())
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
     }
