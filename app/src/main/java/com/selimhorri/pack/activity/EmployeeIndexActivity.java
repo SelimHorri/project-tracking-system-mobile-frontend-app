@@ -38,7 +38,7 @@ public class EmployeeIndexActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_index);
 
-        this.textView = super.findViewById(R.id.textView4);
+     //  this.textView = super.findViewById(R.id.textView4);
         this.btnIndex = super.findViewById(R.id.button6);
         this.btnLogout = super.findViewById(R.id.button5);
         this.btnAccountInfo = super.findViewById(R.id.button);
