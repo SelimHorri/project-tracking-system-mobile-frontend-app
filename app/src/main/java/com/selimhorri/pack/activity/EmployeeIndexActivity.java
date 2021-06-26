@@ -56,7 +56,14 @@ public class EmployeeIndexActivity extends AppCompatActivity {
                 response -> {
                     this.employeeService.findByEmployeeId(
                             response.getEmployeeId(),
-                            listOfEmployeeProjectData -> this.recyclerView.setAdapter(new CustomAdapter(listOfEmployeeProjectData.getCollection(), EmployeeIndexActivity.this)),
+                            listOfEmployeeProjectData ->
+                                    this.recyclerView.setAdapter(
+                                            new CustomAdapter(
+                                                    listOfEmployeeProjectData.getCollection(),
+                                                    R.layout.activity_employee_project_data_item,
+                                                    EmployeeIndexActivity.this
+                                            )
+                                    ),
                             errorOfEmployeeProjectData -> Toast.makeText(EmployeeIndexActivity.this, errorOfEmployeeProjectData.toString(), Toast.LENGTH_SHORT).show()
                     );
                 },

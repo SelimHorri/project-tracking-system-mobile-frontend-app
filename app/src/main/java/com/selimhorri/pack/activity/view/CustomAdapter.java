@@ -21,10 +21,12 @@ import java.util.List;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private List<EmployeeProjectData> employeeProjectDataList;
+    private int layout = R.layout.activity_employee_project_data_item;
     private Context context;
 
-    public CustomAdapter(List<EmployeeProjectData> employeeProjectDataList, Context context) {
+    public CustomAdapter(List<EmployeeProjectData> employeeProjectDataList, final int layout, Context context) {
         this.employeeProjectDataList = employeeProjectDataList;
+        this.layout = layout;
         this.context = context;
     }
 
@@ -33,7 +35,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.activity_employee_project_data_item, parent, false);
+                        .inflate(layout, parent, false);
 
         return new ViewHolder(v);
     }
@@ -43,9 +45,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         EmployeeProjectData epd = this.employeeProjectDataList.get(position);
         holder.textViewTitle.setText(epd.getTitle());
-        holder.textViewStartDate.setText(epd.getStartDate());
-        holder.textViewEndDate.setText(epd.getEndDate());
-        holder.textViewStatus.setText(epd.getEndDate());
+        holder.textViewStartDate.setText("Start date: " + epd.getStartDate());
+        holder.textViewEndDate.setText("End date: " + epd.getEndDate());
+        holder.textViewStatus.setText("Status: "+ epd.getStatus());
         holder.btnMyCommits.setOnClickListener(v -> {
             this.context.startActivity(new Intent(this.context, EmployeeShowCommitsActivity.class).putExtra("projectId", epd.getProjectId()));
         });
