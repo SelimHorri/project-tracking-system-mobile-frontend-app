@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
+import com.selimhorri.pack.activity.employee.EmployeeAddCommitActivity;
+import com.selimhorri.pack.activity.employee.EmployeeShowAllCommitsActivity;
 import com.selimhorri.pack.activity.employee.EmployeeShowCommitsActivity;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
 
@@ -49,10 +51,10 @@ public class EmployeeIndexCustomAdapter extends RecyclerView.Adapter<EmployeeInd
             this.context.startActivity(new Intent(this.context, EmployeeShowCommitsActivity.class).putExtra("projectId", epd.getProjectId()));
         });
         holder.btnAllCommits.setOnClickListener(v -> {
-
+            this.context.startActivity(new Intent(this.context, EmployeeShowAllCommitsActivity.class).putExtra("projectId", epd.getProjectId()));
         });
         holder.btnNewCommit.setOnClickListener(v -> {
-
+            this.context.startActivity(new Intent(this.context, EmployeeAddCommitActivity.class).putExtra("projectId", epd.getProjectId()));
         });
     }
 
