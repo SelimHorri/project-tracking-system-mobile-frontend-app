@@ -48,13 +48,22 @@ public class EmployeeIndexCustomAdapter extends RecyclerView.Adapter<EmployeeInd
         holder.textViewEndDate.setText("End date: " + epd.getEndDate());
         holder.textViewStatus.setText("Status: "+ epd.getStatus());
         holder.btnMyCommits.setOnClickListener(v -> {
-            this.context.startActivity(new Intent(this.context, EmployeeShowCommitsActivity.class).putExtra("projectId", String.valueOf(epd.getProjectId())));
+            this.context.startActivity(
+                    new Intent(this.context, EmployeeShowCommitsActivity.class)
+                            .putExtra("projectId", epd.getProjectId())
+            );
         });
         holder.btnAllCommits.setOnClickListener(v -> {
-            this.context.startActivity(new Intent(this.context, EmployeeShowAllCommitsActivity.class).putExtra("projectId", String.valueOf(epd.getProjectId())));
+            this.context.startActivity(
+                    new Intent(this.context, EmployeeShowAllCommitsActivity.class)
+                            .putExtra("projectId", String.valueOf(epd.getProjectId()))
+            );
         });
         holder.btnNewCommit.setOnClickListener(v -> {
-            this.context.startActivity(new Intent(this.context, EmployeeAddCommitActivity.class).putExtra("projectId", String.valueOf(epd.getProjectId())));
+            this.context.startActivity(
+                    new Intent(this.context, EmployeeAddCommitActivity.class)
+                            .putExtra("projectId", String.valueOf(epd.getProjectId()))
+            );
         });
     }
 

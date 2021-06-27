@@ -47,7 +47,7 @@ public class EmployeeShowCommitsCustomAdapter extends RecyclerView.Adapter<Emplo
                 this.projectCommitList.get(position).getProjectId(),
                 response -> {
                     ProjectCommit pc = this.projectCommitList.get(position);
-                    // holder.textViewTitle.setText(response.getTitle());
+                    holder.textViewTitle.setText(response.getTitle());
                     holder.textViewCommitDate.setText(pc.getCommitDate().toString());
                     holder.textViewFullName.setText(pc.getFirstName() + " " + pc.getLastName());
                     holder.textViewCommitEmpDesc.setText(pc.getCommitEmpDesc());
@@ -73,7 +73,7 @@ public class EmployeeShowCommitsCustomAdapter extends RecyclerView.Adapter<Emplo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            this.textViewTitle = itemView.findViewById(R.id.textViewEmployeeShowCommitsTitle);
             this.textViewCommitDate = itemView.findViewById(R.id.textViewEmployeeShowCommitsCommitDate);
             this.textViewFullName = itemView.findViewById(R.id.textViewEmployeeShowCommitsFullName);
             this.textViewCommitEmpDesc = itemView.findViewById(R.id.textViewEmployeeShowCommitsCommitEmpDesc);

@@ -42,7 +42,7 @@ public class EmployeeShowCommitsActivity extends AppCompatActivity {
         this.recyclerView.setLayoutManager(new LinearLayoutManager(EmployeeShowCommitsActivity.this));
 
         final Bundle extras = super.getIntent().getExtras();
-        final String projectId = extras.getString("projectId");
+        final Integer projectId = extras.getInt("projectId");
 
         final SharedPreferences sp = super.getSharedPreferences("emp", MODE_PRIVATE);
         final String username = sp.getString("username", null);
@@ -52,7 +52,7 @@ public class EmployeeShowCommitsActivity extends AppCompatActivity {
                 response -> {
                     this.assignmentService.findByEmployeeIdAndProjectId(
                             response.getEmployeeId(),
-                            Integer.parseInt(projectId),
+                            projectId,
                             list -> {
                                 this.recyclerView.setAdapter(
                                         new EmployeeShowCommitsCustomAdapter(EmployeeShowCommitsActivity.this, list.getCollection())
@@ -83,7 +83,7 @@ public class EmployeeShowCommitsActivity extends AppCompatActivity {
             case R.id.employeeTeam:
                 return true;
             case R.id.employeeProjects:
-                super.startActivity(new Intent(EmployeeShowCommitsActivity.this, EmployeeShowCommitsActivity.class));
+                super.startActivity(new Intent(EmployeeShowCommitsActivity.this, EmployeeIndexActivity.class));
                 return true;
             case R.id.employeeLogout:
                 super.getSharedPreferences("emp", MODE_PRIVATE)
