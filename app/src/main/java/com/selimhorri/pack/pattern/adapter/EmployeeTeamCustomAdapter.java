@@ -43,7 +43,7 @@ public class EmployeeTeamCustomAdapter extends RecyclerView.Adapter<EmployeeTeam
         holder.textViewLastName.setText(employee.getLastName());
         holder.textViewEmail.setText(employee.getEmail());
         holder.textViewPhone.setText(employee.getPhone());
-        holder.textViewHiredate.setText(employee.getHiredate().toString());
+        holder.textViewHiredate.setText( (employee.getHiredate() != null)? employee.getHiredate() : "--" );
         holder.textViewJob.setText(employee.getJob());
         holder.textViewDepartment.setText(employee.getDepartment().getDepartmentName());
         holder.textViewLocation.setText(employee.getDepartment().getLocation().getAdr() + "-" + employee.getDepartment().getLocation().getPostalCode() + "-" + employee.getDepartment().getLocation().getCity());
