@@ -56,13 +56,13 @@ public class EmployeeIndexCustomAdapter extends RecyclerView.Adapter<EmployeeInd
         holder.btnAllCommits.setOnClickListener(v -> {
             this.context.startActivity(
                     new Intent(this.context, EmployeeShowAllCommitsActivity.class)
-                            .putExtra("projectId", String.valueOf(epd.getProjectId()))
+                            .putExtra("projectId", epd.getProjectId())
             );
         });
         holder.btnNewCommit.setOnClickListener(v -> {
             this.context.startActivity(
                     new Intent(this.context, EmployeeAddCommitActivity.class)
-                            .putExtra("projectId", String.valueOf(epd.getProjectId()))
+                            .putExtra("projectId", epd.getProjectId())
             );
         });
     }

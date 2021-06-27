@@ -1,7 +1,5 @@
 package com.selimhorri.pack.model.dto.custom;
 
-import java.time.LocalDateTime;
-
 public final class ProjectCommit {
 
     private Integer employeeId;
