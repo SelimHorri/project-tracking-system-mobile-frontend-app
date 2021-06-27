@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class EmployeeInfoActivity extends AppCompatActivity {
     private TextView textViewPhone;
     private TextView textViewHiredate;
     private TextView textViewSalary;
+    private Button btnEditCredentials;
 
     public EmployeeInfoActivity() {
         this.employeeService = new EmployeeServiceDynamicImpl(EmployeeInfoActivity.this);
@@ -47,6 +49,7 @@ public class EmployeeInfoActivity extends AppCompatActivity {
         this.textViewPhone = super.findViewById(R.id.textViewEmployeeAccountInfoPhone);
         this.textViewHiredate = super.findViewById(R.id.textViewEmployeeAccountInfoHiredate);
         this.textViewSalary = super.findViewById(R.id.textViewEmployeeAccountInfoSalary);
+        this.btnEditCredentials = super.findViewById(R.id.buttonEmployeeAccountInfoEditCredentials);
 
         final SharedPreferences sp = super.getSharedPreferences("emp", MODE_PRIVATE);
         final String username = sp.getString("username", null);
@@ -67,6 +70,10 @@ public class EmployeeInfoActivity extends AppCompatActivity {
                 error -> Toast.makeText(EmployeeInfoActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
 
+        this.btnEditCredentials.setOnClickListener(v -> {
+            super.startActivity(new Intent(EmployeeInfoActivity.this, EmployeeIndexActivity.class));
+        });
+
     }
 
     @Override
@@ -86,7 +93,7 @@ public class EmployeeInfoActivity extends AppCompatActivity {
             case R.id.employeeTeam:
                 return true;
             case R.id.employeeProjects:
-                super.startActivity(new Intent(EmployeeInfoActivity.this, EmployeeInfoActivity.class));
+                super.startActivity(new Intent(EmployeeInfoActivity.this, EmployeeIndexActivity.class));
                 return true;
             case R.id.employeeLogout:
                 super.getSharedPreferences("emp", MODE_PRIVATE)
