@@ -11,7 +11,6 @@ import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.model.dto.Employee;
 import com.selimhorri.pack.model.dto.Location;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
-import com.selimhorri.pack.model.dto.custom.ProjectCommit;
 import com.selimhorri.pack.service.EmployeeService;
 
 import java.time.LocalDate;
@@ -102,16 +101,6 @@ public class EmployeeServiceStaticImpl implements EmployeeService {
 
     @Override
     public void findByEmployeeId(Integer employeeId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<EmployeeProjectData>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
-
-    }
-
-    @Override
-    public void findByProjectId(Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
-
-    }
-
-    @Override
-    public void findByEmployeeIdAndProjectId(Integer employeeId, Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
     }
 
