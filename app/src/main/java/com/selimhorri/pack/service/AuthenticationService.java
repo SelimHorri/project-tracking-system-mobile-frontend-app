@@ -1,7 +1,6 @@
 package com.selimhorri.pack.service;
 
 import com.selimhorri.pack.listener.ResponseCallbackListener;
-import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.custom.AuthenticationRequest;
 import com.selimhorri.pack.model.dto.custom.AuthenticationResponse;
 

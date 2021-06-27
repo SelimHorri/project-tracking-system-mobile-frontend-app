@@ -1,7 +1,5 @@
 package com.selimhorri.pack.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.admin.AdminIndexActivity;

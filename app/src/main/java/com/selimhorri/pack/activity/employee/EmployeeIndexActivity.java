@@ -1,16 +1,16 @@
 package com.selimhorri.pack.activity.employee;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
@@ -79,12 +79,17 @@ public class EmployeeIndexActivity extends AppCompatActivity {
                 super.startActivity(new Intent(EmployeeIndexActivity.this, EmployeeIndexActivity.class));
                 return true;
             case R.id.employeeLogout:
-                final SharedPreferences sp = super.getSharedPreferences("emp", MODE_PRIVATE);
-                sp.edit().clear().apply();
+                super.getSharedPreferences("emp", MODE_PRIVATE)
+                        .edit()
+                        .clear()
+                        .apply();
                 super.startActivity(new Intent(EmployeeIndexActivity.this, HomeActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+
 }
