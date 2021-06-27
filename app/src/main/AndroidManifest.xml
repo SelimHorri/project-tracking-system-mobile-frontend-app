@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projecttrackingsystemandroidapp">
-        <activity android:name=".activity.employee.EmployeeTeamActivity"></activity>
+        <activity android:name=".activity.employee.EmployeeEditCredentialsActivity"></activity>
+        <activity android:name=".activity.employee.EmployeeTeamActivity" />
         <activity android:name=".activity.employee.EmployeeAddCommitActivity" />
         <activity android:name=".activity.employee.EmployeeShowAllCommitsActivity" />
         <activity android:name=".activity.employee.EmployeeShowCommitsActivity" />
