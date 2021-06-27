@@ -1,4 +1,4 @@
-package com.selimhorri.pack.activity.view;
+package com.selimhorri.pack.pattern.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,15 +15,14 @@ import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.EmployeeShowCommitsActivity;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+public class EmployeeIndexCustomAdapter extends RecyclerView.Adapter<EmployeeIndexCustomAdapter.ViewHolder> {
 
     private List<EmployeeProjectData> employeeProjectDataList;
     private Context context;
 
-    public CustomAdapter(List<EmployeeProjectData> employeeProjectDataList, Context context) {
+    public EmployeeIndexCustomAdapter(List<EmployeeProjectData> employeeProjectDataList, Context context) {
         this.employeeProjectDataList = employeeProjectDataList;
         this.context = context;
     }
@@ -39,7 +38,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EmployeeIndexCustomAdapter.ViewHolder holder, int position) {
 
         EmployeeProjectData epd = this.employeeProjectDataList.get(position);
         holder.textViewTitle.setText(epd.getTitle());

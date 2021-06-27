@@ -5,24 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.selimhorri.pack.R;
-import com.selimhorri.pack.activity.view.CustomAdapter;
-import com.selimhorri.pack.service.AssignmentService;
-import com.selimhorri.pack.service.CredentialService;
+import com.selimhorri.pack.pattern.adapter.EmployeeIndexCustomAdapter;
 import com.selimhorri.pack.service.EmployeeService;
-import com.selimhorri.pack.service.impl.dynmc.AssignmentServiceDynamicImpl;
-import com.selimhorri.pack.service.impl.dynmc.CredentialServiceDynamicImpl;
 import com.selimhorri.pack.service.impl.dynmc.EmployeeServiceDynamicImpl;
 
 public class EmployeeIndexActivity extends AppCompatActivity {
@@ -54,7 +46,7 @@ public class EmployeeIndexActivity extends AppCompatActivity {
                             response.getEmployeeId(),
                             listOfEmployeeProjectData ->
                                     this.recyclerView.setAdapter(
-                                            new CustomAdapter(
+                                            new EmployeeIndexCustomAdapter(
                                                     listOfEmployeeProjectData.getCollection(),
                                                     EmployeeIndexActivity.this
                                             )
