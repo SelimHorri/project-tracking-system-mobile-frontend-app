@@ -16,7 +16,7 @@ import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.pattern.adapter.EmployeeTeamCustomAdapter;
 import com.selimhorri.pack.service.EmployeeService;
-import com.selimhorri.pack.service.impl.dynmc.EmployeeServiceDynamicImpl;
+import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
 
 public class EmployeeTeamActivity extends AppCompatActivity {
 
@@ -25,7 +25,7 @@ public class EmployeeTeamActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
 
     public EmployeeTeamActivity() {
-        this.employeeService = new EmployeeServiceDynamicImpl(EmployeeTeamActivity.this);
+        this.employeeService = new EmployeeServiceImpl(EmployeeTeamActivity.this);
     }
 
     @Override

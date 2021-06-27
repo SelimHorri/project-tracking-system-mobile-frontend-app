@@ -16,7 +16,7 @@ import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.pattern.adapter.EmployeeIndexCustomAdapter;
 import com.selimhorri.pack.service.EmployeeService;
-import com.selimhorri.pack.service.impl.dynmc.EmployeeServiceDynamicImpl;
+import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
 
 public class EmployeeIndexActivity extends AppCompatActivity {
 
@@ -25,7 +25,7 @@ public class EmployeeIndexActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
 
     public EmployeeIndexActivity() {
-        this.employeeService = new EmployeeServiceDynamicImpl(EmployeeIndexActivity.this);
+        this.employeeService = new EmployeeServiceImpl(EmployeeIndexActivity.this);
     }
 
     @Override

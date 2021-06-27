@@ -1,4 +1,4 @@
-package com.selimhorri.pack.service.impl.dynmc;
+package com.selimhorri.pack.service.impl;
 
 import android.content.Context;
 
@@ -23,13 +23,13 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EmployeeServiceDynamicImpl implements EmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
 
     private static final String API_URL = BackendApiUrlConstant.EmployeeBackendUrl.EMPLOYEE_API_URL;
     private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization(LocalDate.now(), "dd-MM-yyyy");
     private final Context context;
 
-    public EmployeeServiceDynamicImpl(final Context context) {
+    public EmployeeServiceImpl(final Context context) {
         this.context = context;
     }
 

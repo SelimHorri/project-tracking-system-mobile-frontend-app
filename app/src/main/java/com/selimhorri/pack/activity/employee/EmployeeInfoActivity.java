@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.service.EmployeeService;
-import com.selimhorri.pack.service.impl.dynmc.EmployeeServiceDynamicImpl;
+import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
 
 public class EmployeeInfoActivity extends AppCompatActivity {
 
@@ -32,7 +32,7 @@ public class EmployeeInfoActivity extends AppCompatActivity {
     private Button btnEditCredentials;
 
     public EmployeeInfoActivity() {
-        this.employeeService = new EmployeeServiceDynamicImpl(EmployeeInfoActivity.this);
+        this.employeeService = new EmployeeServiceImpl(EmployeeInfoActivity.this);
     }
 
     @Override

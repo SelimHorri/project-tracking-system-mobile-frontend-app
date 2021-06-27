@@ -1,4 +1,4 @@
-package com.selimhorri.pack.service.impl.dynmc;
+package com.selimhorri.pack.service.impl;
 
 import android.content.Context;
 
@@ -21,13 +21,13 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AuthenticationServiceDynamicImpl implements AuthenticationService {
+public class AuthenticationServiceImpl implements AuthenticationService {
 
     private static final String API_URL = BackendApiUrlConstant.AuthenticationBackendUrl.AUTHENTICATE_API_URL;
     private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization(LocalDateTime.now(), "dd-MM-yyyyHH:mm:ss");
     private final Context context;
 
-    public AuthenticationServiceDynamicImpl(final Context context) {
+    public AuthenticationServiceImpl(final Context context) {
         this.context = context;
     }
 

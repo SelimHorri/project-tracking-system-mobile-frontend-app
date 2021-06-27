@@ -17,8 +17,8 @@ import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.pattern.adapter.EmployeeShowCommitsCustomAdapter;
 import com.selimhorri.pack.service.AssignmentService;
 import com.selimhorri.pack.service.EmployeeService;
-import com.selimhorri.pack.service.impl.dynmc.AssignmentServiceDynamicImpl;
-import com.selimhorri.pack.service.impl.dynmc.EmployeeServiceDynamicImpl;
+import com.selimhorri.pack.service.impl.AssignmentServiceImpl;
+import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
 
 public class EmployeeShowCommitsActivity extends AppCompatActivity {
 
@@ -28,8 +28,8 @@ public class EmployeeShowCommitsActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
 
     public EmployeeShowCommitsActivity() {
-        this.employeeService = new EmployeeServiceDynamicImpl(EmployeeShowCommitsActivity.this);
-        this.assignmentService = new AssignmentServiceDynamicImpl(EmployeeShowCommitsActivity.this);
+        this.employeeService = new EmployeeServiceImpl(EmployeeShowCommitsActivity.this);
+        this.assignmentService = new AssignmentServiceImpl(EmployeeShowCommitsActivity.this);
     }
 
     @Override
