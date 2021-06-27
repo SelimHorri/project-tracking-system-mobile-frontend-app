@@ -9,6 +9,8 @@ import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class GsonSingletonPattern {
@@ -43,6 +45,45 @@ public class GsonSingletonPattern {
                     @Override
                     public LocalDate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
                         return LocalDate.parse(json.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(datePattern));
+                    }
+                })
+                .create();
+    }
+
+    public Gson configDeserialization(final LocalDate now, final String datePattern) {
+        return gsonBuilder.setPrettyPrinting()
+                .serializeNulls()
+                .setDateFormat(datePattern)
+                .registerTypeAdapter(LocalDate.class, new JsonDeserializer<LocalDate>() {
+                    @Override
+                    public LocalDate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                        return LocalDate.parse(json.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(datePattern));
+                    }
+                })
+                .create();
+    }
+
+    public Gson configDeserialization(final LocalDateTime now, final String datePattern) {
+        return gsonBuilder.setPrettyPrinting()
+                .serializeNulls()
+                .setDateFormat(datePattern)
+                .registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
+                    @Override
+                    public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                        return LocalDateTime.parse(json.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(datePattern));
+                    }
+                })
+                .create();
+    }
+
+    public Gson configDeserialization(final ZonedDateTime now, final String datePattern) {
+        return gsonBuilder.setPrettyPrinting()
+                .serializeNulls()
+                .setDateFormat(datePattern)
+                .registerTypeAdapter(ZonedDateTime.class, new JsonDeserializer<ZonedDateTime>() {
+                    @Override
+                    public ZonedDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                        return ZonedDateTime.parse(json.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(datePattern));
                     }
                 })
                 .create();

@@ -7,8 +7,8 @@ public final class ProjectCommit {
     private Integer employeeId;
     private String firstName;
     private String lastName;
-    private String projectId;
-    private LocalDateTime commitDate;
+    private Integer projectId;
+    private String commitDate;
     private String commitEmpDesc;
     private String commitMgrDesc;
 
@@ -16,7 +16,7 @@ public final class ProjectCommit {
 
     }
 
-    public ProjectCommit(Integer employeeId, String firstName, String lastName, String projectId, LocalDateTime commitDate, String commitEmpDesc, String commitMgrDesc) {
+    public ProjectCommit(Integer employeeId, String firstName, String lastName, Integer projectId, String commitDate, String commitEmpDesc, String commitMgrDesc) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -63,19 +63,19 @@ public final class ProjectCommit {
         this.lastName = lastName;
     }
 
-    public String getProjectId() {
+    public Integer getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(String projectId) {
+    public void setProjectId(Integer projectId) {
         this.projectId = projectId;
     }
 
-    public LocalDateTime getCommitDate() {
+    public String getCommitDate() {
         return commitDate;
     }
 
-    public void setCommitDate(LocalDateTime commitDate) {
+    public void setCommitDate(String commitDate) {
         this.commitDate = commitDate;
     }
 
