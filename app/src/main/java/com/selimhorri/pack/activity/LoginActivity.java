@@ -18,8 +18,8 @@ import com.selimhorri.pack.activity.manager.ManagerIndexActivity;
 import com.selimhorri.pack.model.dto.custom.AuthenticationRequest;
 import com.selimhorri.pack.service.AuthenticationService;
 import com.selimhorri.pack.service.CredentialService;
-import com.selimhorri.pack.service.impl.dynmc.AuthenticationServiceDynamicImpl;
-import com.selimhorri.pack.service.impl.dynmc.CredentialServiceDynamicImpl;
+import com.selimhorri.pack.service.impl.AuthenticationServiceImpl;
+import com.selimhorri.pack.service.impl.CredentialServiceImpl;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -30,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private Button btnLogin;
     public LoginActivity() {
-        this.authenticationService = new AuthenticationServiceDynamicImpl(LoginActivity.this);
-        this.credentialService = new CredentialServiceDynamicImpl(LoginActivity.this);
+        this.authenticationService = new AuthenticationServiceImpl(LoginActivity.this);
+        this.credentialService = new CredentialServiceImpl(LoginActivity.this);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

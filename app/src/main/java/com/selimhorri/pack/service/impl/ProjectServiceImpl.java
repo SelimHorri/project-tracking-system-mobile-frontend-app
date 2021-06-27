@@ -1,4 +1,4 @@
-package com.selimhorri.pack.service.impl.dynmc;
+package com.selimhorri.pack.service.impl;
 
 import android.content.Context;
 
@@ -10,10 +10,10 @@ import com.selimhorri.pack.constant.BackendApiUrlConstant;
 import com.selimhorri.pack.exception.payload.ExceptionMsg;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
-import com.selimhorri.pack.model.dto.Location;
+import com.selimhorri.pack.model.dto.Project;
 import com.selimhorri.pack.pattern.singleton.GsonSingletonPattern;
 import com.selimhorri.pack.pattern.singleton.QueueSingletonPattern;
-import com.selimhorri.pack.service.LocationService;
+import com.selimhorri.pack.service.ProjectService;
 
 import org.json.JSONObject;
 
@@ -22,24 +22,24 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LocationServiceDynamicImpl implements LocationService {
+public class ProjectServiceImpl implements ProjectService {
 
-    private static final String API_URL = BackendApiUrlConstant.LocationBackendUrl.LOCATION_API_URL;
+    private static final String API_URL = BackendApiUrlConstant.ProjectBackendUrl.PROJECT_API_URL;
     private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization(LocalDate.now(), "dd-MM-yyyy");
     private final Context context;
 
-    public LocationServiceDynamicImpl(final Context context) {
+    public ProjectServiceImpl(final Context context) {
         this.context = context;
     }
 
     @Override
-    public void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Location>> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err) {
+    public void findAll(final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Project>> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
                 API_URL,
                 null,
-                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Location>>() {}.getType())),
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Project>>() {}.getType())),
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
@@ -47,13 +47,13 @@ public class LocationServiceDynamicImpl implements LocationService {
     }
 
     @Override
-    public void findById(Integer locationId, ResponseCallbackListener.ResponseCallbackSuccessListener<Location> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+    public void findById(Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<Project> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
-                API_URL + "/" + locationId,
+                API_URL + "/" + projectId,
                 null,
-                response -> resp.onResponse(gson.fromJson(response.toString(), Location.class)),
+                response -> resp.onResponse(gson.fromJson(response.toString(), Project.class)),
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
@@ -61,18 +61,19 @@ public class LocationServiceDynamicImpl implements LocationService {
     }
 
     @Override
-    public void save(Location location, ResponseCallbackListener.ResponseCallbackSuccessListener<Location> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+    public void save(Project project, ResponseCallbackListener.ResponseCallbackSuccessListener<Project> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
         final Map<String, Object> map = new HashMap<>();
-        map.put("adr", location.getAdr());
-        map.put("postalCode", location.getPostalCode());
-        map.put("city", location.getCity());
+        map.put("title", project.getTitle());
+        map.put("startDate", project.getStartDate());
+        map.put("endDate", project.getEndDate());
+        map.put("status", project.getStatus());
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.POST,
                 API_URL,
                 new JSONObject(map),
-                response -> resp.onResponse(gson.fromJson(response.toString(), Location.class)),
+                response -> resp.onResponse(gson.fromJson(response.toString(), Project.class)),
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
@@ -80,19 +81,20 @@ public class LocationServiceDynamicImpl implements LocationService {
     }
 
     @Override
-    public void update(Location location, ResponseCallbackListener.ResponseCallbackSuccessListener<Location> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+    public void update(Project project, ResponseCallbackListener.ResponseCallbackSuccessListener<Project> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
         final Map<String, Object> map = new HashMap<>();
-        map.put("locationId", location.getLocationId());
-        map.put("adr", location.getAdr());
-        map.put("postalCode", location.getPostalCode());
-        map.put("city", location.getCity());
+        map.put("projectId", project.getProjectId());
+        map.put("title", project.getTitle());
+        map.put("startDate", project.getStartDate());
+        map.put("endDate", project.getEndDate());
+        map.put("status", project.getStatus());
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 API_URL,
                 new JSONObject(map),
-                response -> resp.onResponse(gson.fromJson(response.toString(), Location.class)),
+                response -> resp.onResponse(gson.fromJson(response.toString(), Project.class)),
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
@@ -100,11 +102,11 @@ public class LocationServiceDynamicImpl implements LocationService {
     }
 
     @Override
-    public void deleteById(Integer locationId, ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+    public void deleteById(Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.DELETE,
-                API_URL + "/" + locationId,
+                API_URL + "/" + projectId,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())

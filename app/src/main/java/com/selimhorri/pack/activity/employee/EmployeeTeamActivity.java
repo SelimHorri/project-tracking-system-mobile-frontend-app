@@ -14,35 +14,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
-import com.selimhorri.pack.pattern.adapter.EmployeeShowCommitsCustomAdapter;
-import com.selimhorri.pack.service.AssignmentService;
+import com.selimhorri.pack.pattern.adapter.EmployeeTeamCustomAdapter;
 import com.selimhorri.pack.service.EmployeeService;
-import com.selimhorri.pack.service.impl.AssignmentServiceImpl;
 import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
 
-public class EmployeeShowCommitsActivity extends AppCompatActivity {
+public class EmployeeTeamActivity extends AppCompatActivity {
 
     private final EmployeeService employeeService;
-    private final AssignmentService assignmentService;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
-    public EmployeeShowCommitsActivity() {
-        this.employeeService = new EmployeeServiceImpl(EmployeeShowCommitsActivity.this);
-        this.assignmentService = new AssignmentServiceImpl(EmployeeShowCommitsActivity.this);
+    public EmployeeTeamActivity() {
+        this.employeeService = new EmployeeServiceImpl(EmployeeTeamActivity.this);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employee_show_commits);
+        setContentView(R.layout.activity_employee_team);
 
-        this.recyclerView = super.findViewById(R.id.recyclerViewEmployeeShowCommits);
+        this.recyclerView = super.findViewById(R.id.recyclerViewEmployeeTeam);
         this.recyclerView.setHasFixedSize(true);
-        this.recyclerView.setLayoutManager(new LinearLayoutManager(EmployeeShowCommitsActivity.this));
-
-        final Bundle extras = super.getIntent().getExtras();
-        final Integer projectId = extras.getInt("projectId");
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(EmployeeTeamActivity.this));
 
         final SharedPreferences sp = super.getSharedPreferences("emp", MODE_PRIVATE);
         final String username = sp.getString("username", null);
@@ -50,18 +43,17 @@ public class EmployeeShowCommitsActivity extends AppCompatActivity {
         this.employeeService.findByUsername(
                 username,
                 response -> {
-                    this.assignmentService.findByEmployeeIdAndProjectId(
-                            response.getEmployeeId(),
-                            projectId,
+                    this.employeeService.findByDepartmentId(
+                            response.getDepartment().getDepartmentId(),
                             list -> {
                                 this.recyclerView.setAdapter(
-                                        new EmployeeShowCommitsCustomAdapter(EmployeeShowCommitsActivity.this, list.getCollection())
+                                        new EmployeeTeamCustomAdapter(list.getCollection(), EmployeeTeamActivity.this)
                                 );
                             },
-                            errorList -> Toast.makeText(EmployeeShowCommitsActivity.this, errorList.toString(), Toast.LENGTH_SHORT).show()
+                            errorList -> Toast.makeText(EmployeeTeamActivity.this, errorList.toString(), Toast.LENGTH_SHORT).show()
                     );
                 },
-                error -> Toast.makeText(EmployeeShowCommitsActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
+                error -> Toast.makeText(EmployeeTeamActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
 
     }
@@ -78,26 +70,24 @@ public class EmployeeShowCommitsActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.employeeAccountInfo:
-                super.startActivity(new Intent(EmployeeShowCommitsActivity.this, EmployeeInfoActivity.class));
+                super.startActivity(new Intent(EmployeeTeamActivity.this, EmployeeInfoActivity.class));
                 return true;
             case R.id.employeeTeam:
-                super.startActivity(new Intent(EmployeeShowCommitsActivity.this, EmployeeTeamActivity.class));
+                super.startActivity(new Intent(EmployeeTeamActivity.this, EmployeeTeamActivity.class));
                 return true;
             case R.id.employeeProjects:
-                super.startActivity(new Intent(EmployeeShowCommitsActivity.this, EmployeeIndexActivity.class));
+                super.startActivity(new Intent(EmployeeTeamActivity.this, EmployeeIndexActivity.class));
                 return true;
             case R.id.employeeLogout:
                 super.getSharedPreferences("emp", MODE_PRIVATE)
                         .edit()
                         .clear()
                         .apply();
-                super.startActivity(new Intent(EmployeeShowCommitsActivity.this, HomeActivity.class));
+                super.startActivity(new Intent(EmployeeTeamActivity.this, HomeActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 
 }

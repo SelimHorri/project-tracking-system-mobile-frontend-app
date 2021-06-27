@@ -4,7 +4,7 @@ import com.selimhorri.pack.model.dto.Credential;
 import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.model.dto.Employee;
 
-import java.time.LocalDate;
+import java.lang.String;
 
 public class EmployeeBuilder {
 
@@ -47,7 +47,7 @@ public class EmployeeBuilder {
         return this;
     }
 
-    public EmployeeBuilder hiredate(final LocalDate hiredate) {
+    public EmployeeBuilder hiredate(final String hiredate) {
         this.employee.setHiredate(hiredate);
         return this;
     }

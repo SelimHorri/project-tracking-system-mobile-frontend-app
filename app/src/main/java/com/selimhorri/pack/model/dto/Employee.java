@@ -1,6 +1,6 @@
 package com.selimhorri.pack.model.dto;
 
-import java.time.LocalDate;
+import java.lang.String;
 
 public final class Employee {
 
@@ -9,7 +9,7 @@ public final class Employee {
     private String lastName;
     private String email;
     private String phone;
-    private LocalDate hiredate;
+    private String hiredate;
     private String job;
     private Double salary;
     private Employee manager;
@@ -20,7 +20,7 @@ public final class Employee {
 
     }
 
-    public Employee(String firstName, String lastName, String email, String phone, LocalDate hiredate, String job, Double salary, Employee manager, Department department, Credential userCredential) {
+    public Employee(String firstName, String lastName, String email, String phone, String hiredate, String job, Double salary, Employee manager, Department department, Credential userCredential) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -33,7 +33,7 @@ public final class Employee {
         this.credential = userCredential;
     }
 
-    public Employee(Integer employeeId, String firstName, String lastName, String email, String phone, LocalDate hiredate, String job, Double salary, Employee manager, Department department, Credential userCredential) {
+    public Employee(Integer employeeId, String firstName, String lastName, String email, String phone, String hiredate, String job, Double salary, Employee manager, Department department, Credential userCredential) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -104,11 +104,11 @@ public final class Employee {
         this.phone = phone;
     }
 
-    public LocalDate getHiredate() {
+    public String getHiredate() {
         return hiredate;
     }
 
-    public void setHiredate(LocalDate hiredate) {
+    public void setHiredate(String hiredate) {
         this.hiredate = hiredate;
     }
 

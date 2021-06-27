@@ -1,4 +1,4 @@
-package com.selimhorri.pack.service.impl.dynmc;
+package com.selimhorri.pack.service.impl;
 
 import android.content.Context;
 
@@ -23,13 +23,13 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EmployeeServiceDynamicImpl implements EmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
 
     private static final String API_URL = BackendApiUrlConstant.EmployeeBackendUrl.EMPLOYEE_API_URL;
     private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization(LocalDate.now(), "dd-MM-yyyy");
     private final Context context;
 
-    public EmployeeServiceDynamicImpl(final Context context) {
+    public EmployeeServiceImpl(final Context context) {
         this.context = context;
     }
 
@@ -151,6 +151,19 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
                 API_URL + "/data/employee-project-data/" + employeeId,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<EmployeeProjectData>>() {}.getType())),
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
+        );
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
+    }
+
+    @Override
+    public void findByDepartmentId(Integer departmentId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Employee>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL + "/data/department/" + departmentId,
+                null,
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Employee>>() {}.getType())),
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);

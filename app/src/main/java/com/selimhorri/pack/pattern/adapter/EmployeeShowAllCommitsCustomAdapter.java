@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.model.dto.custom.ProjectCommit;
 import com.selimhorri.pack.service.ProjectService;
-import com.selimhorri.pack.service.impl.dynmc.ProjectServiceDynamicImpl;
+import com.selimhorri.pack.service.impl.ProjectServiceImpl;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class EmployeeShowAllCommitsCustomAdapter extends RecyclerView.Adapter<Em
     public EmployeeShowAllCommitsCustomAdapter(Context context, List<ProjectCommit> projectCommitList) {
         this.context = context;
         this.projectCommitList = projectCommitList;
-        this.projectService = new ProjectServiceDynamicImpl(context);
+        this.projectService = new ProjectServiceImpl(context);
     }
 
     @NonNull
