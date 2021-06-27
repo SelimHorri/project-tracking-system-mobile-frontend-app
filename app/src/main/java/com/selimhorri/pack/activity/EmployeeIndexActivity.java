@@ -1,5 +1,6 @@
 package com.selimhorri.pack.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,14 +28,6 @@ import com.selimhorri.pack.service.impl.dynmc.EmployeeServiceDynamicImpl;
 public class EmployeeIndexActivity extends AppCompatActivity {
 
     private final EmployeeService employeeService;
-    private TextView textView;
-    private Button btnIndex;
-    private Button btnLogout;
-    private Button btnAccountInfo;
-    private Button btnTeamMembers;
-    private Button btnMyCommits;
-    private Button btnAllCommits;
-
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
@@ -60,7 +56,6 @@ public class EmployeeIndexActivity extends AppCompatActivity {
                                     this.recyclerView.setAdapter(
                                             new CustomAdapter(
                                                     listOfEmployeeProjectData.getCollection(),
-                                                    R.layout.activity_employee_project_data_item,
                                                     EmployeeIndexActivity.this
                                             )
                                     ),
@@ -69,88 +64,34 @@ public class EmployeeIndexActivity extends AppCompatActivity {
                 },
                 error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
-
-        /*
-        this.textView = super.findViewById(R.id.textView4);
-        this.btnIndex = super.findViewById(R.id.button6);
-        this.btnLogout = super.findViewById(R.id.button5);
-        this.btnAccountInfo = super.findViewById(R.id.button);
-        this.btnTeamMembers = super.findViewById(R.id.button4);
-        this.btnMyCommits = super.findViewById(R.id.button8);
-        this.btnAllCommits = super.findViewById(R.id.button7);
-         */
-
-        /*
-        // get data
-        this.employeeService.findByUsername(
-                username,
-                response -> {
-                    this.employeeService.findByEmployeeId(
-                            response.getEmployeeId(),
-                            listOfEmployeeProjectData -> {
-                                final StringBuilder sb = new StringBuilder();
-                                listOfEmployeeProjectData.getCollection().forEach(sb::append);
-                                this.textView.setText(sb.toString());
-                            },
-                            errorOfEmployeeProjectData -> Toast.makeText(EmployeeIndexActivity.this, errorOfEmployeeProjectData.toString(), Toast.LENGTH_SHORT).show()
-                    );
-                },
-                error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
-        );
-
-        // logout
-        this.btnLogout.setOnClickListener(v -> {
-            sp.edit().clear().apply();
-            super.startActivity(new Intent(EmployeeIndexActivity.this, HomeActivity.class));
-        });
-
-        // go index
-        this.btnIndex.setOnClickListener(v -> {
-            super.startActivity(new Intent(EmployeeIndexActivity.this, EmployeeIndexActivity.class));
-        });
-
-        // go account_info
-        this.btnAccountInfo.setOnClickListener(v -> {
-            super.startActivity(new Intent(EmployeeIndexActivity.this, EmployeeInfoActivity.class));
-        });
-
-        // go team members
-        this.btnTeamMembers.setOnClickListener(v -> {
-            this.employeeService.findByUsername(
-                    username,
-                    response -> {
-
-                    },
-                    error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
-            );
-        });
-
-        // go my commits
-        this.btnMyCommits.setOnClickListener(v -> {
-            this.employeeService.findByUsername(
-                username,
-                response -> {
-
-                },
-                error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
-            );
-        });
-
-        // go all commits
-        this.btnAllCommits.setOnClickListener(v -> {
-            this.employeeService.findByUsername(
-                    username,
-                    response -> {
-
-                    },
-                    error -> Toast.makeText(EmployeeIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
-            );
-        });
-
-         */
-
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.getMenuInflater()
+                .inflate(R.menu.menu_employee, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
+        switch (item.getItemId()) {
+            case R.id.employeeAccountInfo:
+                super.startActivity(new Intent(EmployeeIndexActivity.this, EmployeeInfoActivity.class));
+                return true;
+            case R.id.employeeTeam:
+                return true;
+            case R.id.employeeProjects:
+                super.startActivity(new Intent(EmployeeIndexActivity.this, EmployeeIndexActivity.class));
+                return true;
+            case R.id.employeeLogout:
+                final SharedPreferences sp = super.getSharedPreferences("emp", MODE_PRIVATE);
+                sp.edit().clear().apply();
+                super.startActivity(new Intent(EmployeeIndexActivity.this, HomeActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

@@ -21,12 +21,10 @@ import java.util.List;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private List<EmployeeProjectData> employeeProjectDataList;
-    private int layout = R.layout.activity_employee_project_data_item;
     private Context context;
 
-    public CustomAdapter(List<EmployeeProjectData> employeeProjectDataList, final int layout, Context context) {
+    public CustomAdapter(List<EmployeeProjectData> employeeProjectDataList, Context context) {
         this.employeeProjectDataList = employeeProjectDataList;
-        this.layout = layout;
         this.context = context;
     }
 
@@ -35,7 +33,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext())
-                        .inflate(layout, parent, false);
+                        .inflate(R.layout.activity_employee_project_data_item, parent, false);
 
         return new ViewHolder(v);
     }
