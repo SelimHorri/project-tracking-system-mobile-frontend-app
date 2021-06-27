@@ -83,6 +83,7 @@ public class EmployeeShowAllCommitsActivity extends AppCompatActivity {
                 super.startActivity(new Intent(EmployeeShowAllCommitsActivity.this, EmployeeInfoActivity.class));
                 return true;
             case R.id.employeeTeam:
+                super.startActivity(new Intent(EmployeeShowAllCommitsActivity.this, EmployeeTeamActivity.class));
                 return true;
             case R.id.employeeProjects:
                 super.startActivity(new Intent(EmployeeShowAllCommitsActivity.this, EmployeeIndexActivity.class));

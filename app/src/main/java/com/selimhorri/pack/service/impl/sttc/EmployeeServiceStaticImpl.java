@@ -104,5 +104,10 @@ public class EmployeeServiceStaticImpl implements EmployeeService {
 
     }
 
+    @Override
+    public void findByDepartmentId(Integer departmentId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Employee>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+    }
+
 
 }

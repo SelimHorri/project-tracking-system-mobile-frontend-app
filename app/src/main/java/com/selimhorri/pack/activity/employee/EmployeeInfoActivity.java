@@ -91,6 +91,7 @@ public class EmployeeInfoActivity extends AppCompatActivity {
                 super.startActivity(new Intent(EmployeeInfoActivity.this, EmployeeInfoActivity.class));
                 return true;
             case R.id.employeeTeam:
+                super.startActivity(new Intent(EmployeeInfoActivity.this, EmployeeTeamActivity.class));
                 return true;
             case R.id.employeeProjects:
                 super.startActivity(new Intent(EmployeeInfoActivity.this, EmployeeIndexActivity.class));

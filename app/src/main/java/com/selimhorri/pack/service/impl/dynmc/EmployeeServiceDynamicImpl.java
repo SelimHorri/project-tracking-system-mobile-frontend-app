@@ -156,5 +156,18 @@ public class EmployeeServiceDynamicImpl implements EmployeeService {
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
     }
 
+    @Override
+    public void findByDepartmentId(Integer departmentId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<Employee>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL + "/data/department/" + departmentId,
+                null,
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<Employee>>() {}.getType())),
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
+        );
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
+    }
+
 
 }
