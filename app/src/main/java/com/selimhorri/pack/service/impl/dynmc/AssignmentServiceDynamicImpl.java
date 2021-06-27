@@ -20,6 +20,7 @@ import com.selimhorri.pack.service.AssignmentService;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +28,7 @@ import java.util.Map;
 public class AssignmentServiceDynamicImpl implements AssignmentService {
 
     private static final String API_URL = BackendApiUrlConstant.AssignmentBackendUrl.ASSIGNMENT_API_URL;
-    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyyHH:mm:ss");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization(LocalDateTime.now(), "dd-MM-yyyyHH:mm:ss");
     private final Context context;
 
     public AssignmentServiceDynamicImpl(final Context context) {

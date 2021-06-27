@@ -11,7 +11,6 @@ import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.model.dto.Employee;
 import com.selimhorri.pack.model.dto.Location;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
-import com.selimhorri.pack.model.dto.custom.ProjectCommit;
 import com.selimhorri.pack.service.EmployeeService;
 
 import java.time.LocalDate;

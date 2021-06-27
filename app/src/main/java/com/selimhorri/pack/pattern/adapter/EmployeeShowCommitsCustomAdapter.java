@@ -1,6 +1,7 @@
 package com.selimhorri.pack.pattern.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,10 +44,10 @@ public class EmployeeShowCommitsCustomAdapter extends RecyclerView.Adapter<Emplo
     public void onBindViewHolder(@NonNull EmployeeShowCommitsCustomAdapter.ViewHolder holder, int position) {
 
         this.projectService.findById(
-                Integer.parseInt(this.projectCommitList.get(position).getProjectId()),
+                this.projectCommitList.get(position).getProjectId(),
                 response -> {
                     ProjectCommit pc = this.projectCommitList.get(position);
-                    holder.textViewTitle.setText(response.getTitle());
+                    // holder.textViewTitle.setText(response.getTitle());
                     holder.textViewCommitDate.setText(pc.getCommitDate().toString());
                     holder.textViewFullName.setText(pc.getFirstName() + " " + pc.getLastName());
                     holder.textViewCommitEmpDesc.setText(pc.getCommitEmpDesc());

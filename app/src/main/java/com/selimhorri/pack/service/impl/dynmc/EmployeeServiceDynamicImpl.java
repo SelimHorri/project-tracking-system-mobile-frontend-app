@@ -12,7 +12,6 @@ import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Employee;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
-import com.selimhorri.pack.model.dto.custom.ProjectCommit;
 import com.selimhorri.pack.pattern.singleton.GsonSingletonPattern;
 import com.selimhorri.pack.pattern.singleton.QueueSingletonPattern;
 import com.selimhorri.pack.service.EmployeeService;
@@ -20,13 +19,14 @@ import com.selimhorri.pack.service.EmployeeService;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
 public class EmployeeServiceDynamicImpl implements EmployeeService {
 
     private static final String API_URL = BackendApiUrlConstant.EmployeeBackendUrl.EMPLOYEE_API_URL;
-    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization(LocalDate.now(), "dd-MM-yyyy");
     private final Context context;
 
     public EmployeeServiceDynamicImpl(final Context context) {

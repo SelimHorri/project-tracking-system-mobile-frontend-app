@@ -18,13 +18,14 @@ import com.selimhorri.pack.service.DepartmentService;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DepartmentServiceDynamicImpl implements DepartmentService {
 
     private static final String API_URL = BackendApiUrlConstant.DepartmentBackendUrl.DEPARTMENT_API_URL;
-    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization("dd-MM-yyyy");
+    private static final Gson gson = GsonSingletonPattern.getInstance().configDeserialization(LocalDate.now(), "dd-MM-yyyy");
     private final Context context;
 
     public DepartmentServiceDynamicImpl(final Context context) {
