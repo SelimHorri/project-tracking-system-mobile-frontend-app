@@ -1,7 +1,5 @@
 package com.selimhorri.pack.constant;
 
-import com.selimhorri.pack.R;
-
 abstract public class BackendApiUrlConstant {
 
     private static final String BASE_API_URL = "https://project-tracking-system-heroku.herokuapp.com/app/api"; // String.valueOf(R.string.base_api_url) + "/app/api"; // https://project-tracking-system-heroku.herokuapp.com

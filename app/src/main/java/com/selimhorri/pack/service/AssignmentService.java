@@ -3,7 +3,6 @@ package com.selimhorri.pack.service;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Assignment;
-import com.selimhorri.pack.model.dto.Project;
 import com.selimhorri.pack.model.id.AssignmentId;
 
 public interface AssignmentService {

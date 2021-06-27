@@ -1,26 +1,25 @@
 package com.selimhorri.pack.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.selimhorri.pack.R;
-import com.selimhorri.pack.exception.ObjectNotFoundException;
+import com.selimhorri.pack.activity.admin.AdminIndexActivity;
+import com.selimhorri.pack.activity.employee.EmployeeIndexActivity;
+import com.selimhorri.pack.activity.manager.ManagerIndexActivity;
 import com.selimhorri.pack.model.dto.custom.AuthenticationRequest;
 import com.selimhorri.pack.service.AuthenticationService;
 import com.selimhorri.pack.service.CredentialService;
 import com.selimhorri.pack.service.impl.dynmc.AuthenticationServiceDynamicImpl;
 import com.selimhorri.pack.service.impl.dynmc.CredentialServiceDynamicImpl;
-
-import java.util.Optional;
 
 public class LoginActivity extends AppCompatActivity {
 
