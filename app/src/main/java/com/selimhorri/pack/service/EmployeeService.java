@@ -15,7 +15,5 @@ public interface EmployeeService {
     void deleteById(final Integer employeeId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
     void findByUsername(final String username, final ResponseCallbackListener.ResponseCallbackSuccessListener<Employee> response, final ResponseCallbackListener.ResponseCallbackErrorListener error);
     void findByEmployeeId(final Integer employeeId, final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<EmployeeProjectData>> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);
-    void findByProjectId(final Integer projectId, final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);
-    void findByEmployeeIdAndProjectId(final Integer employeeId, final Integer projectId, final ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);
 
 }

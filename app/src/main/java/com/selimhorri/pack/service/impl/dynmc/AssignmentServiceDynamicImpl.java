@@ -11,6 +11,7 @@ import com.selimhorri.pack.exception.payload.ExceptionMsg;
 import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Assignment;
+import com.selimhorri.pack.model.dto.custom.ProjectCommit;
 import com.selimhorri.pack.model.id.AssignmentId;
 import com.selimhorri.pack.pattern.singleton.GsonSingletonPattern;
 import com.selimhorri.pack.pattern.singleton.QueueSingletonPattern;
@@ -119,6 +120,32 @@ public class AssignmentServiceDynamicImpl implements AssignmentService {
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
 
+    }
+
+    @Override
+    public void findByProjectId(Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL + "/data/project-commit/" + projectId,
+                null,
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<ProjectCommit>>() {}.getType())),
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
+        );
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
+    }
+
+    @Override
+    public void findByEmployeeIdAndProjectId(Integer employeeId, Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL + "/data/project-commit/" + employeeId + "/" + projectId,
+                null,
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<ProjectCommit>>() {}.getType())),
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
+        );
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
     }
 
 

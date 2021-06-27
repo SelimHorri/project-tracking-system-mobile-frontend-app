@@ -105,15 +105,5 @@ public class EmployeeServiceStaticImpl implements EmployeeService {
 
     }
 
-    @Override
-    public void findByProjectId(Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
-
-    }
-
-    @Override
-    public void findByEmployeeIdAndProjectId(Integer employeeId, Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
-
-    }
-
 
 }

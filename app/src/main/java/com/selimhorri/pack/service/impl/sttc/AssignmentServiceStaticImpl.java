@@ -9,6 +9,7 @@ import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Assignment;
 import com.selimhorri.pack.model.dto.Employee;
 import com.selimhorri.pack.model.dto.Project;
+import com.selimhorri.pack.model.dto.custom.ProjectCommit;
 import com.selimhorri.pack.model.id.AssignmentId;
 import com.selimhorri.pack.service.AssignmentService;
 
@@ -95,6 +96,16 @@ public class AssignmentServiceStaticImpl implements AssignmentService {
 
         if (!DUMMY_ASSIGNMENTS.containsKey(assignmentId))
             throw new ObjectNotFoundException("#### assignment does not exist! ####");
+
+    }
+
+    @Override
+    public void findByProjectId(Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+    }
+
+    @Override
+    public void findByEmployeeIdAndProjectId(Integer employeeId, Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
     }
 
