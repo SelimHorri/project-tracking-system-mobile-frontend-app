@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
-import com.selimhorri.pack.activity.EmployeeShowCommitsActivity;
+import com.selimhorri.pack.activity.employee.EmployeeShowCommitsActivity;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
 
 import java.util.List;
