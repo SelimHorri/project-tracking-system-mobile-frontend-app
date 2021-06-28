@@ -32,8 +32,8 @@ public class Assignment {
                 ", commitDate=" + commitDate +
                 ", commitEmpDesc='" + commitEmpDesc + '\'' +
                 ", commitMgrDesc='" + commitMgrDesc + '\'' +
-                // ", employeeId=" + employee.getEmployeeId() +
-                // ", projectId=" + project.getProjectId() +
+                ", employeeId=" + employee.getEmployeeId() +
+                ", projectId=" + project.getProjectId() +
                 '}';
     }
 

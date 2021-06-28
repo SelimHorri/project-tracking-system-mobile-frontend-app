@@ -67,39 +67,24 @@ public class EmployeeAddCommitActivity extends AppCompatActivity {
                                 this.editTextUsername.setText(response.getCredential().getUsername());
                                 this.editTextTitle.setText(project.getTitle());
 
-                                /*
                                 this.btnSubmit.setOnClickListener(v -> {
                                     this.assignmentService.save(
                                             new AssignmentBuilder()
-                                                .assignmentId(
-                                                        new AssignmentId(
-                                                                response.getEmployeeId(),
-                                                                project.getProjectId(),
-                                                                // LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")))
-                                                                LocalDateTime.now()
-                                                        ))
-                                                .commitEmpDesc(this.editTextCommitEmpDesc.getText().toString())
-                                                .commitMgrDesc("init")
-                                                .build(),
-                                            assignment -> Toast.makeText(EmployeeAddCommitActivity.this, assignment.toString(), Toast.LENGTH_LONG).show(),
-                                            error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_LONG).show()
-                                    );
-                                });
-                                */
-
-                                this.btnSubmit.setOnClickListener(v -> {
-                                    this.assignmentService.save(
-                                            new AssignmentBuilder()
-                                                    .assignmentId(
-                                                            new AssignmentId(
-                                                                    response.getEmployeeId(),
-                                                                    project.getProjectId(),
-                                                                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss"))
-                                                            ))
-                                                    .commitEmpDesc(this.editTextCommitEmpDesc.getText().toString())
-                                                    .commitMgrDesc("init")
+                                                        .assignmentId(
+                                                                new AssignmentId(
+                                                                        response.getEmployeeId(),
+                                                                        project.getProjectId(),
+                                                                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss"))
+                                                                ))
+                                                        .commitEmpDesc(this.editTextCommitEmpDesc.getText().toString())
+                                                        .commitMgrDesc("init")
+                                                        .employee(response)
+                                                        .project(project)
                                                     .build(),
-                                            assignment -> Toast.makeText(EmployeeAddCommitActivity.this, assignment.toString(), Toast.LENGTH_LONG).show(),
+                                            assignment -> {
+                                                this.editTextCommitEmpDesc.setText(null);
+                                                Toast.makeText(EmployeeAddCommitActivity.this, "Committed successfully at => " + assignment.getCommitDate(), Toast.LENGTH_LONG).show();
+                                            },
                                             error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_LONG).show()
                                     );
                                 });
