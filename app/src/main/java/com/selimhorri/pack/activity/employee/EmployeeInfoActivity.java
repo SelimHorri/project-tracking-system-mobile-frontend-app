@@ -71,7 +71,7 @@ public class EmployeeInfoActivity extends AppCompatActivity {
         );
 
         this.btnEditCredentials.setOnClickListener(v -> {
-            super.startActivity(new Intent(EmployeeInfoActivity.this, EmployeeIndexActivity.class));
+            super.startActivity(new Intent(EmployeeInfoActivity.this, EmployeeEditCredentialsActivity.class));
         });
 
     }

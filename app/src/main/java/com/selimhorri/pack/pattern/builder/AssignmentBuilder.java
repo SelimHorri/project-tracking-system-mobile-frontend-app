@@ -1,6 +1,8 @@
 package com.selimhorri.pack.pattern.builder;
 
 import com.selimhorri.pack.model.dto.Assignment;
+import com.selimhorri.pack.model.dto.Employee;
+import com.selimhorri.pack.model.dto.Project;
 import com.selimhorri.pack.model.id.AssignmentId;
 
 public class AssignmentBuilder {
@@ -33,6 +35,16 @@ public class AssignmentBuilder {
 
     public AssignmentBuilder commitMgrDesc(final String commitMgrDesc) {
         this.assignment.setCommitMgrDesc(commitMgrDesc);
+        return this;
+    }
+
+    public AssignmentBuilder employee(final Employee employee) {
+        this.assignment.setEmployee(employee);
+        return this;
+    }
+
+    public AssignmentBuilder project(final Project project) {
+        this.assignment.setProject(project);
         return this;
     }
 

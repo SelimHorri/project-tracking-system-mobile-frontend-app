@@ -54,7 +54,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
-                API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")),
+                API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate(),
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), Assignment.class)),
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
@@ -114,7 +114,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.DELETE,
-                API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")),
+                API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate(),
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), Boolean.class)),
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
