@@ -1,22 +1,66 @@
 package com.selimhorri.pack.activity.employee;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
+import com.selimhorri.pack.service.EmployeeService;
+import com.selimhorri.pack.service.ProjectService;
+import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
+import com.selimhorri.pack.service.impl.ProjectServiceImpl;
 
 public class EmployeeAddCommitActivity extends AppCompatActivity {
+
+    private final EmployeeService employeeService;
+    private final ProjectService projectService;
+    private EditText editTextUsername;
+    private EditText editTextTitle;
+    private Button btnSubmit;
+
+    public EmployeeAddCommitActivity() {
+        this.employeeService = new EmployeeServiceImpl(EmployeeAddCommitActivity.this);
+        this.projectService = new ProjectServiceImpl(EmployeeAddCommitActivity.this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_add_commit);
+
+        this.editTextUsername = super.findViewById(R.id.editTextEmployeeAddCommitUsername);
+        this.editTextTitle = super.findViewById(R.id.editTextEmployeeAddCommitIsTitle);
+        this.btnSubmit = super.findViewById(R.id.buttonEmployeeAddCommitSubmit);
+
+        final SharedPreferences sp = super.getSharedPreferences("emp", MODE_PRIVATE);
+        final String username = sp.getString("username", null);
+
+        final Bundle extras = super.getIntent().getExtras();
+        final Integer projectId = extras.getInt("projectId");
+
+        this.employeeService.findByUsername(
+                username,
+                response -> {
+                    this.projectService.findById(
+                            projectId,
+                            project -> {
+                                this.editTextUsername.setText(response.getCredential().getUsername());
+                                this.editTextTitle.setText(project.getTitle());
+                            },
+                            error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
+                    );
+                },
+                error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
+        );
     }
 
     @Override
