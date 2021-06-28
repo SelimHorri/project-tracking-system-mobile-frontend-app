@@ -1,0 +1,49 @@
+<!-- Vertical Orientation is set -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Text Displayed At Top -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="choose a profile"
+        android:id="@+id/textView"
+
+        android:showDividers="middle"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- Button Used -->
+
+    <Button
+        android:id="@+id/idBtnEmployee"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Are you an Employee?"
+        android:background="#009300" />
+
+    <Button
+        android:id="@+id/idBtnManager"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:showDividers="middle"
+        android:layout_margin="20dp"
+        android:text="Are you a Manager?"
+        android:background="#e6cf00" />
+
+    <Button
+        android:id="@+id/idBtnAdmin"
+        android:layout_width="fill_parent"
+        android:showDividers="middle"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content"
+        android:text="Are you an Admin?"
+        android:background="#0472f9" />
+
+
+</LinearLayout>

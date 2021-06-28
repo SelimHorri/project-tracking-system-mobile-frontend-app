@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.selimhorri.pack">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projecttrackingsystemandroidapp">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.employee.EmployeeEditCredentialsActivity"></activity>
+        <activity android:name=".activity.employee.EmployeeTeamActivity" />
+        <activity android:name=".activity.employee.EmployeeAddCommitActivity" />
+        <activity android:name=".activity.employee.EmployeeShowAllCommitsActivity" />
+        <activity android:name=".activity.employee.EmployeeShowCommitsActivity" />
+        <activity android:name=".activity.employee.EmployeeInfoActivity" />
+        <activity android:name=".activity.admin.AdminIndexActivity" />
+        <activity android:name=".activity.manager.ManagerIndexActivity" />
+        <activity android:name=".activity.employee.EmployeeIndexActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

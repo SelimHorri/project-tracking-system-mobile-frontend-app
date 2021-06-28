@@ -1,6 +1,6 @@
 package com.selimhorri.pack.model.dto;
 
-import java.time.LocalDate;
+import java.lang.String;
 
 public final class Employee {
 
@@ -9,18 +9,18 @@ public final class Employee {
     private String lastName;
     private String email;
     private String phone;
-    private LocalDate hiredate;
+    private String hiredate;
     private String job;
     private Double salary;
     private Employee manager;
     private Department department;
-    private Credential userCredential;
+    private Credential credential;
 
     public Employee() {
 
     }
 
-    public Employee(String firstName, String lastName, String email, String phone, LocalDate hiredate, String job, Double salary, Employee manager, Department department, Credential userCredential) {
+    public Employee(String firstName, String lastName, String email, String phone, String hiredate, String job, Double salary, Employee manager, Department department, Credential userCredential) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -30,10 +30,10 @@ public final class Employee {
         this.salary = salary;
         this.manager = manager;
         this.department = department;
-        this.userCredential = userCredential;
+        this.credential = userCredential;
     }
 
-    public Employee(Integer employeeId, String firstName, String lastName, String email, String phone, LocalDate hiredate, String job, Double salary, Employee manager, Department department, Credential userCredential) {
+    public Employee(Integer employeeId, String firstName, String lastName, String email, String phone, String hiredate, String job, Double salary, Employee manager, Department department, Credential userCredential) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -44,7 +44,7 @@ public final class Employee {
         this.salary = salary;
         this.manager = manager;
         this.department = department;
-        this.userCredential = userCredential;
+        this.credential = userCredential;
     }
 
     @Override
@@ -58,9 +58,9 @@ public final class Employee {
                 ", hiredate=" + hiredate +
                 ", job='" + job + '\'' +
                 ", salary=" + salary +
-                ", managerId=" + manager.getManager().getEmployeeId() +
+                ", managerId=" + manager.getEmployeeId() +
                 ", departmentId=" + department.getDepartmentId() +
-                ", userId=" + userCredential.getUserId() +
+                ", credentialId=" + credential.getCredentialId() +
                 '}';
     }
 
@@ -104,11 +104,11 @@ public final class Employee {
         this.phone = phone;
     }
 
-    public LocalDate getHiredate() {
+    public String getHiredate() {
         return hiredate;
     }
 
-    public void setHiredate(LocalDate hiredate) {
+    public void setHiredate(String hiredate) {
         this.hiredate = hiredate;
     }
 
@@ -144,11 +144,11 @@ public final class Employee {
         this.department = department;
     }
 
-    public Credential getUserCredential() {
-        return userCredential;
+    public Credential getCredential() {
+        return credential;
     }
 
-    public void setUserCredential(Credential userCredential) {
-        this.userCredential = userCredential;
+    public void setCredential(Credential credential) {
+        this.credential = credential;
     }
 }

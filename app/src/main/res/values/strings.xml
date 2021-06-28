@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">project-tracking-system-android-app</string>
+    <string name="base_api_url">https://project-tracking-system-heroku.herokuapp.com</string>
+    <string name="top_icon">TOP ICON</string>
+    <string name="email">Username</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="or">OR</string>
+    <string name="google_icon">google icon</string>
+    <string name="facebook_icon">facebook icon</string>
+    <string name="new_user_register_now">New User? Register Now</string>
+    <string name="hiemp">employee</string>
+    <string name="himan">manager</string>
+    <string name="hiadm">admin</string>
 </resources>

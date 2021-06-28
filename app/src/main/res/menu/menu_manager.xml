@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/managerAccountInfo"
+        android:title="Account Info"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/managerTeam"
+        android:title="Team"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/managerProjects"
+        android:title="Projects"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/managerSearchCommits"
+        android:title="Search Commits"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/managerAbout"
+        android:title="About"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/managerLogout"
+        android:title="Logout"
+        app:showAsAction="never" />
+
+</menu>
