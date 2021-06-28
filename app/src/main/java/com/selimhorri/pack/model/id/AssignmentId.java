@@ -1,19 +1,18 @@
 package com.selimhorri.pack.model.id;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class AssignmentId {
 
     private Integer employeeId;
     private Integer projectId;
-    private LocalDateTime commitDate;
+    private String commitDate;
 
     public AssignmentId() {
 
     }
 
-    public AssignmentId(final Integer employeeId, final Integer projectId, final LocalDateTime commitDate) {
+    public AssignmentId(final Integer employeeId, final Integer projectId, final String commitDate) {
         this.employeeId = employeeId;
         this.projectId = projectId;
         this.commitDate = commitDate;
@@ -59,11 +58,11 @@ public class AssignmentId {
         this.projectId = projectId;
     }
 
-    public LocalDateTime getCommitDate() {
+    public String getCommitDate() {
         return commitDate;
     }
 
-    public void setCommitDate(LocalDateTime commitDate) {
+    public void setCommitDate(String commitDate) {
         this.commitDate = commitDate;
     }
 

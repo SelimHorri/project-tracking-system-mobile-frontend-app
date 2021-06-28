@@ -1,12 +1,10 @@
 package com.selimhorri.pack.model.dto;
 
-import java.time.LocalDateTime;
-
 public class Assignment {
 
     private Integer employeeId;
     private Integer projectId;
-    private LocalDateTime commitDate;
+    private String commitDate;
     private String commitEmpDesc;
     private String commitMgrDesc;
     private Employee employee;
@@ -16,7 +14,7 @@ public class Assignment {
 
     }
 
-    public Assignment(Integer employeeId, Integer projectId, LocalDateTime commitDate, String commitEmpDesc, String commitMgrDesc, Employee employee, Project project) {
+    public Assignment(Integer employeeId, Integer projectId, String commitDate, String commitEmpDesc, String commitMgrDesc, Employee employee, Project project) {
         this.employeeId = employeeId;
         this.projectId = projectId;
         this.commitDate = commitDate;
@@ -34,8 +32,8 @@ public class Assignment {
                 ", commitDate=" + commitDate +
                 ", commitEmpDesc='" + commitEmpDesc + '\'' +
                 ", commitMgrDesc='" + commitMgrDesc + '\'' +
-                ", employeeId=" + employee.getEmployeeId() +
-                ", projectId=" + project.getProjectId() +
+                // ", employeeId=" + employee.getEmployeeId() +
+                // ", projectId=" + project.getProjectId() +
                 '}';
     }
 
@@ -55,11 +53,11 @@ public class Assignment {
         this.projectId = projectId;
     }
 
-    public LocalDateTime getCommitDate() {
+    public String getCommitDate() {
         return commitDate;
     }
 
-    public void setCommitDate(LocalDateTime commitDate) {
+    public void setCommitDate(String commitDate) {
         this.commitDate = commitDate;
     }
 

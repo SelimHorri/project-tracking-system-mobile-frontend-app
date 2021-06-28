@@ -14,22 +14,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
+import com.selimhorri.pack.model.id.AssignmentId;
+import com.selimhorri.pack.pattern.builder.AssignmentBuilder;
+import com.selimhorri.pack.service.AssignmentService;
 import com.selimhorri.pack.service.EmployeeService;
 import com.selimhorri.pack.service.ProjectService;
+import com.selimhorri.pack.service.impl.AssignmentServiceImpl;
 import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
 import com.selimhorri.pack.service.impl.ProjectServiceImpl;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class EmployeeAddCommitActivity extends AppCompatActivity {
 
     private final EmployeeService employeeService;
     private final ProjectService projectService;
+    private final AssignmentService assignmentService;
     private EditText editTextUsername;
     private EditText editTextTitle;
+    private EditText editTextCommitEmpDesc;
     private Button btnSubmit;
 
     public EmployeeAddCommitActivity() {
         this.employeeService = new EmployeeServiceImpl(EmployeeAddCommitActivity.this);
         this.projectService = new ProjectServiceImpl(EmployeeAddCommitActivity.this);
+        this.assignmentService = new AssignmentServiceImpl(EmployeeAddCommitActivity.this);
     }
 
     @Override
@@ -39,6 +49,7 @@ public class EmployeeAddCommitActivity extends AppCompatActivity {
 
         this.editTextUsername = super.findViewById(R.id.editTextEmployeeAddCommitUsername);
         this.editTextTitle = super.findViewById(R.id.editTextEmployeeAddCommitIsTitle);
+        this.editTextCommitEmpDesc = super.findViewById(R.id.editTextEmployeeAddCommitCommitEmpDesc);
         this.btnSubmit = super.findViewById(R.id.buttonEmployeeAddCommitSubmit);
 
         final SharedPreferences sp = super.getSharedPreferences("emp", MODE_PRIVATE);
@@ -49,18 +60,56 @@ public class EmployeeAddCommitActivity extends AppCompatActivity {
 
         this.employeeService.findByUsername(
                 username,
-                response -> {
+                response ->
                     this.projectService.findById(
                             projectId,
                             project -> {
                                 this.editTextUsername.setText(response.getCredential().getUsername());
                                 this.editTextTitle.setText(project.getTitle());
+
+                                /*
+                                this.btnSubmit.setOnClickListener(v -> {
+                                    this.assignmentService.save(
+                                            new AssignmentBuilder()
+                                                .assignmentId(
+                                                        new AssignmentId(
+                                                                response.getEmployeeId(),
+                                                                project.getProjectId(),
+                                                                // LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")))
+                                                                LocalDateTime.now()
+                                                        ))
+                                                .commitEmpDesc(this.editTextCommitEmpDesc.getText().toString())
+                                                .commitMgrDesc("init")
+                                                .build(),
+                                            assignment -> Toast.makeText(EmployeeAddCommitActivity.this, assignment.toString(), Toast.LENGTH_LONG).show(),
+                                            error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_LONG).show()
+                                    );
+                                });
+                                */
+
+                                this.btnSubmit.setOnClickListener(v -> {
+                                    this.assignmentService.save(
+                                            new AssignmentBuilder()
+                                                    .assignmentId(
+                                                            new AssignmentId(
+                                                                    response.getEmployeeId(),
+                                                                    project.getProjectId(),
+                                                                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss"))
+                                                            ))
+                                                    .commitEmpDesc(this.editTextCommitEmpDesc.getText().toString())
+                                                    .commitMgrDesc("init")
+                                                    .build(),
+                                            assignment -> Toast.makeText(EmployeeAddCommitActivity.this, assignment.toString(), Toast.LENGTH_LONG).show(),
+                                            error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_LONG).show()
+                                    );
+                                });
+
                             },
                             error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
-                    );
-                },
+                    ),
                 error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
+
     }
 
     @Override
