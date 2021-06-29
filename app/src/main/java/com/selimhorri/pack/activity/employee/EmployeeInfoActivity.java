@@ -64,7 +64,7 @@ public class EmployeeInfoActivity extends AppCompatActivity {
                     this.textViewEmail.setText(response.getEmail());
                     this.textViewDepartment.setText(response.getDepartment().getDepartmentName());
                     this.textViewPhone.setText(response.getPhone());
-                    this.textViewHiredate.setText(response.getHiredate().toString());
+                    this.textViewHiredate.setText(response.getHiredate());
                     this.textViewSalary.setText(String.valueOf(response.getSalary()));
                 },
                 error -> Toast.makeText(EmployeeInfoActivity.this, error.toString(), Toast.LENGTH_SHORT).show()

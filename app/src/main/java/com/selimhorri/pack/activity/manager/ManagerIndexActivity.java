@@ -71,7 +71,7 @@ public class ManagerIndexActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.managerAccountInfo:
-                // super.startActivity(new Intent(ManagerIndexActivity.this, ManagerInfoActivity.class));
+                super.startActivity(new Intent(ManagerIndexActivity.this, ManagerInfoActivity.class));
                 return true;
             case R.id.managerTeam:
                 return true;

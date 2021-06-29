@@ -136,7 +136,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                 Request.Method.GET,
                 API_URL + "/username/" + username,
                 null,
-                // response -> resp.onResponse(new Gson().fromJson(response.toString(), Employee.class)),
                 response -> resp.onResponse(gson.fromJson(response.toString(), Employee.class)),
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
