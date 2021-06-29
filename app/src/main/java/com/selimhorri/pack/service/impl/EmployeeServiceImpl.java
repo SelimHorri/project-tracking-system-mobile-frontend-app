@@ -12,6 +12,7 @@ import com.selimhorri.pack.listener.ResponseCallbackListener;
 import com.selimhorri.pack.model.collection.DtoCollection;
 import com.selimhorri.pack.model.dto.Employee;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
+import com.selimhorri.pack.model.dto.custom.ManagerProjectData;
 import com.selimhorri.pack.pattern.singleton.GsonSingletonPattern;
 import com.selimhorri.pack.pattern.singleton.QueueSingletonPattern;
 import com.selimhorri.pack.service.EmployeeService;
@@ -144,11 +145,24 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void findByEmployeeId(Integer employeeId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<EmployeeProjectData>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+    public void findAllEmployeeProjectDataByEmployeeId(Integer employeeId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<EmployeeProjectData>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
                 API_URL + "/data/employee-project-data/" + employeeId,
+                null,
+                response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<EmployeeProjectData>>() {}.getType())),
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
+        );
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
+    }
+
+    @Override
+    public void findAllManagerProjectDataByEmployeeId(Integer employeeId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<EmployeeProjectData>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL + "/data/manager-project-data/" + employeeId,
                 null,
                 response -> resp.onResponse(gson.fromJson(response.toString(), new TypeToken<DtoCollection<EmployeeProjectData>>() {}.getType())),
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
