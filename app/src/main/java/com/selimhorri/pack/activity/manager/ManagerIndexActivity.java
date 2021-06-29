@@ -42,7 +42,7 @@ public class ManagerIndexActivity extends AppCompatActivity {
 
         this.employeeService.findByUsername(
                 username,
-                response -> {
+                response ->
                     this.employeeService.findAllManagerProjectDataByEmployeeId(
                             response.getEmployeeId(),
                             list ->
@@ -53,8 +53,7 @@ public class ManagerIndexActivity extends AppCompatActivity {
                                         )
                                 ),
                             errorOfManagerProjectData -> Toast.makeText(ManagerIndexActivity.this, errorOfManagerProjectData.toString(), Toast.LENGTH_SHORT).show()
-                    );
-                },
+                    ),
                 error -> Toast.makeText(ManagerIndexActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
 

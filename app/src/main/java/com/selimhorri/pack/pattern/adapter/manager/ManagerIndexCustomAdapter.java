@@ -11,19 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
-import com.selimhorri.pack.activity.manager.ManagerIndexActivity;
-import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
-import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
+import com.selimhorri.pack.model.dto.custom.ManagerProjectData;
 
 import java.util.List;
 
 public class ManagerIndexCustomAdapter extends RecyclerView.Adapter<ManagerIndexCustomAdapter.ViewHolder> {
 
-    private List<EmployeeProjectData> employeeProjectDataList;
+    private List<ManagerProjectData> managerProjectDataList;
     private Context context;
 
-    public ManagerIndexCustomAdapter(List<EmployeeProjectData> employeeProjectDataList, Context context) {
-        this.employeeProjectDataList = employeeProjectDataList;
+    public ManagerIndexCustomAdapter(List<ManagerProjectData> managerProjectDataList, Context context) {
+        this.managerProjectDataList = managerProjectDataList;
         this.context = context;
     }
 
@@ -40,7 +38,7 @@ public class ManagerIndexCustomAdapter extends RecyclerView.Adapter<ManagerIndex
     @Override
     public void onBindViewHolder(@NonNull ManagerIndexCustomAdapter.ViewHolder holder, int position) {
 
-        EmployeeProjectData epd = this.employeeProjectDataList.get(position);
+        ManagerProjectData epd = this.managerProjectDataList.get(position);
         holder.textViewTitle.setText(epd.getTitle());
         holder.textViewStartDate.setText("Start date: " + epd.getStartDate());
         holder.textViewEndDate.setText("End date: " + epd.getEndDate());
@@ -61,7 +59,7 @@ public class ManagerIndexCustomAdapter extends RecyclerView.Adapter<ManagerIndex
 
     @Override
     public int getItemCount() {
-        return this.employeeProjectDataList.size();
+        return this.managerProjectDataList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
