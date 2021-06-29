@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
-import com.selimhorri.pack.pattern.adapter.EmployeeIndexCustomAdapter;
+import com.selimhorri.pack.pattern.adapter.employee.EmployeeIndexCustomAdapter;
 import com.selimhorri.pack.service.EmployeeService;
 import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
 
@@ -43,7 +43,7 @@ public class EmployeeIndexActivity extends AppCompatActivity {
         this.employeeService.findByUsername(
                 username,
                 response -> {
-                    this.employeeService.findByEmployeeId(
+                    this.employeeService.findAllEmployeeProjectDataByEmployeeId(
                             response.getEmployeeId(),
                             listOfEmployeeProjectData ->
                                     this.recyclerView.setAdapter(

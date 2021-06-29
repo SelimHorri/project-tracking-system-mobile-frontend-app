@@ -1,7 +1,5 @@
 package com.selimhorri.pack.model.dto.custom;
 
-import androidx.core.app.NotificationCompat;
-
 import java.util.UUID;
 
 public final class NotificationMsg {

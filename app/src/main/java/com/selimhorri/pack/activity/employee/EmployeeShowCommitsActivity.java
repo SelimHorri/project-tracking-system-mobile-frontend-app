@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
-import com.selimhorri.pack.pattern.adapter.EmployeeShowCommitsCustomAdapter;
+import com.selimhorri.pack.pattern.adapter.employee.EmployeeShowCommitsCustomAdapter;
 import com.selimhorri.pack.service.AssignmentService;
 import com.selimhorri.pack.service.EmployeeService;
 import com.selimhorri.pack.service.impl.AssignmentServiceImpl;

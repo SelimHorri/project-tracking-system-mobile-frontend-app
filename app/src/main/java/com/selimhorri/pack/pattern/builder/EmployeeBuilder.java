@@ -4,8 +4,6 @@ import com.selimhorri.pack.model.dto.Credential;
 import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.model.dto.Employee;
 
-import java.lang.String;
-
 public class EmployeeBuilder {
 
     private final Employee employee;

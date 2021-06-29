@@ -1,7 +1,5 @@
 package com.selimhorri.pack.model.dto;
 
-import java.lang.String;
-
 public final class Employee {
 
     private Integer employeeId;
