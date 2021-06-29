@@ -17,26 +17,26 @@
 
             <TextView
                 android:id="@+id/textViewTitle"
-                android:text="Poject Title"
+                android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
             />
             <TextView
                 android:id="@+id/textViewStartDate"
-                android:text="StartDate"
+                android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/textViewEndDate"
-                android:text="EndDate"
+                android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/textViewStatus"
-                android:text="Status"
+                android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.model.dto.custom.ManagerProjectData;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ManagerIndexCustomAdapter extends RecyclerView.Adapter<ManagerIndexCustomAdapter.ViewHolder> {
@@ -40,8 +42,8 @@ public class ManagerIndexCustomAdapter extends RecyclerView.Adapter<ManagerIndex
 
         ManagerProjectData epd = this.managerProjectDataList.get(position);
         holder.textViewTitle.setText(epd.getTitle());
-        holder.textViewStartDate.setText("Start date: " + epd.getStartDate());
-        holder.textViewEndDate.setText("End date: " + epd.getEndDate());
+        holder.textViewStartDate.setText("Start date: " + LocalDate.parse(epd.getStartDate()).format(DateTimeFormatter.ofPattern("dd-M-yyyy")));
+        holder.textViewEndDate.setText("End date: " + LocalDate.parse(epd.getEndDate()).format(DateTimeFormatter.ofPattern("dd-M-yyyy")));
         holder.textViewStatus.setText("Status: "+ epd.getStatus());
         holder.btnCommits.setOnClickListener(v -> {
 

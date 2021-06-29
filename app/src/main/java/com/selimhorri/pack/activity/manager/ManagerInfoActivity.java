@@ -1,8 +1,5 @@
 package com.selimhorri.pack.activity.manager;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,10 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.activity.employee.EmployeeEditCredentialsActivity;
-import com.selimhorri.pack.activity.employee.EmployeeInfoActivity;
 import com.selimhorri.pack.service.EmployeeService;
 import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
 
@@ -93,6 +92,7 @@ public class ManagerInfoActivity extends AppCompatActivity {
                 super.startActivity(new Intent(ManagerInfoActivity.this, ManagerInfoActivity.class));
                 return true;
             case R.id.managerTeam:
+                super.startActivity(new Intent(ManagerInfoActivity.this, ManagerTeamActivity.class));
                 return true;
             case R.id.managerProjects:
                 super.startActivity(new Intent(ManagerInfoActivity.this, ManagerIndexActivity.class));

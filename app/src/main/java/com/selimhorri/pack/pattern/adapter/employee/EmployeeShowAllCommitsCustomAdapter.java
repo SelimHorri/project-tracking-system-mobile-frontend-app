@@ -15,6 +15,8 @@ import com.selimhorri.pack.model.dto.custom.ProjectCommit;
 import com.selimhorri.pack.service.ProjectService;
 import com.selimhorri.pack.service.impl.ProjectServiceImpl;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class EmployeeShowAllCommitsCustomAdapter extends RecyclerView.Adapter<EmployeeShowAllCommitsCustomAdapter.ViewHolder> {
@@ -47,7 +49,7 @@ public class EmployeeShowAllCommitsCustomAdapter extends RecyclerView.Adapter<Em
                 response -> {
                     ProjectCommit pc = this.projectCommitList.get(position);
                     holder.textViewTitle.setText(response.getTitle());
-                    holder.textViewCommitDate.setText(pc.getCommitDate().toString());
+                    holder.textViewCommitDate.setText(LocalDateTime.parse(pc.getCommitDate()).format(DateTimeFormatter.ofPattern("dd-M-yyyyHH:mm:ss")));
                     holder.textViewFullName.setText(pc.getFirstName() + " " + pc.getLastName());
                     holder.textViewCommitEmpDesc.setText(pc.getCommitEmpDesc());
                     holder.textViewCommitMgrDesc.setText(pc.getCommitMgrDesc());

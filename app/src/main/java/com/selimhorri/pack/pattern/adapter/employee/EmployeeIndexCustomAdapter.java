@@ -17,6 +17,8 @@ import com.selimhorri.pack.activity.employee.EmployeeShowAllCommitsActivity;
 import com.selimhorri.pack.activity.employee.EmployeeShowCommitsActivity;
 import com.selimhorri.pack.model.dto.custom.EmployeeProjectData;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class EmployeeIndexCustomAdapter extends RecyclerView.Adapter<EmployeeIndexCustomAdapter.ViewHolder> {
@@ -44,8 +46,8 @@ public class EmployeeIndexCustomAdapter extends RecyclerView.Adapter<EmployeeInd
 
         EmployeeProjectData epd = this.employeeProjectDataList.get(position);
         holder.textViewTitle.setText(epd.getTitle());
-        holder.textViewStartDate.setText("Start date: " + epd.getStartDate());
-        holder.textViewEndDate.setText("End date: " + epd.getEndDate());
+        holder.textViewStartDate.setText("Start date: " + LocalDate.parse(epd.getStartDate()).format(DateTimeFormatter.ofPattern("dd-M-yyyy")));
+        holder.textViewEndDate.setText("End date: " + LocalDate.parse(epd.getEndDate()).format(DateTimeFormatter.ofPattern("dd-M-yyyy")));
         holder.textViewStatus.setText("Status: "+ epd.getStatus());
         holder.btnMyCommits.setOnClickListener(v -> {
             this.context.startActivity(
