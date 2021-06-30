@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,10 +55,12 @@ public class ManagerShowCommitsCustomAdapter extends RecyclerView.Adapter<Manage
                     holder.textViewFullName.setText(pc.getFirstName() + " " + pc.getLastName());
                     holder.textViewCommitEmpDesc.setText(pc.getCommitEmpDesc());
                     holder.textViewCommitMgrDesc.setText(pc.getCommitMgrDesc());
+                    holder.linearLayoutAddComment.setVisibility(View.VISIBLE);
+                    holder.btnAddComment.setVisibility(View.VISIBLE);
                 },
                 error -> Toast.makeText(context, "Problem", Toast.LENGTH_SHORT).show()
         );
-        holder.btnAddCommits.setOnClickListener(v -> {
+        holder.btnAddComment.setOnClickListener(v -> {
 
         });
 
@@ -75,7 +78,8 @@ public class ManagerShowCommitsCustomAdapter extends RecyclerView.Adapter<Manage
         private TextView textViewFullName;
         private TextView textViewCommitEmpDesc;
         private TextView textViewCommitMgrDesc;
-        private Button btnAddCommits;
+        private LinearLayout linearLayoutAddComment;
+        private Button btnAddComment;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,7 +88,8 @@ public class ManagerShowCommitsCustomAdapter extends RecyclerView.Adapter<Manage
             this.textViewFullName = itemView.findViewById(R.id.textViewEmployeeShowCommitsFullName);
             this.textViewCommitEmpDesc = itemView.findViewById(R.id.textViewEmployeeShowCommitsCommitEmpDesc);
             this.textViewCommitMgrDesc = itemView.findViewById(R.id.textViewEmployeeShowCommitsCommitMgrDesc);
-            this.btnAddCommits = itemView.findViewById(R.id.buttonManagerShowCommitsAddComment);
+            this.linearLayoutAddComment = itemView.findViewById(R.id.linearLayoutAddComment);
+            this.btnAddComment = itemView.findViewById(R.id.buttonAddComment);
         }
 
 

@@ -49,7 +49,7 @@ public class EmployeeShowCommitsActivity extends AppCompatActivity {
 
         this.employeeService.findByUsername(
                 username,
-                response -> {
+                response ->
                     this.assignmentService.findByEmployeeIdAndProjectId(
                             response.getEmployeeId(),
                             projectId,
@@ -59,8 +59,7 @@ public class EmployeeShowCommitsActivity extends AppCompatActivity {
                                 );
                             },
                             errorList -> Toast.makeText(EmployeeShowCommitsActivity.this, errorList.toString(), Toast.LENGTH_SHORT).show()
-                    );
-                },
+                    ),
                 error -> Toast.makeText(EmployeeShowCommitsActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
 

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +55,7 @@ public class EmployeeShowAllCommitsCustomAdapter extends RecyclerView.Adapter<Em
                     holder.textViewFullName.setText(pc.getFirstName() + " " + pc.getLastName());
                     holder.textViewCommitEmpDesc.setText(pc.getCommitEmpDesc());
                     holder.textViewCommitMgrDesc.setText(pc.getCommitMgrDesc());
+                    // holder.linearLayoutAddComment.setVisibility(View.INVISIBLE);
                 },
                 error -> Toast.makeText(context, "Problem", Toast.LENGTH_SHORT).show()
         );
@@ -71,6 +74,7 @@ public class EmployeeShowAllCommitsCustomAdapter extends RecyclerView.Adapter<Em
         private TextView textViewFullName;
         private TextView textViewCommitEmpDesc;
         private TextView textViewCommitMgrDesc;
+        private LinearLayout linearLayoutAddComment;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,6 +83,7 @@ public class EmployeeShowAllCommitsCustomAdapter extends RecyclerView.Adapter<Em
             this.textViewFullName = itemView.findViewById(R.id.textViewEmployeeShowCommitsFullName);
             this.textViewCommitEmpDesc = itemView.findViewById(R.id.textViewEmployeeShowCommitsCommitEmpDesc);
             this.textViewCommitMgrDesc = itemView.findViewById(R.id.textViewEmployeeShowCommitsCommitMgrDesc);
+            // this.linearLayoutAddComment = itemView.findViewById(R.id.linearLayoutAddComment);
         }
 
 
