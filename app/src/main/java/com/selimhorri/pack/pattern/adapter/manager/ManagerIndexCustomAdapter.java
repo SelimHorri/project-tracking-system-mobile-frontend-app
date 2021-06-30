@@ -1,6 +1,7 @@
 package com.selimhorri.pack.pattern.adapter.manager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
+import com.selimhorri.pack.activity.manager.ManagerShowCommitsActivity;
 import com.selimhorri.pack.model.dto.custom.ManagerProjectData;
 
 import java.time.LocalDate;
@@ -46,16 +48,34 @@ public class ManagerIndexCustomAdapter extends RecyclerView.Adapter<ManagerIndex
         holder.textViewEndDate.setText("End date: " + LocalDate.parse(epd.getEndDate()).format(DateTimeFormatter.ofPattern("dd-M-yyyy")));
         holder.textViewStatus.setText("Status: "+ epd.getStatus());
         holder.btnCommits.setOnClickListener(v -> {
-
+            this.context.startActivity(
+                    new Intent(this.context, ManagerShowCommitsActivity.class)
+                            .putExtra("projectId", epd.getProjectId())
+            );
         });
         holder.btnAssign.setOnClickListener(v -> {
-
+            /*
+            this.context.startActivity(
+                    new Intent(this.context, ManagerShowCommitsActivity.class)
+                            .putExtra("projectId", epd.getProjectId())
+            );
+            */
         });
         holder.btnEdit.setOnClickListener(v -> {
-
+            /*
+            this.context.startActivity(
+                    new Intent(this.context, ManagerShowCommitsActivity.class)
+                            .putExtra("projectId", epd.getProjectId())
+            );
+            */
         });
         holder.btnDelete.setOnClickListener(v -> {
-
+            /*
+            this.context.startActivity(
+                    new Intent(this.context, ManagerShowCommitsActivity.class)
+                            .putExtra("projectId", epd.getProjectId())
+            );
+            */
         });
     }
 

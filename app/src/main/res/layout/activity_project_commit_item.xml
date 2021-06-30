@@ -107,6 +107,24 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#c0c0c0"/>
+            <LinearLayout
+                android:padding="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/buttonManagerShowCommitsAddComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Add comment"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
