@@ -12,7 +12,7 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/employeeProjects"
-        android:title="Projects"
+        android:title="All projects"
         app:showAsAction="never" />
     <item
         android:id="@+id/employeeAbout"
