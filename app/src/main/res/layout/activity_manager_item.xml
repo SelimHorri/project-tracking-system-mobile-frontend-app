@@ -1,205 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="30dp">
-
+        android:layout_height="500dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="8dp">
         <LinearLayout
-            android:padding="1dp"
+            android:id="@+id/linearLayout1"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="match_parent"
+            android:background="@drawable/bg2">
             <LinearLayout
-                android:layout_marginTop="1dp"
-                android:padding="3dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FirstName: "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-                <TextView
-                    android:id="@+id/textViewManagerTeamFirstName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            </LinearLayout>
-            <View
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
-            <LinearLayout
-                android:padding="3dp"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp">
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="LastName: "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-                <TextView
-                    android:id="@+id/textViewManagerTeamLastName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FirstName: "
+                        android:textSize="22sp"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textViewManagerTeamFirstName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textSize="14sp"
+                        android:textColor="@color/white" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LastName: "
+                        android:textSize="22sp"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textViewManagerTeamLastName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textSize="14sp"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email: "
+                        android:textSize="22sp"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textViewManagerTeamEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textSize="14sp"
+                        android:textColor="@color/white" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone:  "
+                        android:textSize="22sp"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textViewManagerTeamPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textSize="14sp"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hiredate: "
+                        android:textSize="22sp"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textViewManagerTeamHiredate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textSize="14sp"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Job: "
+                        android:textSize="22sp"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textViewManagerTeamJob"                  android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textSize="14sp"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Department: "
+                        android:textSize="22sp"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textViewManagerTeamDepartment"               android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textSize="14sp"
+                        android:textColor="@color/white" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Location: "
+                        android:textSize="22sp"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textViewManagerTeamLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textSize="14sp"
+                        android:textColor="@color/white" />
+
+
+
+
+                </LinearLayout>
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
-            <LinearLayout
-                android:padding="3dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email: "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-                <TextView
-                    android:id="@+id/textViewManagerTeamEmail"
-                    android:layout_width="wrap_content"
-                    android:text="-"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
-            <LinearLayout
-                android:padding="3dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phone: "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-                <TextView
-                    android:id="@+id/textViewManagerTeamPhone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
-            <LinearLayout
-                android:padding="3dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hiredate: "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-                <TextView
-                    android:id="@+id/textViewManagerTeamHiredate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
-            <LinearLayout
-                android:padding="3dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Job: "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-                <TextView
-                    android:id="@+id/textViewManagerTeamJob"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
-            <LinearLayout
-                android:padding="3dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Department: "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-                <TextView
-                    android:id="@+id/textViewManagerTeamDepartment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
-            <LinearLayout
-                android:padding="3dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Location: "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-                <TextView
-                    android:id="@+id/textViewManagerTeamLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="-"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            </LinearLayout>
 
         </LinearLayout>
 
+
+
     </androidx.cardview.widget.CardView>
+
 
 </LinearLayout>
