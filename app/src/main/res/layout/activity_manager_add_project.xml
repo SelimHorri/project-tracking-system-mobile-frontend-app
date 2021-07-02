@@ -26,7 +26,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectFirstName"
+                    android:id="@+id/editTextManagerAddProjectTitle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -44,7 +44,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectLastName"
+                    android:id="@+id/editTextManagerAddProjectStartDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="StartDate.."
@@ -62,7 +62,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectEmail"
+                    android:id="@+id/editTextManagerAddProjectEndDate"
                     android:layout_width="match_parent"
                     android:hint="EndDate.."
                     android:layout_height="match_parent"
@@ -80,7 +80,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectPhone"
+                    android:id="@+id/editTextManagerAddProjectStatus"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Status.."
@@ -104,10 +104,21 @@
                     android:text="Assign to :"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
-                <CheckBox
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="sss"/>
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewManagerAddProjectAssignTo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
 
             </LinearLayout>
             <LinearLayout
