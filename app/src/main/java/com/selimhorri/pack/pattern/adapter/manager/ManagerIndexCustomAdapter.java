@@ -7,13 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
+import com.selimhorri.pack.activity.manager.ManagerIndexActivity;
 import com.selimhorri.pack.activity.manager.ManagerShowCommitsActivity;
 import com.selimhorri.pack.model.dto.custom.ManagerProjectData;
+import com.selimhorri.pack.service.AssignmentService;
+import com.selimhorri.pack.service.ProjectService;
+import com.selimhorri.pack.service.impl.AssignmentServiceImpl;
+import com.selimhorri.pack.service.impl.ProjectServiceImpl;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -21,12 +27,16 @@ import java.util.List;
 
 public class ManagerIndexCustomAdapter extends RecyclerView.Adapter<ManagerIndexCustomAdapter.ViewHolder> {
 
+    private final ProjectService projectService;
+    private final AssignmentService assignmentService;
     private List<ManagerProjectData> managerProjectDataList;
     private Context context;
 
     public ManagerIndexCustomAdapter(List<ManagerProjectData> managerProjectDataList, Context context) {
         this.managerProjectDataList = managerProjectDataList;
         this.context = context;
+        this.projectService = new ProjectServiceImpl(context);
+        this.assignmentService = new AssignmentServiceImpl(context);
     }
 
     @NonNull
@@ -70,12 +80,20 @@ public class ManagerIndexCustomAdapter extends RecyclerView.Adapter<ManagerIndex
             */
         });
         holder.btnDelete.setOnClickListener(v -> {
-            /*
-            this.context.startActivity(
-                    new Intent(this.context, ManagerShowCommitsActivity.class)
-                            .putExtra("projectId", epd.getProjectId())
+
+            this.projectService.deleteById(
+                    epd.getProjectId(),
+                    response -> {
+                        if (!response)
+                            Toast.makeText(this.context, "Problem here with deletion, try again!", Toast.LENGTH_SHORT).show();
+                        else
+                            this.context.startActivity(
+                                    new Intent(this.context, ManagerIndexActivity.class)
+                                            .putExtra("projectId", epd.getProjectId())
+                            );
+                    },
+                    error -> Toast.makeText(this.context, error.toString(), Toast.LENGTH_SHORT).show()
             );
-            */
         });
     }
 
