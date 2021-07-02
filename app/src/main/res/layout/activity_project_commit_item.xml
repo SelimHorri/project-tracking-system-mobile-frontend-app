@@ -25,7 +25,6 @@
                     android:layout_height="wrap_content"
                     android:text="-"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display2"/>
-
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -112,16 +111,19 @@
                 android:layout_height="2dp"
                 android:background="#c0c0c0"/>
             <LinearLayout
+                android:id="@+id/linearLayoutAddComment"
+                android:visibility="invisible"
                 android:padding="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/buttonManagerShowCommitsAddComment"
+                    android:id="@+id/buttonAddComment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Add comment"
+                    android:visibility="invisible"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
             </LinearLayout>

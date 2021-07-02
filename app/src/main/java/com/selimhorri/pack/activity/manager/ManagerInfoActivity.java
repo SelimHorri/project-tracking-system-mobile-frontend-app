@@ -94,6 +94,9 @@ public class ManagerInfoActivity extends AppCompatActivity {
             case R.id.managerTeam:
                 super.startActivity(new Intent(ManagerInfoActivity.this, ManagerTeamActivity.class));
                 return true;
+            case R.id.managerAddProject:
+                super.startActivity(new Intent(ManagerInfoActivity.this, ManagerAddProjectActivity.class));
+                return true;
             case R.id.managerProjects:
                 super.startActivity(new Intent(ManagerInfoActivity.this, ManagerIndexActivity.class));
                 return true;
