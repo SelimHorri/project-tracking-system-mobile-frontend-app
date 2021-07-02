@@ -75,34 +75,37 @@ public class EmployeeAddCommitActivity extends AppCompatActivity {
                                 this.editTextTitle.setText(project.getTitle());
 
                                 this.btnSubmit.setOnClickListener(v -> {
-                                    this.assignmentService.save(
-                                            new AssignmentBuilder()
-                                                        .assignmentId(
-                                                                new AssignmentId(
-                                                                        response.getEmployeeId(),
-                                                                        project.getProjectId(),
-                                                                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss"))
-                                                                ))
-                                                        .commitEmpDesc(this.editTextCommitEmpDesc.getText().toString())
-                                                        .commitMgrDesc("init")
-                                                        .employee(response)
-                                                        .project(project)
-                                                    .build(),
-                                            assignment -> {
-                                                this.editTextCommitEmpDesc.setText(null);
-                                                this.notificationService.notifyy(
-                                                        new NotificationMsg(
-                                                                R.drawable.ic_launcher_foreground,
-                                                                "New Commit!",
-                                                                response.getFirstName() + ", you have successfully committed on project" + project.getTitle(),
-                                                                NotificationCompat.PRIORITY_DEFAULT
-                                                        )
-                                                );
-                                                Log.d("notify!", "Send notification successfully");
-                                                Toast.makeText(EmployeeAddCommitActivity.this, "Committed successfully at => " + assignment.getCommitDate(), Toast.LENGTH_LONG).show();
-                                            },
-                                            error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_LONG).show()
-                                    );
+                                    if (isEmpty(this.editTextUsername.getText().toString(), this.editTextTitle.getText().toString(), this.editTextCommitEmpDesc.getText().toString()))
+                                        Toast.makeText(EmployeeAddCommitActivity.this, "Field(s) is/are empty, try again!", Toast.LENGTH_SHORT).show();
+                                    else
+                                        this.assignmentService.save(
+                                                new AssignmentBuilder()
+                                                            .assignmentId(
+                                                                    new AssignmentId(
+                                                                            response.getEmployeeId(),
+                                                                            project.getProjectId(),
+                                                                            LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss"))
+                                                                    ))
+                                                            .commitEmpDesc(this.editTextCommitEmpDesc.getText().toString())
+                                                            .commitMgrDesc("init")
+                                                            .employee(response)
+                                                            .project(project)
+                                                        .build(),
+                                                assignment -> {
+                                                    this.editTextCommitEmpDesc.setText(null);
+                                                    this.notificationService.notifyy(
+                                                            new NotificationMsg(
+                                                                    R.drawable.ic_launcher_foreground,
+                                                                    "New Commit!",
+                                                                    response.getFirstName() + ", you have successfully committed on project" + project.getTitle(),
+                                                                    NotificationCompat.PRIORITY_DEFAULT
+                                                            )
+                                                    );
+                                                    Log.d("notify!", "Send notification successfully");
+                                                    Toast.makeText(EmployeeAddCommitActivity.this, "Committed successfully at => " + assignment.getCommitDate(), Toast.LENGTH_LONG).show();
+                                                },
+                                                error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_LONG).show()
+                                        );
                                 });
                             },
                             error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
@@ -110,6 +113,10 @@ public class EmployeeAddCommitActivity extends AppCompatActivity {
                 error -> Toast.makeText(EmployeeAddCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
 
+    }
+
+    private static boolean isEmpty(final String username, final String title, final String commitEmpDesc) {
+        return username.trim().isEmpty() || title.trim().isEmpty() || commitEmpDesc.trim().isEmpty();
     }
 
     @Override
