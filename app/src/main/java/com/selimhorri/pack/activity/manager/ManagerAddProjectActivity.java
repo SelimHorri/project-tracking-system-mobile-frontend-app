@@ -42,10 +42,6 @@ public class ManagerAddProjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_add_project);
 
-        this.recyclerView = super.findViewById(R.id.recyclerViewManagerAddProjectAssignTo);
-        this.recyclerView.setHasFixedSize(true);
-        this.recyclerView.setLayoutManager(new LinearLayoutManager(ManagerAddProjectActivity.this));
-
         this.initialize();
 
         final SharedPreferences sp = super.getSharedPreferences("mgr", MODE_PRIVATE);
@@ -57,9 +53,11 @@ public class ManagerAddProjectActivity extends AppCompatActivity {
                     this.employeeService.findByDepartmentId(
                             response.getDepartment().getDepartmentId(),
                             employees -> {
-                                new ManagerAddProjectCustomAdapter(
-                                        employees.getCollection(),
-                                        ManagerAddProjectActivity.this
+                                this.recyclerView.setAdapter(
+                                        new ManagerAddProjectCustomAdapter(
+                                                employees.getCollection(),
+                                                ManagerAddProjectActivity.this
+                                        )
                                 );
                             },
                             error -> Toast.makeText(ManagerAddProjectActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
@@ -71,6 +69,9 @@ public class ManagerAddProjectActivity extends AppCompatActivity {
     }
 
     private void initialize() {
+        this.recyclerView = super.findViewById(R.id.recyclerViewManagerAddProjectAssignTo);
+        this.recyclerView.setHasFixedSize(true);
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(ManagerAddProjectActivity.this));
         this.editTextTitle = super.findViewById(R.id.editTextManagerAddProjectTitle);
         this.editTextStartDate = super.findViewById(R.id.editTextManagerAddProjectStartDate);
         this.editTextEndDate = super.findViewById(R.id.editTextManagerAddProjectEndDate);

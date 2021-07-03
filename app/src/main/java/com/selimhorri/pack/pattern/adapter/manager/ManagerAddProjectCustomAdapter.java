@@ -39,8 +39,7 @@ public class ManagerAddProjectCustomAdapter extends RecyclerView.Adapter<Manager
     public void onBindViewHolder(@NonNull ManagerAddProjectCustomAdapter.ViewHolder holder, int position) {
 
         Employee employee = this.employees.get(position);
-        // holder.checkBoxAssignTo.setText(String.format("%s %s", employee.getFirstName(), employee.getLastName()));
-        holder.checkBoxAssignTo.setText("hhhhhhhh");
+        holder.checkBoxAssignTo.setText(String.format("%s %s", employee.getFirstName(), employee.getLastName()));
         Log.d("ressssssss", holder.checkBoxAssignTo.getText().toString());
     }
 
