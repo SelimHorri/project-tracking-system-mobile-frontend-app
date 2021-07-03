@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.manager.ManagerAddProjectActivity">
+    tools:context=".activity.manager.ManagerEditProjectActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectTitle"
+                    android:id="@+id/editTextManagerEditProjectTitle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -43,7 +43,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectStartDate"
+                    android:id="@+id/editTextManagerEditProjectStartDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="StartDate.."
@@ -61,7 +61,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectEndDate"
+                    android:id="@+id/editTextManagerEditProjectEndDate"
                     android:layout_width="match_parent"
                     android:hint="EndDate.."
                     android:layout_height="match_parent"
@@ -79,7 +79,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectStatus"
+                    android:id="@+id/editTextManagerEditProjectStatus"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Status.."
@@ -94,31 +94,13 @@
                 android:padding="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Assign to :"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="sss"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:padding="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/editTextManagerAddProjectCreateProject"
+                    android:id="@+id/editTextManagerEditProjectEditProject"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Create project"
+                    android:text="Edit project"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
             </LinearLayout>

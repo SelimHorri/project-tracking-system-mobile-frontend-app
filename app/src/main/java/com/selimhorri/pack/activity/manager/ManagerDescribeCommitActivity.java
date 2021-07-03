@@ -24,9 +24,6 @@ import com.selimhorri.pack.service.impl.AssignmentServiceImpl;
 import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
 import com.selimhorri.pack.service.impl.ProjectServiceImpl;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class ManagerDescribeCommitActivity extends AppCompatActivity {
 
     private final EmployeeService employeeService;
