@@ -14,7 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
+import com.selimhorri.pack.model.dto.Assignment;
 import com.selimhorri.pack.model.id.AssignmentId;
+import com.selimhorri.pack.pattern.builder.AssignmentBuilder;
 import com.selimhorri.pack.service.AssignmentService;
 import com.selimhorri.pack.service.EmployeeService;
 import com.selimhorri.pack.service.ProjectService;
@@ -54,7 +56,7 @@ public class ManagerDescribeCommitActivity extends AppCompatActivity {
         final Bundle extras = super.getIntent().getExtras();
         final int employeeId = extras.getInt("employeeId");
         final int projectId = extras.getInt("projectId");
-        final String commitDate = LocalDateTime.parse(extras.getString("commitDate")).format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss"));
+        final String commitDate = extras.getString("commitDate");
 
         final SharedPreferences sp = super.getSharedPreferences("mgr", MODE_PRIVATE);
         final String username = sp.getString("username", null);
@@ -75,6 +77,43 @@ public class ManagerDescribeCommitActivity extends AppCompatActivity {
                                                         this.editTextCommitDate.setText(commitDate);
                                                         this.editTextCommitEmpDesc.setText(projectCommit.getCommitEmpDesc());
                                                         this.editTextCommitMgrOldDesc.setText(projectCommit.getCommitMgrDesc());
+
+                                                        this.btnDescribe.setOnClickListener(v -> {
+
+                                                            final String fullNameInput = this.editTextUsername.getText().toString();
+                                                            final String titleInput = this.editTextTitle.getText().toString();
+                                                            final String commitDateInput = this.editTextCommitDate.getText().toString();
+                                                            final String commitEmpDescInput = this.editTextCommitEmpDesc.getText().toString();
+                                                            final String commitMgrOldDescInput = this.editTextCommitMgrOldDesc.getText().toString();
+                                                            final String commitMgrNewDescInput = this.editTextCommitMgrNewDesc.getText().toString();
+
+                                                            if (isEmpty(fullNameInput, titleInput, commitDateInput, commitMgrNewDescInput))
+                                                                Toast.makeText(ManagerDescribeCommitActivity.this, "Fields is/are empty, try again!", Toast.LENGTH_SHORT).show();
+                                                            else {
+
+                                                                final Assignment assignment =
+                                                                        new AssignmentBuilder(new Assignment())
+                                                                                .assignmentId(new AssignmentId(employee.getEmployeeId(), project.getProjectId(), commitDateInput))
+                                                                                .commitEmpDesc(commitEmpDescInput)
+                                                                                .commitMgrDesc(commitMgrNewDescInput)
+                                                                                .build();
+                                                                this.assignmentService.update(
+                                                                        assignment,
+                                                                        assignmentOutput -> {
+                                                                            super.startActivity(
+                                                                                    new Intent(ManagerDescribeCommitActivity.this, ManagerDescribeCommitActivity.class)
+                                                                                            .putExtra("employeeId", employee.getEmployeeId())
+                                                                                            .putExtra("projectId", project.getProjectId())
+                                                                                            .putExtra("commitDate", commitDateInput)
+                                                                            );
+                                                                            Toast.makeText(ManagerDescribeCommitActivity.this, "Commented successfully!", Toast.LENGTH_SHORT).show();
+                                                                        },
+                                                                        error -> Toast.makeText(ManagerDescribeCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
+                                                                );
+                                                            }
+
+                                                        });
+
                                                     },
                                                     error -> Toast.makeText(ManagerDescribeCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
                                             ),
@@ -95,6 +134,10 @@ public class ManagerDescribeCommitActivity extends AppCompatActivity {
         this.editTextCommitMgrOldDesc = super.findViewById(R.id.editTextManagerDescribeCommitCommitMgrOldDesc);
         this.editTextCommitMgrNewDesc = super.findViewById(R.id.editTextManagerDescribeCommitCommitMgrNewDesc);
         this.btnDescribe = super.findViewById(R.id.buttonManagerDescribeCommitDescribe);
+    }
+
+    private static boolean isEmpty(final String username, final String title, final String commitDate, final String commitMgrDesc) {
+        return username.isEmpty() || title.isEmpty() || commitDate.isEmpty() || commitMgrDesc.isEmpty();
     }
 
     @Override

@@ -67,7 +67,7 @@ public class ManagerShowCommitsCustomAdapter extends RecyclerView.Adapter<Manage
                     new Intent(this.context, ManagerDescribeCommitActivity.class)
                             .putExtra("employeeId", pc.getEmployeeId())
                             .putExtra("projectId", pc.getProjectId())
-                            .putExtra("commitDate", pc.getCommitDate())
+                            .putExtra("commitDate", LocalDateTime.parse(pc.getCommitDate()).format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss")))
             )
         );
 
