@@ -65,8 +65,9 @@ public class ManagerShowCommitsCustomAdapter extends RecyclerView.Adapter<Manage
         holder.btnAddComment.setOnClickListener(v ->
             this.context.startActivity(
                     new Intent(this.context, ManagerDescribeCommitActivity.class)
-                        .putExtra("projectId", pc.getProjectId())
-                        .putExtra("commitDate", pc.getCommitDate())
+                            .putExtra("employeeId", pc.getEmployeeId())
+                            .putExtra("projectId", pc.getProjectId())
+                            .putExtra("commitDate", pc.getCommitDate())
             )
         );
 

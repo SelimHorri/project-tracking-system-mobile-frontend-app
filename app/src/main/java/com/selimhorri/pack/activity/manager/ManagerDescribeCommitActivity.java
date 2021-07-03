@@ -1,8 +1,5 @@
 package com.selimhorri.pack.activity.manager;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +8,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
@@ -52,39 +52,36 @@ public class ManagerDescribeCommitActivity extends AppCompatActivity {
         this.initialize();
 
         final Bundle extras = super.getIntent().getExtras();
-        final Integer projectId = extras.getInt("projectId");
-        final String commitDate = extras.getString("commitDate");
+        final int employeeId = extras.getInt("employeeId");
+        final int projectId = extras.getInt("projectId");
+        final String commitDate = LocalDateTime.parse(extras.getString("commitDate")).format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss"));
 
         final SharedPreferences sp = super.getSharedPreferences("mgr", MODE_PRIVATE);
         final String username = sp.getString("username", null);
 
         this.employeeService.findByUsername(
                 username,
-                response -> {
-                    // this.editTextUsername.setText(response.getCredential().getUsername());
-                    this.projectService.findById(
-                            projectId,
-                            project -> {
-                                this.editTextUsername.setText(response.getCredential().getUsername());
-                                this.editTextTitle.setText(project.getTitle());
-                                this.assignmentService.findById(
-                                        new AssignmentId(
-                                                response.getEmployeeId(),
-                                                project.getProjectId(),
-                                                LocalDateTime.parse(commitDate).format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss"))
-                                        ),
-                                        assignment -> {
-
-                                            this.editTextCommitDate.setText(assignment.getCommitDate());
-                                            this.editTextCommitEmpDesc.setText(assignment.getCommitEmpDesc());
-                                            this.editTextCommitMgrOldDesc.setText(assignment.getCommitMgrDesc());
-                                        },
-                                        error -> Toast.makeText(ManagerDescribeCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
-                                );
-                            },
+                response ->
+                    this.employeeService.findById(
+                            employeeId,
+                            employee -> this.projectService.findById(
+                                    projectId,
+                                    project ->
+                                            this.assignmentService.findProjectCommitByEmployeeIdAndProjectIdAndCommitDate(
+                                                    new AssignmentId(employee.getEmployeeId(), project.getProjectId(), commitDate),
+                                                    projectCommit -> {
+                                                        this.editTextUsername.setText(employee.getFirstName() + " " + employee.getLastName());
+                                                        this.editTextTitle.setText(project.getTitle());
+                                                        this.editTextCommitDate.setText(commitDate);
+                                                        this.editTextCommitEmpDesc.setText(projectCommit.getCommitEmpDesc());
+                                                        this.editTextCommitMgrOldDesc.setText(projectCommit.getCommitMgrDesc());
+                                                    },
+                                                    error -> Toast.makeText(ManagerDescribeCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
+                                            ),
+                                    error -> Toast.makeText(ManagerDescribeCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
+                            ),
                             error -> Toast.makeText(ManagerDescribeCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
-                    );
-                },
+                    ),
                 error -> Toast.makeText(ManagerDescribeCommitActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
 
