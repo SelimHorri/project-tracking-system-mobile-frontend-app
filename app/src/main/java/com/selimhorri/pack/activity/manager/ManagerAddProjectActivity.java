@@ -3,7 +3,6 @@ package com.selimhorri.pack.activity.manager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -16,17 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
-import com.selimhorri.pack.activity.employee.EmployeeTeamActivity;
 import com.selimhorri.pack.pattern.adapter.manager.ManagerAddProjectCustomAdapter;
 import com.selimhorri.pack.service.EmployeeService;
 import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
-
-import java.util.List;
 
 public class ManagerAddProjectActivity extends AppCompatActivity {
 
@@ -37,6 +30,7 @@ public class ManagerAddProjectActivity extends AppCompatActivity {
     private EditText editTextStartDate;
     private EditText editTextEndDate;
     private EditText editTextStatus;
+    private CheckBox checkBoxAssignTo;
     private Button btnAddProject;
 
     public ManagerAddProjectActivity() {
@@ -47,6 +41,10 @@ public class ManagerAddProjectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_add_project);
+
+        this.recyclerView = super.findViewById(R.id.recyclerViewManagerAddProjectAssignTo);
+        this.recyclerView.setHasFixedSize(true);
+        this.recyclerView.setLayoutManager(new LinearLayoutManager(ManagerAddProjectActivity.this));
 
         this.initialize();
 
@@ -73,13 +71,12 @@ public class ManagerAddProjectActivity extends AppCompatActivity {
     }
 
     private void initialize() {
-        this.recyclerView = super.findViewById(R.id.recyclerViewManagerAddProjectAssignTo);
-        this.recyclerView.setHasFixedSize(true);
-        this.recyclerView.setLayoutManager(new LinearLayoutManager(ManagerAddProjectActivity.this));
         this.editTextTitle = super.findViewById(R.id.editTextManagerAddProjectTitle);
         this.editTextStartDate = super.findViewById(R.id.editTextManagerAddProjectStartDate);
         this.editTextEndDate = super.findViewById(R.id.editTextManagerAddProjectEndDate);
         this.editTextStatus = super.findViewById(R.id.editTextManagerAddProjectStatus);
+        this.checkBoxAssignTo = super.findViewById(R.id.checkboxManagerAddProjectAssignTo);
+        this.btnAddProject = super.findViewById(R.id.buttonManagerAddProjectCreateProject);
     }
 
     @Override
