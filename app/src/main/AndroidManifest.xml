@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projecttrackingsystemandroidapp">
-        <activity android:name=".activity.manager.ManagerAddProjectActivity"></activity>
+        <activity android:name=".activity.manager.ManagerDescribeCommitActivity"></activity>
+        <activity android:name=".activity.manager.ManagerAddProjectActivity" />
         <activity android:name=".activity.manager.ManagerShowCommitsActivity" />
         <activity android:name=".activity.manager.ManagerTeamActivity" />
         <activity android:name=".activity.manager.ManagerInfoActivity" />

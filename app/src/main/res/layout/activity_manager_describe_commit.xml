@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.manager.ManagerAddProjectActivity">
+    tools:context=".activity.manager.ManagerDescribeCommitActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -26,11 +26,11 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectFirstName"
+                    android:id="@+id/editTextManagerDescribeCommitUsername"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:hint="Project title.." />
+                    android:hint="Username.." />
 
             </LinearLayout>
             <View
@@ -44,28 +44,10 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectLastName"
+                    android:id="@+id/editTextManagerDescribeCommitTitle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="StartDate.."
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#c0c0c0"/>
-            <LinearLayout
-                android:padding="3dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editTextManagerAddProjectEmail"
-                    android:layout_width="match_parent"
-                    android:hint="EndDate.."
-                    android:layout_height="match_parent"
+                    android:hint="Project Title.."
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
             </LinearLayout>
@@ -80,10 +62,10 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextManagerAddProjectPhone"
+                    android:id="@+id/editTextManagerDescribeCommitCommitDate"
                     android:layout_width="match_parent"
+                    android:hint="CommitDate.."
                     android:layout_height="match_parent"
-                    android:hint="Status.."
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
             </LinearLayout>
@@ -95,32 +77,95 @@
                 android:padding="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/editTextManagerAddProjectJob"
+                <EditText
+                    android:id="@+id/editTextManagerDescribeCommitCommitEmpDesc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Assign to :"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="sss"/>
+                    android:background="@null"
+                    android:hint="CommitEmpDesc.."
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:lines="3"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:scrollHorizontally="false" />
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#c0c0c0"/>
             <LinearLayout
                 android:padding="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextManagerDescribeCommitCommitMgrOldDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="CommitMgrOldDesc.."
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:lines="3"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:scrollHorizontally="false" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#c0c0c0"/>
+            <LinearLayout
+                android:padding="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextManagerDescribeCommitCommitMgrNewDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:hint="CommitMgrNewDesc.."
+                    android:gravity="top|left"
+                    android:inputType="textMultiLine"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:lines="5"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:scrollHorizontally="false" />
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#c0c0c0"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#c0c0c0"/>
+            <LinearLayout
+                android:padding="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/editTextManagerAddProjectDepartment"
+                    android:id="@+id/buttonManagerDescribeCommitDescribe"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Create project"
+                    android:text="Describe"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
             </LinearLayout>
