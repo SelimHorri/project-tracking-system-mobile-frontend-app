@@ -1,6 +1,7 @@
 package com.selimhorri.pack.pattern.adapter.manager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
+import com.selimhorri.pack.activity.manager.ManagerDescribeCommitActivity;
 import com.selimhorri.pack.model.dto.custom.ProjectCommit;
 import com.selimhorri.pack.service.ProjectService;
 import com.selimhorri.pack.service.impl.ProjectServiceImpl;
@@ -46,10 +48,10 @@ public class ManagerShowCommitsCustomAdapter extends RecyclerView.Adapter<Manage
     @Override
     public void onBindViewHolder(@NonNull ManagerShowCommitsCustomAdapter.ViewHolder holder, int position) {
 
+        ProjectCommit pc = this.projectCommitList.get(position);
         this.projectService.findById(
                 this.projectCommitList.get(position).getProjectId(),
                 response -> {
-                    ProjectCommit pc = this.projectCommitList.get(position);
                     holder.textViewTitle.setText(response.getTitle());
                     holder.textViewCommitDate.setText(LocalDateTime.parse(pc.getCommitDate()).format(DateTimeFormatter.ofPattern("dd-M-yyyyHH:mm:ss")));
                     holder.textViewFullName.setText(pc.getFirstName() + " " + pc.getLastName());
@@ -60,9 +62,14 @@ public class ManagerShowCommitsCustomAdapter extends RecyclerView.Adapter<Manage
                 },
                 error -> Toast.makeText(context, "Problem", Toast.LENGTH_SHORT).show()
         );
-        holder.btnAddComment.setOnClickListener(v -> {
-
-        });
+        holder.btnAddComment.setOnClickListener(v ->
+            this.context.startActivity(
+                    new Intent(this.context, ManagerDescribeCommitActivity.class)
+                            .putExtra("employeeId", pc.getEmployeeId())
+                            .putExtra("projectId", pc.getProjectId())
+                            .putExtra("commitDate", pc.getCommitDate())
+            )
+        );
 
     }
 

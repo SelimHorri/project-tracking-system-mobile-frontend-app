@@ -87,7 +87,7 @@ public class EmployeeAddCommitActivity extends AppCompatActivity {
                                                                             LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyyHH:mm:ss"))
                                                                     ))
                                                             .commitEmpDesc(this.editTextCommitEmpDesc.getText().toString())
-                                                            .commitMgrDesc("init")
+                                                            .commitMgrDesc(null)
                                                             .employee(response)
                                                             .project(project)
                                                         .build(),

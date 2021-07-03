@@ -15,5 +15,6 @@ public interface AssignmentService {
     void deleteById(final AssignmentId assignmentId, final ResponseCallbackListener.ResponseCallbackSuccessListener<Boolean> resp, final ResponseCallbackListener.ResponseCallbackErrorListener err);
     void findByProjectId(Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err);
     void findByEmployeeIdAndProjectId(Integer employeeId, Integer projectId, ResponseCallbackListener.ResponseCallbackSuccessListener<DtoCollection<ProjectCommit>> resp, ResponseCallbackListener.ResponseCallbackErrorListener err);
+    void findProjectCommitByEmployeeIdAndProjectIdAndCommitDate(AssignmentId assignmentId, ResponseCallbackListener.ResponseCallbackSuccessListener<ProjectCommit> resp, ResponseCallbackListener.ResponseCallbackErrorListener err);
 
 }
