@@ -5,12 +5,11 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:layout_margin="20dp"
+        android:layout_margin="1dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:padding="@dimen/cardview_compat_inset_shadow"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -18,7 +17,7 @@
             <CheckBox
                 android:id="@+id/checkboxManagerAddProjectAssignTo"
                 android:text="-"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

@@ -1,7 +1,6 @@
 package com.selimhorri.pack.pattern.adapter.manager;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,10 @@ public class ManagerAddProjectCustomAdapter extends RecyclerView.Adapter<Manager
 
     private List<Employee> employees;
     private Context context;
+    /*
+    private CheckboxSelectionListener<Integer> selectionListener;
+    private final List<Integer> list = new ArrayList<>();
+     */
 
     public ManagerAddProjectCustomAdapter(List<Employee> employees, Context context) {
         this.employees = employees;
@@ -39,6 +42,15 @@ public class ManagerAddProjectCustomAdapter extends RecyclerView.Adapter<Manager
     public void onBindViewHolder(@NonNull ManagerAddProjectCustomAdapter.ViewHolder holder, int position) {
         Employee employee = this.employees.get(position);
         holder.checkBoxAssignTo.setText(String.format("%s %s", employee.getFirstName(), employee.getLastName()));
+
+        /*
+        if (holder.checkBoxAssignTo.isChecked())
+            this.list.add(employee.getEmployeeId());
+        else
+            this.list.remove(employee.getEmployeeId());
+        this.selectionListener.onSelect(list);
+         */
+
     }
 
     @Override

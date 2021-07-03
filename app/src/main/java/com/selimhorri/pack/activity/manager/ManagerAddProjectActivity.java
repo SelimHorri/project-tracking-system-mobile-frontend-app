@@ -49,7 +49,7 @@ public class ManagerAddProjectActivity extends AppCompatActivity {
 
         this.employeeService.findByUsername(
                 username,
-                response -> {
+                response ->
                     this.employeeService.findByDepartmentId(
                             response.getDepartment().getDepartmentId(),
                             employees -> {
@@ -59,10 +59,10 @@ public class ManagerAddProjectActivity extends AppCompatActivity {
                                                 ManagerAddProjectActivity.this
                                         )
                                 );
+
                             },
                             error -> Toast.makeText(ManagerAddProjectActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
-                    );
-                },
+                    ),
                 error -> Toast.makeText(ManagerAddProjectActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
 
