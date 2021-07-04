@@ -16,50 +16,50 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textViewEmployeeListFullname"
+                android:id="@+id/textViewAdminEmployeeListFullname"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
             <TextView
-                android:id="@+id/textViewEmployeeListEmail"
+                android:id="@+id/textViewAdminEmployeeListEmail"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/textViewEmployeeListPhone"
+                android:id="@+id/textViewAdminEmployeeListPhone"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/textViewEmployeeListHiredate"
+                android:id="@+id/textViewAdminEmployeeListHiredate"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/textViewEmployeeListJob"
+                android:id="@+id/textViewAdminEmployeeListJob"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/textViewEmployeeListSalary"
+                android:id="@+id/textViewAdminEmployeeListSalary"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/textViewEmployeeListManager"
+                android:id="@+id/textViewAdminEmployeeListManager"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/textViewEmployeeListDepartment"
+                android:id="@+id/textViewAdminEmployeeListDepartment"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
@@ -76,14 +76,14 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/buttonEmployeeListCredentials"
+                        android:id="@+id/buttonAdminEmployeeListCredentials"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:text="Credentials"
                         android:layout_marginRight="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <Button
-                        android:id="@+id/buttonEmployeeListEdit"
+                        android:id="@+id/buttonAdminEmployeeListEdit"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:text="Edit"
                         android:layout_marginRight="5dp"
@@ -97,14 +97,14 @@
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/buttonEmployeeListEnableDisable"
+                        android:id="@+id/buttonAdminEmployeeListEnableDisable"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:text="Enable/Disable"
                         android:layout_marginRight="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <Button
-                        android:id="@+id/buttonEmployeeListDelete"
+                        android:id="@+id/buttonAdminEmployeeListDelete"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:text="Delete"
                         android:layout_marginRight="5dp"

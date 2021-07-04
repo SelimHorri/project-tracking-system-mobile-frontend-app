@@ -1,23 +1,23 @@
-package com.selimhorri.pack.activity.admin.dept;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.selimhorri.pack.activity.admin.emp;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
 
-public class AdminListDepartmentsActivity extends AppCompatActivity {
+public class AdminEmployeeListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_list_departments);
+        setContentView(R.layout.activity_admin_list_employees);
     }
 
     @Override
@@ -32,18 +32,20 @@ public class AdminListDepartmentsActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.adminAccountInfo:
-                super.startActivity(new Intent(AdminListDepartmentsActivity.this, AdminInfoActivity.class));
+                super.startActivity(new Intent(AdminEmployeeListActivity.this, AdminInfoActivity.class));
                 return true;
             case R.id.adminLogout:
                 super.getSharedPreferences("admin", MODE_PRIVATE)
                         .edit()
                         .clear()
                         .apply();
-                super.startActivity(new Intent(AdminListDepartmentsActivity.this, HomeActivity.class));
+                super.startActivity(new Intent(AdminEmployeeListActivity.this, HomeActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
 
 }

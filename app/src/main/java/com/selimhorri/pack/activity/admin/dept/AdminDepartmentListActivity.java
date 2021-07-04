@@ -1,23 +1,23 @@
-package com.selimhorri.pack.activity.admin.loc;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.selimhorri.pack.activity.admin.dept;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
 
-public class AdminListLocationsActivity extends AppCompatActivity {
+public class AdminDepartmentListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_list_locations);
+        setContentView(R.layout.activity_admin_list_departments);
     }
 
     @Override
@@ -32,14 +32,14 @@ public class AdminListLocationsActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.adminAccountInfo:
-                super.startActivity(new Intent(AdminListLocationsActivity.this, AdminInfoActivity.class));
+                super.startActivity(new Intent(AdminDepartmentListActivity.this, AdminInfoActivity.class));
                 return true;
             case R.id.adminLogout:
                 super.getSharedPreferences("admin", MODE_PRIVATE)
                         .edit()
                         .clear()
                         .apply();
-                super.startActivity(new Intent(AdminListLocationsActivity.this, HomeActivity.class));
+                super.startActivity(new Intent(AdminDepartmentListActivity.this, HomeActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

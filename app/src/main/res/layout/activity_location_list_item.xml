@@ -16,20 +16,20 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textViewLocationListAdr"
+                android:id="@+id/textViewAdminLocationListAdr"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
             <TextView
-                android:id="@+id/textViewLocationListPostalCode"
+                android:id="@+id/textViewAdminLocationListPostalCode"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:id="@+id/textViewLocationListCity"
+                android:id="@+id/textViewAdminLocationListCity"
                 android:text="-"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
@@ -41,13 +41,13 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/buttonLocationListEdit"
+                    android:id="@+id/buttonAdminLocationListEdit"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:text="Edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <Button
-                    android:id="@+id/buttonLocationListDelete"
+                    android:id="@+id/buttonAdminLocationListDelete"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:text="Delete"
                     android:layout_width="wrap_content"

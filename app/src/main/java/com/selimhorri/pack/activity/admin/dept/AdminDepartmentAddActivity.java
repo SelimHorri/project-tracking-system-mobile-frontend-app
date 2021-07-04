@@ -1,12 +1,12 @@
 package com.selimhorri.pack.activity.admin.dept;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.R;
 
-public class AdminAddDepartmentActivity extends AppCompatActivity {
+public class AdminDepartmentAddActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

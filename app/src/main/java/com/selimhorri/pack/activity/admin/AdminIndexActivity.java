@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
-import com.selimhorri.pack.activity.admin.dept.AdminListDepartmentsActivity;
-import com.selimhorri.pack.activity.admin.emp.AdminListEmployeesActivity;
-import com.selimhorri.pack.activity.admin.loc.AdminListLocationsActivity;
+import com.selimhorri.pack.activity.admin.dept.AdminDepartmentListActivity;
+import com.selimhorri.pack.activity.admin.emp.AdminEmployeeListActivity;
+import com.selimhorri.pack.activity.admin.loc.AdminLocationListActivity;
 
 public class AdminIndexActivity extends AppCompatActivity {
 
@@ -28,9 +28,9 @@ public class AdminIndexActivity extends AppCompatActivity {
 
         this.initialize();
 
-        this.btnManageEmployees.setOnClickListener(v -> super.startActivity(new Intent(AdminIndexActivity.this, AdminListEmployeesActivity.class)));
-        this.btnManageDepartments.setOnClickListener(v -> super.startActivity(new Intent(AdminIndexActivity.this, AdminListDepartmentsActivity.class)));
-        this.btnManageLocations.setOnClickListener(v -> super.startActivity(new Intent(AdminIndexActivity.this, AdminListLocationsActivity.class)));
+        this.btnManageEmployees.setOnClickListener(v -> super.startActivity(new Intent(AdminIndexActivity.this, AdminEmployeeListActivity.class)));
+        this.btnManageDepartments.setOnClickListener(v -> super.startActivity(new Intent(AdminIndexActivity.this, AdminDepartmentListActivity.class)));
+        this.btnManageLocations.setOnClickListener(v -> super.startActivity(new Intent(AdminIndexActivity.this, AdminLocationListActivity.class)));
 
     }
 
