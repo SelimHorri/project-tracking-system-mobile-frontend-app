@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
+import com.selimhorri.pack.activity.admin.emp.AdminEmployeeAddActivity;
 import com.selimhorri.pack.activity.manager.ManagerShowCommitsActivity;
 import com.selimhorri.pack.pattern.adapter.admin.AdminLocationListCustomAdapter;
 import com.selimhorri.pack.service.EmployeeService;
@@ -24,13 +25,11 @@ import com.selimhorri.pack.service.impl.LocationServiceImpl;
 
 public class AdminLocationListActivity extends AppCompatActivity {
 
-    private final EmployeeService employeeService;
     private final LocationService locationService;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
     public AdminLocationListActivity() {
-        this.employeeService = new EmployeeServiceImpl(AdminLocationListActivity.this);
         this.locationService = new LocationServiceImpl(AdminLocationListActivity.this);
     }
 
@@ -40,9 +39,6 @@ public class AdminLocationListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_list_locations);
 
         this.initialize();
-
-        final SharedPreferences sp = super.getSharedPreferences("admin", MODE_PRIVATE);
-        final String username = sp.getString("username", null);
 
         this.locationService.findAll(
                 response ->
@@ -73,6 +69,12 @@ public class AdminLocationListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.adminAccountInfo:
                 super.startActivity(new Intent(AdminLocationListActivity.this, AdminInfoActivity.class));
+                return true;
+            case R.id.adminNewLocation:
+                super.startActivity(new Intent(AdminLocationListActivity.this, AdminLocationAddActivity.class));
+                return true;
+            case R.id.adminAbout:
+                // super.startActivity(new Intent(AdminLocationAddActivity.this, AdminInfoActivity.class));
                 return true;
             case R.id.adminLogout:
                 super.getSharedPreferences("admin", MODE_PRIVATE)

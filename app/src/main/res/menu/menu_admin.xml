@@ -7,6 +7,18 @@
         android:title="Account Info"
         app:showAsAction="never" />
     <item
+        android:id="@+id/adminNewLocation"
+        android:title="New Location"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/adminNewDepartment"
+        android:title="New Department"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/adminNewEmployee"
+        android:title="New Employee"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/adminAbout"
         android:title="About"
         app:showAsAction="never" />
