@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
+import com.selimhorri.pack.activity.manager.ManagerEditProjectActivity;
 import com.selimhorri.pack.activity.manager.ManagerIndexActivity;
 import com.selimhorri.pack.activity.manager.ManagerShowCommitsActivity;
 import com.selimhorri.pack.model.dto.custom.ManagerProjectData;
@@ -72,12 +73,10 @@ public class ManagerIndexCustomAdapter extends RecyclerView.Adapter<ManagerIndex
             */
         });
         holder.btnEdit.setOnClickListener(v -> {
-            /*
             this.context.startActivity(
-                    new Intent(this.context, ManagerShowCommitsActivity.class)
+                    new Intent(this.context, ManagerEditProjectActivity.class)
                             .putExtra("projectId", epd.getProjectId())
             );
-            */
         });
         holder.btnDelete.setOnClickListener(v -> {
 

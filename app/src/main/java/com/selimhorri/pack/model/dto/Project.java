@@ -1,27 +1,25 @@
 package com.selimhorri.pack.model.dto;
 
-import java.time.LocalDate;
-
 public class Project {
 
     private Integer projectId;
     private String title;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private String startDate;
+    private String endDate;
     private String status;
 
     public Project() {
 
     }
 
-    public Project(String title, LocalDate startDate, LocalDate endDate, String status) {
+    public Project(String title, String startDate, String endDate, String status) {
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
     }
 
-    public Project(Integer projectId, String title, LocalDate startDate, LocalDate endDate, String status) {
+    public Project(Integer projectId, String title, String startDate, String endDate, String status) {
         this.projectId = projectId;
         this.title = title;
         this.startDate = startDate;
@@ -56,19 +54,19 @@ public class Project {
         this.title = title;
     }
 
-    public LocalDate getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
