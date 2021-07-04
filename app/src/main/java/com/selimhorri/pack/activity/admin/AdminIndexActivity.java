@@ -4,19 +4,40 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
+import com.selimhorri.pack.activity.admin.dept.AdminListDepartmentsActivity;
+import com.selimhorri.pack.activity.admin.emp.AdminListEmployeesActivity;
+import com.selimhorri.pack.activity.admin.loc.AdminListLocationsActivity;
 
 public class AdminIndexActivity extends AppCompatActivity {
+
+    private Button btnManageEmployees;
+    private Button btnManageDepartments;
+    private Button btnManageLocations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_index);
+
+        this.initialize();
+
+        this.btnManageEmployees.setOnClickListener(v -> super.startActivity(new Intent(AdminIndexActivity.this, AdminListEmployeesActivity.class)));
+        this.btnManageDepartments.setOnClickListener(v -> super.startActivity(new Intent(AdminIndexActivity.this, AdminListDepartmentsActivity.class)));
+        this.btnManageLocations.setOnClickListener(v -> super.startActivity(new Intent(AdminIndexActivity.this, AdminListLocationsActivity.class)));
+
+    }
+
+    private void initialize() {
+        this.btnManageEmployees = super.findViewById(R.id.buttonAdminIndexManageEmployees);
+        this.btnManageDepartments = super.findViewById(R.id.buttonAdminIndexManageDepartments);
+        this.btnManageLocations = super.findViewById(R.id.buttonAdminIndexManageLocations);
     }
 
     @Override
@@ -31,7 +52,7 @@ public class AdminIndexActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.adminAccountInfo:
-                // super.startActivity(new Intent(AdminIndexActivity.this, AdminInfoActivity.class));
+                super.startActivity(new Intent(AdminIndexActivity.this, AdminInfoActivity.class));
                 return true;
             case R.id.adminLogout:
                 super.getSharedPreferences("admin", MODE_PRIVATE)
