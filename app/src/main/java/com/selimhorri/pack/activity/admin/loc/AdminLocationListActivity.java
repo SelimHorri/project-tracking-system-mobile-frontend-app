@@ -1,7 +1,6 @@
 package com.selimhorri.pack.activity.admin.loc;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,12 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
-import com.selimhorri.pack.activity.admin.emp.AdminEmployeeAddActivity;
-import com.selimhorri.pack.activity.manager.ManagerShowCommitsActivity;
 import com.selimhorri.pack.pattern.adapter.admin.AdminLocationListCustomAdapter;
-import com.selimhorri.pack.service.EmployeeService;
 import com.selimhorri.pack.service.LocationService;
-import com.selimhorri.pack.service.impl.EmployeeServiceImpl;
 import com.selimhorri.pack.service.impl.LocationServiceImpl;
 
 public class AdminLocationListActivity extends AppCompatActivity {

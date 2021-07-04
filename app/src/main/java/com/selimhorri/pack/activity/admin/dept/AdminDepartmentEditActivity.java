@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
-import com.selimhorri.pack.activity.admin.emp.AdminEmployeeAddActivity;
 
 public class AdminDepartmentEditActivity extends AppCompatActivity {
 

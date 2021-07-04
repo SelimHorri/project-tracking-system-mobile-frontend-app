@@ -14,11 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
-import com.selimhorri.pack.activity.admin.emp.AdminEmployeeAddActivity;
-import com.selimhorri.pack.activity.admin.loc.AdminLocationListActivity;
 import com.selimhorri.pack.pattern.adapter.admin.AdminDepartmentListCustomAdapter;
 import com.selimhorri.pack.service.DepartmentService;
-import com.selimhorri.pack.service.LocationService;
 import com.selimhorri.pack.service.impl.DepartmentServiceImpl;
 
 public class AdminDepartmentListActivity extends AppCompatActivity {

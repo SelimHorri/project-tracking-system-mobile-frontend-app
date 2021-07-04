@@ -1,7 +1,6 @@
 package com.selimhorri.pack.activity.admin.loc;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,15 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
-import com.selimhorri.pack.activity.admin.emp.AdminEmployeeAddActivity;
-import com.selimhorri.pack.activity.manager.ManagerAddProjectActivity;
-import com.selimhorri.pack.activity.manager.ManagerEditProjectActivity;
 import com.selimhorri.pack.model.dto.Location;
 import com.selimhorri.pack.pattern.builder.LocationBuilder;
 import com.selimhorri.pack.service.LocationService;
 import com.selimhorri.pack.service.impl.LocationServiceImpl;
-
-import java.util.Optional;
 
 public class AdminLocationEditActivity extends AppCompatActivity {
 
@@ -66,17 +60,12 @@ public class AdminLocationEditActivity extends AppCompatActivity {
                 Toast.makeText(AdminLocationEditActivity.this, "Field(s) is/are empty, plz check again!", Toast.LENGTH_SHORT).show();
             else
                 this.locationService.update(
-                        new LocationBuilder(new Location())
-                                .locationId(locationId)
-                                .adr(adr)
-                                .postalCode(postalCode)
-                                .city(city)
-                                .build(),
+                        new Location(locationId, adr, postalCode, city),
                         location -> {
-                            if (!Optional.of(location).isPresent())
-                                Toast.makeText(AdminLocationEditActivity.this, String.format("Location does not exist!"), Toast.LENGTH_SHORT).show();
+                            if (location == null)
+                                Toast.makeText(AdminLocationEditActivity.this, "Location does not exist!", Toast.LENGTH_SHORT).show();
                             else
-                                Toast.makeText(AdminLocationEditActivity.this, String.format("Location updated successfully!"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AdminLocationEditActivity.this, "Location updated successfully!", Toast.LENGTH_SHORT).show();
                         },
                         error -> Toast.makeText(AdminLocationEditActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
                 );
