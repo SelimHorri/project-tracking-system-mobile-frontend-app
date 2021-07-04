@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
+import com.selimhorri.pack.activity.admin.AdminIndexActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
 import com.selimhorri.pack.pattern.adapter.admin.AdminDepartmentListCustomAdapter;
 import com.selimhorri.pack.service.DepartmentService;
@@ -64,6 +65,9 @@ public class AdminDepartmentListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.adminAccountInfo:
                 super.startActivity(new Intent(AdminDepartmentListActivity.this, AdminInfoActivity.class));
+                return true;
+            case R.id.adminCategories:
+                super.startActivity(new Intent(this, AdminIndexActivity.class));
                 return true;
             case R.id.adminNewDepartment:
                 super.startActivity(new Intent(AdminDepartmentListActivity.this, AdminDepartmentAddActivity.class));

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
+import com.selimhorri.pack.activity.admin.AdminIndexActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
 
 public class AdminEmployeeListActivity extends AppCompatActivity {
@@ -33,6 +34,9 @@ public class AdminEmployeeListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.adminAccountInfo:
                 super.startActivity(new Intent(AdminEmployeeListActivity.this, AdminInfoActivity.class));
+                return true;
+            case R.id.adminCategories:
+                super.startActivity(new Intent(this, AdminIndexActivity.class));
                 return true;
             case R.id.adminNewDepartment:
                 super.startActivity(new Intent(AdminEmployeeListActivity.this, AdminEmployeeAddActivity.class));

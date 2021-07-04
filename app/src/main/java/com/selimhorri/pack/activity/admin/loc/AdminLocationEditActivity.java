@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
+import com.selimhorri.pack.activity.admin.AdminIndexActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
 import com.selimhorri.pack.model.dto.Location;
 import com.selimhorri.pack.pattern.builder.LocationBuilder;
@@ -64,8 +65,13 @@ public class AdminLocationEditActivity extends AppCompatActivity {
                         location -> {
                             if (location == null)
                                 Toast.makeText(AdminLocationEditActivity.this, "Location does not exist!", Toast.LENGTH_SHORT).show();
-                            else
+                            else {
+                                super.startActivity(
+                                        new Intent(AdminLocationEditActivity.this, AdminLocationEditActivity.class)
+                                            .putExtra("locationId", location.getLocationId())
+                                );
                                 Toast.makeText(AdminLocationEditActivity.this, "Location updated successfully!", Toast.LENGTH_SHORT).show();
+                            }
                         },
                         error -> Toast.makeText(AdminLocationEditActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
                 );
@@ -97,6 +103,9 @@ public class AdminLocationEditActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.adminAccountInfo:
                 super.startActivity(new Intent(AdminLocationEditActivity.this, AdminInfoActivity.class));
+                return true;
+            case R.id.adminCategories:
+                super.startActivity(new Intent(this, AdminIndexActivity.class));
                 return true;
             case R.id.adminNewLocation:
                 super.startActivity(new Intent(AdminLocationEditActivity.this, AdminLocationAddActivity.class));

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
+import com.selimhorri.pack.activity.admin.AdminIndexActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
 import com.selimhorri.pack.pattern.adapter.admin.AdminLocationListCustomAdapter;
 import com.selimhorri.pack.service.LocationService;
@@ -64,6 +65,9 @@ public class AdminLocationListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.adminAccountInfo:
                 super.startActivity(new Intent(AdminLocationListActivity.this, AdminInfoActivity.class));
+                return true;
+            case R.id.adminCategories:
+                super.startActivity(new Intent(this, AdminIndexActivity.class));
                 return true;
             case R.id.adminNewLocation:
                 super.startActivity(new Intent(AdminLocationListActivity.this, AdminLocationAddActivity.class));

@@ -54,6 +54,9 @@ public class AdminIndexActivity extends AppCompatActivity {
             case R.id.adminAccountInfo:
                 super.startActivity(new Intent(AdminIndexActivity.this, AdminInfoActivity.class));
                 return true;
+            case R.id.adminCategories:
+                super.startActivity(new Intent(this, AdminIndexActivity.class));
+                return true;
             case R.id.adminLogout:
                 super.getSharedPreferences("admin", MODE_PRIVATE)
                         .edit()

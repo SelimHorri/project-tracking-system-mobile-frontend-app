@@ -18,7 +18,7 @@ public class LocationBuilder {
         return this.location;
     }
 
-    public LocationBuilder locationId(final int locationId) {
+    public LocationBuilder locationId(final Integer locationId) {
         this.location.setLocationId(locationId);
         return this;
     }
