@@ -95,8 +95,8 @@
                     android:layout_height="50dp"
                     android:layout_margin="20dp"
                     android:background="@drawable/button_gradient"
-                    android:text="Submit"
-                    android:textColor="@android:color/white"
+                    android:text="add commit"
+                    android:textColor="#ffffff"
                     android:textSize="16sp" />
 
 
@@ -104,14 +104,6 @@
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-50dp"
-        android:background="@drawable/round_background"
-        android:padding="15dp"
-        android:src="@drawable/round_bg"/>
+
 
 </RelativeLayout>

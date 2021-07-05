@@ -48,24 +48,33 @@
 
                 <Button
                     android:id="@+id/buttonMyCommits"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight=".1"
+                    android:layout_gravity="center"
                     android:text="My_Commits"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                />
+                    android:background="@drawable/button_background"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
                 <Button
                     android:id="@+id/buttonAllCommits"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:text="All_Commits"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight=".1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_background"
                 />
                 <Button
                     android:id="@+id/buttonNewCommit"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:text="New_Commit?"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight=".1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_background"
                 />
 
             </LinearLayout>

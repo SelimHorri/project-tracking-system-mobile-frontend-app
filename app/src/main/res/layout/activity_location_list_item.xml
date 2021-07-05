@@ -35,23 +35,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal" >
 
-                <Button
+
+
+                <ImageButton
                     android:id="@+id/buttonAdminLocationListEdit"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:text="Edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight=".1"
+                    android:src="@mipmap/edit"
+                    android:textAppearance="?android:textAppearanceLarge" />
+
+                <ImageButton
                     android:id="@+id/buttonAdminLocationListDelete"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    android:text="Delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight=".1"
+                    android:src="@mipmap/remove"
+                    android:textAppearance="?android:textAppearanceLarge" />
+
+
+
 
             </LinearLayout>
 
