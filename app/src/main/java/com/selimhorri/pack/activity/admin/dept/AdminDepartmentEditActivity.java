@@ -18,6 +18,7 @@ import com.selimhorri.pack.activity.admin.AdminIndexActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
 import com.selimhorri.pack.activity.admin.loc.AdminLocationEditActivity;
 import com.selimhorri.pack.model.dto.Department;
+import com.selimhorri.pack.pattern.builder.DepartmentBuilder;
 import com.selimhorri.pack.service.DepartmentService;
 import com.selimhorri.pack.service.LocationService;
 import com.selimhorri.pack.service.impl.DepartmentServiceImpl;
@@ -55,8 +56,6 @@ public class AdminDepartmentEditActivity extends AppCompatActivity {
                 error -> Toast.makeText(AdminDepartmentEditActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
 
-        Log.d("respnseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", departmentId.toString());
-
         this.btnEditDepartment.setOnClickListener(v -> {
             final String departmentName = this.editTextDepartmentName.getText().toString().trim();
             final String locationIdString = this.editTextLocation.getText().toString().trim();
@@ -68,7 +67,11 @@ public class AdminDepartmentEditActivity extends AppCompatActivity {
                         Integer.parseInt(locationIdString),
                         location ->
                                 this.departmentService.update(
-                                        new Department(departmentId, departmentName, location),
+                                        new DepartmentBuilder()
+                                            .departmentId(departmentId)
+                                            .departmentName(departmentName)
+                                            .location(location)
+                                            .build(),
                                         department -> {
                                             if (department == null || department.getLocation() == null)
                                                 Toast.makeText(AdminDepartmentEditActivity.this, "Department does not exist!", Toast.LENGTH_SHORT).show();
