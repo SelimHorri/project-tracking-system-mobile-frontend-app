@@ -2,7 +2,6 @@ package com.selimhorri.pack.activity.admin.dept;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -17,7 +16,6 @@ import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.activity.admin.AdminIndexActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
 import com.selimhorri.pack.activity.admin.loc.AdminLocationEditActivity;
-import com.selimhorri.pack.model.dto.Department;
 import com.selimhorri.pack.pattern.builder.DepartmentBuilder;
 import com.selimhorri.pack.service.DepartmentService;
 import com.selimhorri.pack.service.LocationService;
