@@ -1,5 +1,7 @@
 package com.selimhorri.pack.model.dto;
 
+import java.util.Objects;
+
 public class Location {
 
     private Integer locationId;
@@ -22,6 +24,22 @@ public class Location {
         this.adr = adr;
         this.postalCode = postalCode;
         this.city = city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return Objects.equals(locationId, location.locationId) &&
+                Objects.equals(adr, location.adr) &&
+                Objects.equals(postalCode, location.postalCode) &&
+                Objects.equals(city, location.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(locationId, adr, postalCode, city);
     }
 
     @Override
