@@ -16,7 +16,6 @@ import com.selimhorri.pack.activity.HomeActivity;
 import com.selimhorri.pack.activity.admin.AdminIndexActivity;
 import com.selimhorri.pack.activity.admin.AdminInfoActivity;
 import com.selimhorri.pack.model.dto.Location;
-import com.selimhorri.pack.pattern.builder.LocationBuilder;
 import com.selimhorri.pack.service.LocationService;
 import com.selimhorri.pack.service.impl.LocationServiceImpl;
 
