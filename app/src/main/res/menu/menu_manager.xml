@@ -11,8 +11,12 @@
         android:title="Team"
         app:showAsAction="never" />
     <item
+        android:id="@+id/managerAddProject"
+        android:title="New project"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/managerProjects"
-        android:title="Projects"
+        android:title="All projects"
         app:showAsAction="never" />
     <item
         android:id="@+id/managerSearchCommits"

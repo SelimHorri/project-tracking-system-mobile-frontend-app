@@ -1,4 +1,4 @@
-package com.selimhorri.pack.pattern.adapter;
+package com.selimhorri.pack.pattern.adapter.manager;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,31 +14,30 @@ import com.selimhorri.pack.model.dto.Employee;
 
 import java.util.List;
 
-public class EmployeeTeamCustomAdapter extends RecyclerView.Adapter<EmployeeTeamCustomAdapter.ViewHolder> {
+public class ManagerTeamCustomAdapter extends RecyclerView.Adapter<ManagerTeamCustomAdapter.ViewHolder> {
 
     private List<Employee> employees;
     private Context context;
 
-    public EmployeeTeamCustomAdapter(List<Employee> employees, Context context) {
+    public ManagerTeamCustomAdapter(List<Employee> employees, Context context) {
         this.employees = employees;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ManagerTeamCustomAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_employee_item, parent, false);
+                .inflate(R.layout.activity_manager_item, parent, false);
 
-        return new ViewHolder(v);
+        return new ManagerTeamCustomAdapter.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EmployeeTeamCustomAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ManagerTeamCustomAdapter.ViewHolder holder, int position) {
 
         Employee employee = this.employees.get(position);
-        // holder.textViewTitle.setText(epd.getTitle());
         holder.textViewFirstName.setText(employee.getFirstName());
         holder.textViewLastName.setText(employee.getLastName());
         holder.textViewEmail.setText(employee.getEmail());
@@ -67,14 +66,14 @@ public class EmployeeTeamCustomAdapter extends RecyclerView.Adapter<EmployeeTeam
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.textViewFirstName = itemView.findViewById(R.id.textViewEmployeeTeamFirstName);
-            this.textViewLastName = itemView.findViewById(R.id.textViewEmployeeTeamLastName);
-            this.textViewEmail = itemView.findViewById(R.id.textViewEmployeeTeamEmail);
-            this.textViewPhone = itemView.findViewById(R.id.textViewEmployeeTeamPhone);
-            this.textViewHiredate = itemView.findViewById(R.id.textViewEmployeeTeamHiredate);
-            this.textViewJob = itemView.findViewById(R.id.textViewEmployeeTeamJob);
-            this.textViewDepartment = itemView.findViewById(R.id.textViewEmployeeTeamDepartment);
-            this.textViewLocation = itemView.findViewById(R.id.textViewEmployeeTeamLocation);
+            this.textViewFirstName = itemView.findViewById(R.id.textViewManagerTeamFirstName);
+            this.textViewLastName = itemView.findViewById(R.id.textViewManagerTeamLastName);
+            this.textViewEmail = itemView.findViewById(R.id.textViewManagerTeamEmail);
+            this.textViewPhone = itemView.findViewById(R.id.textViewManagerTeamPhone);
+            this.textViewHiredate = itemView.findViewById(R.id.textViewManagerTeamHiredate);
+            this.textViewJob = itemView.findViewById(R.id.textViewManagerTeamJob);
+            this.textViewDepartment = itemView.findViewById(R.id.textViewManagerTeamDepartment);
+            this.textViewLocation = itemView.findViewById(R.id.textViewManagerTeamLocation);
         }
 
 

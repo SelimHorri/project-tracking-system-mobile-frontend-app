@@ -2,8 +2,6 @@ package com.selimhorri.pack.pattern.builder;
 
 import com.selimhorri.pack.model.dto.Project;
 
-import java.time.LocalDate;
-
 public class ProjectBuilder {
 
     private final Project project;
@@ -30,12 +28,12 @@ public class ProjectBuilder {
         return this;
     }
 
-    public ProjectBuilder startDate(final LocalDate startDate) {
+    public ProjectBuilder startDate(final String startDate) {
         this.project.setStartDate(startDate);
         return this;
     }
 
-    public ProjectBuilder endDate(final LocalDate endDate) {
+    public ProjectBuilder endDate(final String endDate) {
         this.project.setEndDate(endDate);
         return this;
     }

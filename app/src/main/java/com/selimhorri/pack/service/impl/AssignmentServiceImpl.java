@@ -21,7 +21,6 @@ import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -147,6 +146,20 @@ public class AssignmentServiceImpl implements AssignmentService {
                 error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
         );
         QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
+    }
+
+    @Override
+    public void findProjectCommitByEmployeeIdAndProjectIdAndCommitDate(AssignmentId assignmentId, ResponseCallbackListener.ResponseCallbackSuccessListener<ProjectCommit> resp, ResponseCallbackListener.ResponseCallbackErrorListener err) {
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                API_URL + "/" + assignmentId.getEmployeeId() + "/" + assignmentId.getProjectId() + "/" + assignmentId.getCommitDate(),
+                null,
+                response -> resp.onResponse(gson.fromJson(response.toString(), ProjectCommit.class)),
+                error -> err.onError(gson.fromJson(new String(error.networkResponse.data, StandardCharsets.UTF_8), ExceptionMsg.class).getMsg())
+        );
+        QueueSingletonPattern.getInstance(this.context).addToRequestQueue(request);
+
     }
 
 

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.selimhorri.pack.R;
 import com.selimhorri.pack.activity.HomeActivity;
-import com.selimhorri.pack.pattern.adapter.EmployeeShowCommitsCustomAdapter;
+import com.selimhorri.pack.pattern.adapter.employee.EmployeeShowCommitsCustomAdapter;
 import com.selimhorri.pack.service.AssignmentService;
 import com.selimhorri.pack.service.EmployeeService;
 import com.selimhorri.pack.service.impl.AssignmentServiceImpl;
@@ -49,7 +49,7 @@ public class EmployeeShowCommitsActivity extends AppCompatActivity {
 
         this.employeeService.findByUsername(
                 username,
-                response -> {
+                response ->
                     this.assignmentService.findByEmployeeIdAndProjectId(
                             response.getEmployeeId(),
                             projectId,
@@ -59,8 +59,7 @@ public class EmployeeShowCommitsActivity extends AppCompatActivity {
                                 );
                             },
                             errorList -> Toast.makeText(EmployeeShowCommitsActivity.this, errorList.toString(), Toast.LENGTH_SHORT).show()
-                    );
-                },
+                    ),
                 error -> Toast.makeText(EmployeeShowCommitsActivity.this, error.toString(), Toast.LENGTH_SHORT).show()
         );
 

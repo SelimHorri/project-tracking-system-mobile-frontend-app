@@ -18,6 +18,11 @@ public class LocationBuilder {
         return this.location;
     }
 
+    public LocationBuilder locationId(final Integer locationId) {
+        this.location.setLocationId(locationId);
+        return this;
+    }
+
     public LocationBuilder adr(final String adr) {
         this.location.setAdr(adr);
         return this;
