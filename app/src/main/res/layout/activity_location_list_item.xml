@@ -43,20 +43,20 @@
 
 
 
-                <ImageButton
+                <Button
                     android:id="@+id/buttonAdminLocationListEdit"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight=".1"
-                    android:src="@mipmap/edit"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="edit"
                     android:textAppearance="?android:textAppearanceLarge" />
 
-                <ImageButton
+                <Button
                     android:id="@+id/buttonAdminLocationListDelete"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight=".1"
-                    android:src="@mipmap/remove"
+                    android:text="Delete"
+                    android:layout_height="wrap_content"
                     android:textAppearance="?android:textAppearanceLarge" />
 
 

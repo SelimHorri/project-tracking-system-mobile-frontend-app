@@ -34,20 +34,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageButton
+
+
+
+                <Button
+                    android:layout_weight="1"
                     android:id="@+id/buttonAdminDepartmentListEdit"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight=".1"
-                    android:src="@mipmap/edit"
-                    android:textAppearance="?android:textAppearanceLarge" />
-                <ImageButton
+                    android:layout_height="wrap_content"
+                    android:text="Edit" />
+
+
+                <Button
+                    android:layout_weight="1"
                     android:id="@+id/buttonAdminDepartmentListDelete"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_weight=".1"
-                    android:src="@mipmap/remove"
-                    android:textAppearance="?android:textAppearanceLarge" />
+                    android:layout_height="wrap_content"
+                    android:text="Delete" />
+
+
 
             </LinearLayout>
 
